@@ -1,0 +1,6 @@
+/.idea
+/composer.lock
+/src/autoload.php
+/tools
+/vendor
+
