@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 final class Version {
-
     /**
      * @var string
      */
@@ -136,7 +135,7 @@ final class Version {
      * @throws InvalidVersionException
      */
     private function ensureVersionIsValid($version) {
-        $regex = "/^
+        $regex = '/^
             (?<Major>(0|(?:[1-9][0-9]*)))
             \\.
             (?<Minor>(0|(?:[1-9][0-9]*)))
@@ -149,7 +148,7 @@ final class Version {
                     (?<ReleaseTypeCount>[0-9])
                 )?
             )?       
-        \$/x";
+        $/x';
 
         if (preg_match($regex, $version, $matches) !== 1) {
             throw new InvalidVersionException(
@@ -185,6 +184,7 @@ final class Version {
 
         if (!isset($matches['ReleaseTypeCount'])) {
             $this->releaseTypeCount = 1;
+
             return;
         }
 

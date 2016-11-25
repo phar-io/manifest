@@ -14,10 +14,10 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers PharIo\Manifest\PhpVersionRequirement
+ *
  * @uses   PharIo\Manifest\VersionConstraint
  */
 class PhpVersionRequirementTest extends TestCase {
-
     /**
      * @var PhpVersionRequirement
      */

@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 final class PhpVersionRequirement implements Requirement {
-
     /**
      * @var VersionConstraint
      */

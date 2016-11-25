@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 final class Email {
-
     /**
      * @var string
      */

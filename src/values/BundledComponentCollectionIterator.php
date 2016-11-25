@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 final class BundledComponentCollectionIterator implements \Iterator {
-
     /**
      * @var BundledComponent[]
      */

@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers PharIo\Manifest\Manifest
+ *
  * @uses   PharIo\Manifest\Author
  * @uses   PharIo\Manifest\AuthorCollection
  * @uses   PharIo\Manifest\BundledComponent
@@ -30,7 +31,6 @@ use PHPUnit\Framework\TestCase;
  * @uses   PharIo\Manifest\VersionConstraint
  */
 class ManifestTest extends TestCase {
-
     /**
      * @var string
      */

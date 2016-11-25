@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers PharIo\Manifest\CopyrightInformation
+ *
  * @uses   PharIo\Manifest\AuthorCollection
  * @uses   PharIo\Manifest\AuthorCollectionIterator
  * @uses   PharIo\Manifest\Author
@@ -22,7 +23,6 @@ use PHPUnit\Framework\TestCase;
  * @uses   PharIo\Manifest\Url
  */
 class CopyrightInformationTest extends TestCase {
-
     /**
      * @var CopyrightInformation
      */

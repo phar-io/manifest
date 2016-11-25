@@ -16,7 +16,6 @@ use PHPUnit\Framework\TestCase;
  * @covers \PharIo\Manifest\Version
  */
 class VersionTest extends TestCase {
-
     /**
      * @dataProvider validVersionStrings
      */

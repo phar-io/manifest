@@ -15,11 +15,11 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers PharIo\Manifest\AuthorCollection
  * @covers PharIo\Manifest\AuthorCollectionIterator
+ *
  * @uses   PharIo\Manifest\Author
  * @uses   PharIo\Manifest\Email
  */
 class AuthorCollectionTest extends TestCase {
-
     /**
      * @var AuthorCollection
      */

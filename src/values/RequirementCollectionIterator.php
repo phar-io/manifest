@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 final class RequirementCollectionIterator implements \Iterator {
-
     /**
      * @var Requirement[]
      */

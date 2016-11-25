@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 class BundledComponent {
-
     /**
      * @var string
      */

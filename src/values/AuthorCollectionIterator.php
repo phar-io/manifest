@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 final class AuthorCollectionIterator implements \Iterator {
-
     /**
      * @var Author[]
      */

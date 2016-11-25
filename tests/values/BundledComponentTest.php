@@ -14,10 +14,10 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers PharIo\Manifest\BundledComponent
+ *
  * @uses   PharIo\Manifest\Version
  */
 class BundledComponentTest extends TestCase {
-
     /**
      * @var BundledComponent
      */

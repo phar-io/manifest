@@ -16,7 +16,6 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\VersionConstraint
  */
 class VersionConstraintTest extends TestCase {
-
     public function testCanBeCreatedForValidVersionConstraint() {
         $this->assertInstanceOf(VersionConstraint::class, new VersionConstraint('^5.6 || ^7.0'));
     }

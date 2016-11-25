@@ -17,7 +17,6 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\Type
  */
 class LibraryTest extends TestCase {
-
     /**
      * @var Library
      */

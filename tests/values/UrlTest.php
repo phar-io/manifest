@@ -16,7 +16,6 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\Url
  */
 class UrlTest extends TestCase {
-
     public function testCanBeCreatedForValidUrl() {
         $this->assertInstanceOf(Url::class, new Url('https://phar.io/'));
     }

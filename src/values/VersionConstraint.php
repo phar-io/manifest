@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 final class VersionConstraint {
-
     /**
      * @var string
      */

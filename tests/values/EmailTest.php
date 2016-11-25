@@ -16,7 +16,6 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\Email
  */
 class EmailTest extends TestCase {
-
     public function testCanBeCreatedForValidEmail() {
         $this->assertInstanceOf(Email::class, new Email('user@example.com'));
     }

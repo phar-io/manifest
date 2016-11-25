@@ -16,7 +16,6 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\PhpExtensionRequirement
  */
 class PhpExtensionRequirementTest extends TestCase {
-
     public function testCanBeCreated() {
         $this->assertInstanceOf(PhpExtensionRequirement::class, new PhpExtensionRequirement('dom'));
     }

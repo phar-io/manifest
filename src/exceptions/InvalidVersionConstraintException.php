@@ -11,5 +11,4 @@
 namespace PharIo\Manifest;
 
 final class InvalidVersionConstraintException extends \InvalidArgumentException implements Exception {
-
 }

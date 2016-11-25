@@ -14,10 +14,10 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers PharIo\Manifest\License
+ *
  * @uses   PharIo\Manifest\Url
  */
 class LicenseTest extends TestCase {
-
     /**
      * @var License
      */
