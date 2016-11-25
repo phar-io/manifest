@@ -48,7 +48,12 @@ class ManifestDocumentMapper {
             case 'library':
                 return Type::library();
             case 'extension':
-                return Type::extension();
+                /** @var ExtensionElement $extension */
+                $extension = current($contains->getExtensionElements());
+                return Type::extension(
+                    $extension->getFor(),
+                    new VersionConstraint($extension->getCompatible())
+                );
         }
         throw new ManifestDocucmentMapperException(
             sprintf('Unsupported type %s', $contains->getType())
