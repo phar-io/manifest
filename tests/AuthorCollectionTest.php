@@ -1,0 +1,50 @@
+<?php
+/*
+ * This file is part of PharIo\Manifest.
+ *
+ * (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace PharIo\Manifest;
+
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @covers PharIo\Manifest\AuthorCollection
+ * @covers PharIo\Manifest\AuthorCollectionIterator
+ * @uses   PharIo\Manifest\Author
+ * @uses   PharIo\Manifest\Email
+ */
+class AuthorCollectionTest extends TestCase
+{
+    /**
+     * @var AuthorCollection
+     */
+    private $collection;
+
+    /**
+     * @var Author
+     */
+    private $item;
+
+    protected function setUp()
+    {
+        $this->collection = new AuthorCollection;
+        $this->item       = new Author('Joe Developer', new Email('user@example.com'));
+    }
+
+    public function testCanBeCreated()
+    {
+        $this->assertInstanceOf(AuthorCollection::class, $this->collection);
+    }
+
+    public function testCanBeIterated()
+    {
+        $this->collection->add($this->item);
+
+        $this->assertContains($this->item, $this->collection);
+    }
+}
