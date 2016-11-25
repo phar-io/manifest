@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers PharIo\Manifest\Extension
  * @covers PharIo\Manifest\Type
+ * @uses   PharIo\Manifest\VersionConstraint
  */
 class ExtensionTest extends TestCase {
 

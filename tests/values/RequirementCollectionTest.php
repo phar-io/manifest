@@ -16,6 +16,7 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\RequirementCollection
  * @covers PharIo\Manifest\RequirementCollectionIterator
  * @uses   PharIo\Manifest\PhpVersionRequirement
+ * @uses   PharIo\Manifest\VersionConstraint
  */
 class RequirementCollectionTest extends TestCase {
 

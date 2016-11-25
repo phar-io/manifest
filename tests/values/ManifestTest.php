@@ -26,6 +26,8 @@ use PHPUnit\Framework\TestCase;
  * @uses   PharIo\Manifest\Type
  * @uses   PharIo\Manifest\Application
  * @uses   PharIo\Manifest\Url
+ * @uses   PharIo\Manifest\Version
+ * @uses   PharIo\Manifest\VersionConstraint
  */
 class ManifestTest extends TestCase {
 
