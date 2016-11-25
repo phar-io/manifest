@@ -149,7 +149,7 @@ final class Version {
                     (?<ReleaseTypeCount>[0-9])
                 )?
             )?       
-        \$/x';
+        $/x';
 
         if (preg_match($regex, $version, $matches) !== 1) {
             throw new InvalidVersionException(
