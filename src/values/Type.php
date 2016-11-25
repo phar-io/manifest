@@ -15,16 +15,28 @@ abstract class Type {
     protected function __construct() {
     }
 
+    /**
+     * @return Application
+     */
     public static function application() {
         return new Application;
     }
 
+    /**
+     * @return Library
+     */
     public static function library() {
         return new Library;
     }
 
-    public static function extension() {
-        return new Extension;
+    /**
+     * @param string            $application
+     * @param VersionConstraint $versionConstraint
+     *
+     * @return Extension
+     */
+    public static function extension($application, VersionConstraint $versionConstraint) {
+        return new Extension($application, $versionConstraint);
     }
 
     /**

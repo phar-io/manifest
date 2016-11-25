@@ -11,11 +11,56 @@
 namespace PharIo\Manifest;
 
 final class Extension extends Type {
+    /**
+     * @var string
+     */
+    private $application;
+
+    /**
+     * @var string
+     */
+    private $versionConstraint;
+
+    /**
+     * @param string            $application
+     * @param VersionConstraint $versionConstraint
+     */
+    protected function __construct($application, VersionConstraint $versionConstraint)
+    {
+        $this->application       = $application;
+        $this->versionConstraint = $versionConstraint;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApplication()
+    {
+        return $this->application;
+    }
+
+    /**
+     * @return VersionConstraint
+     */
+    public function getVersionConstraint()
+    {
+        return $this->versionConstraint;
+    }
 
     /**
      * @return bool
      */
     public function isExtension() {
         return true;
+    }
+
+    /**
+     * @param string $application
+     *
+     * @return bool
+     */
+    public function isExtensionFor($application)
+    {
+        return $this->application == $application;
     }
 }

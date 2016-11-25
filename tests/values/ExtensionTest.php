@@ -24,7 +24,7 @@ class ExtensionTest extends TestCase {
     private $type;
 
     protected function setUp() {
-        $this->type = Type::extension();
+        $this->type = Type::extension('phpunit/phpunit', new VersionConstraint('^5.7'));
     }
 
     public function testCanBeCreated() {
@@ -41,5 +41,16 @@ class ExtensionTest extends TestCase {
 
     public function testIsExtension() {
         $this->assertTrue($this->type->isExtension());
+    }
+
+    public function testApplicationCanBeRetrieved()
+    {
+        $this->assertEquals('phpunit/phpunit', $this->type->getApplication());
+    }
+
+    public function testApplicationCanBeQueried()
+    {
+        $this->assertTrue($this->type->isExtensionFor('phpunit/phpunit'));
+        $this->assertFalse($this->type->isExtensionFor('foo/bar'));
     }
 }
