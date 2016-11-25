@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\BundledComponentCollectionIterator
  * @uses   PharIo\Manifest\BundledComponent
  */
-class BundledComponentCollectionTest extends TestCase
-{
+class BundledComponentCollectionTest extends TestCase {
+
     /**
      * @var BundledComponentCollection
      */
@@ -29,19 +29,16 @@ class BundledComponentCollectionTest extends TestCase
      */
     private $item;
 
-    protected function setUp()
-    {
+    protected function setUp() {
         $this->collection = new BundledComponentCollection;
         $this->item       = new BundledComponent('phpunit/php-code-coverage', new Version('4.0.2'));
     }
 
-    public function testCanBeCreated()
-    {
+    public function testCanBeCreated() {
         $this->assertInstanceOf(BundledComponentCollection::class, $this->collection);
     }
 
-    public function testCanBeIterated()
-    {
+    public function testCanBeIterated() {
         $this->collection->add($this->item);
 
         $this->assertContains($this->item, $this->collection);

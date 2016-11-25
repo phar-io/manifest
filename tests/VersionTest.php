@@ -15,60 +15,56 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers \PharIo\Manifest\Version
  */
-class VersionTest extends TestCase
-{
+class VersionTest extends TestCase {
 
     /**
      * @dataProvider validVersionStrings
      */
-    public function testCanBeCreatedForValidVersion($versionString)
-    {
+    public function testCanBeCreatedForValidVersion($versionString) {
         $this->assertInstanceOf(Version::class, new Version($versionString));
     }
 
     public function validVersionStrings() {
         return [
-            '1.0.0' => ['1.0.0'],
-            '15.0.23' => ['15.0.23'],
-            '1.0.0-dev' => ['1.0.0-dev'],
+            '1.0.0'        => ['1.0.0'],
+            '15.0.23'      => ['15.0.23'],
+            '1.0.0-dev'    => ['1.0.0-dev'],
             '1.0.0-alpha1' => ['1.0.0-alpha1'],
-            '1.0.0-beta2' => ['1.0.0-beta2'],
-            '1.0.0-a3' => ['1.0.0-a3'],
-            '1.0.0-b4' => ['1.0.0-b4'],
-            '1.0.0-RC5' => ['1.0.0-RC5'],
-            '2.0.4-p6' => ['2.0.4-p6'],
+            '1.0.0-beta2'  => ['1.0.0-beta2'],
+            '1.0.0-a3'     => ['1.0.0-a3'],
+            '1.0.0-b4'     => ['1.0.0-b4'],
+            '1.0.0-RC5'    => ['1.0.0-RC5'],
+            '2.0.4-p6'     => ['2.0.4-p6'],
             '2.0.4-patch7' => ['2.0.4-patch7']
         ];
     }
 
     /**
-     * @covers \PharIo\Manifest\InvalidVersionException
+     * @covers       \PharIo\Manifest\InvalidVersionException
      * @dataProvider invalidVersionStrings
      */
-    public function testCannotBeCreatedForInvalidVersion($versionString)
-    {
+    public function testCannotBeCreatedForInvalidVersion($versionString) {
         $this->expectException(InvalidVersionException::class);
         new Version($versionString);
     }
 
     public function invalidVersionStrings() {
         return [
-            'a.b.c' => ['a.b.c'],
+            'a.b.c'         => ['a.b.c'],
             'not-a-version' => ['not-a-version'],
-            '1.0' => ['1.0'],
-            '1.2.3-foo' => ['1.2.3-foo'],
-            '1.2.3-foo2' => ['1.2.3-foo2'],
-            '1.2.3.4' => ['1.2.3.4'],
-            '1.2.3_foo' => ['1.2.3_foo'],
-            '1.0-beta1' => ['1.0-beta1'],
-            '01.2.3' => ['01.2.3'],
-            '0.00.1' => ['0.00.1'],
-            '0-a1' => ['0-a1']
+            '1.0'           => ['1.0'],
+            '1.2.3-foo'     => ['1.2.3-foo'],
+            '1.2.3-foo2'    => ['1.2.3-foo2'],
+            '1.2.3.4'       => ['1.2.3.4'],
+            '1.2.3_foo'     => ['1.2.3_foo'],
+            '1.0-beta1'     => ['1.0-beta1'],
+            '01.2.3'        => ['01.2.3'],
+            '0.00.1'        => ['0.00.1'],
+            '0-a1'          => ['0-a1']
         ];
     }
 
-    public function testCanBeUsedAsString()
-    {
+    public function testCanBeUsedAsString() {
         $this->assertEquals('5.6.5', new Version('5.6.5'));
     }
 

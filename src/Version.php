@@ -10,8 +10,8 @@
 
 namespace PharIo\Manifest;
 
-final class Version
-{
+final class Version {
+
     /**
      * @var string
      */
@@ -47,8 +47,7 @@ final class Version
      *
      * @throws InvalidVersionException
      */
-    public function __construct($version)
-    {
+    public function __construct($version) {
         $this->ensureVersionIsValid($version);
 
         $this->version = $version;
@@ -57,8 +56,7 @@ final class Version
     /**
      * @return string
      */
-    public function __toString()
-    {
+    public function __toString() {
         return $this->version;
     }
 
@@ -137,8 +135,7 @@ final class Version
      *
      * @throws InvalidVersionException
      */
-    private function ensureVersionIsValid($version)
-    {
+    private function ensureVersionIsValid($version) {
         $regex = "/^
             (?<Major>(0|(?:[1-9][0-9]*)))
             \\.
@@ -166,8 +163,7 @@ final class Version
     /**
      * @param string[] $matches
      */
-    private function initValues(array $matches)
-    {
+    private function initValues(array $matches) {
         $this->major = $matches['Major'];
         $this->minor = $matches['Minor'];
         $this->patch = $matches['Patch'];
@@ -177,7 +173,7 @@ final class Version
         }
 
         if (strlen($matches['ReleaseType']) === 1) {
-            $expanded = [
+            $expanded               = [
                 'a' => 'alpha',
                 'b' => 'beta',
                 'p' => 'patch'

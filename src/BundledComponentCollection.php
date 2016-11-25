@@ -10,31 +10,28 @@
 
 namespace PharIo\Manifest;
 
-final class BundledComponentCollection implements \IteratorAggregate
-{
+final class BundledComponentCollection implements \IteratorAggregate {
+
     /**
      * @var BundledComponent[]
      */
     private $bundledComponents = [];
 
-    public function add(BundledComponent $bundledComponent)
-    {
+    public function add(BundledComponent $bundledComponent) {
         $this->bundledComponents[] = $bundledComponent;
     }
 
     /**
      * @return BundledComponent[]
      */
-    public function getBundledComponents()
-    {
+    public function getBundledComponents() {
         return $this->bundledComponents;
     }
 
     /**
      * @return BundledComponentCollectionIterator
      */
-    public function getIterator()
-    {
+    public function getIterator() {
         return new BundledComponentCollectionIterator($this);
     }
 }

@@ -10,6 +10,6 @@
 
 namespace PharIo\Manifest;
 
-final class InvalidUrlException extends \InvalidArgumentException implements Exception
-{
+final class InvalidUrlException extends \InvalidArgumentException implements Exception {
+
 }

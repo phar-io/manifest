@@ -15,15 +15,13 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers PharIo\Manifest\PhpExtensionRequirement
  */
-class PhpExtensionRequirementTest extends TestCase
-{
-    public function testCanBeCreated()
-    {
+class PhpExtensionRequirementTest extends TestCase {
+
+    public function testCanBeCreated() {
         $this->assertInstanceOf(PhpExtensionRequirement::class, new PhpExtensionRequirement('dom'));
     }
 
-    public function testCanBeUsedAsString()
-    {
+    public function testCanBeUsedAsString() {
         $this->assertEquals('dom', new PhpExtensionRequirement('dom'));
     }
 }

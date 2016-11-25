@@ -21,8 +21,8 @@ use PHPUnit\Framework\TestCase;
  * @uses   PharIo\Manifest\License
  * @uses   PharIo\Manifest\Url
  */
-class CopyrightInformationTest extends TestCase
-{
+class CopyrightInformationTest extends TestCase {
+
     /**
      * @var CopyrightInformation
      */
@@ -38,9 +38,8 @@ class CopyrightInformationTest extends TestCase
      */
     private $license;
 
-    protected function setUp()
-    {
-        $this->author = new Author('Joe Developer', new Email('user@example.com'));
+    protected function setUp() {
+        $this->author  = new Author('Joe Developer', new Email('user@example.com'));
         $this->license = new License('BSD-3-Clause', new Url('https://github.com/sebastianbergmann/phpunit/blob/master/LICENSE'));
 
         $authors = new AuthorCollection;
@@ -49,18 +48,15 @@ class CopyrightInformationTest extends TestCase
         $this->copyrightInformation = new CopyrightInformation($authors, $this->license);
     }
 
-    public function testCanBeCreated()
-    {
+    public function testCanBeCreated() {
         $this->assertInstanceOf(CopyrightInformation::class, $this->copyrightInformation);
     }
 
-    public function testAuthorsCanBeRetrieved()
-    {
+    public function testAuthorsCanBeRetrieved() {
         $this->assertContains($this->author, $this->copyrightInformation->getAuthors());
     }
 
-    public function testLicenseCanBeRetrieved()
-    {
+    public function testLicenseCanBeRetrieved() {
         $this->assertEquals($this->license, $this->copyrightInformation->getLicense());
     }
 }

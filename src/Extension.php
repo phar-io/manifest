@@ -10,13 +10,12 @@
 
 namespace PharIo\Manifest;
 
-final class Extension extends Type
-{
+final class Extension extends Type {
+
     /**
      * @return bool
      */
-    public function isExtension()
-    {
+    public function isExtension() {
         return true;
     }
 }

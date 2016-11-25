@@ -15,23 +15,20 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers PharIo\Manifest\VersionConstraint
  */
-class VersionConstraintTest extends TestCase
-{
-    public function testCanBeCreatedForValidVersionConstraint()
-    {
+class VersionConstraintTest extends TestCase {
+
+    public function testCanBeCreatedForValidVersionConstraint() {
         $this->assertInstanceOf(VersionConstraint::class, new VersionConstraint('^5.6 || ^7.0'));
     }
 
-    public function testCanBeUsedAsString()
-    {
+    public function testCanBeUsedAsString() {
         $this->assertEquals('^5.6 || ^7.0', new VersionConstraint('^5.6 || ^7.0'));
     }
 
     /**
      * @covers PharIo\Manifest\InvalidVersionConstraintException
      */
-    public function testCannotBeCreatedForInvalidVersionConstraint()
-    {
+    public function testCannotBeCreatedForInvalidVersionConstraint() {
         $this->expectException(InvalidVersionConstraintException::class);
 
         new VersionConstraint('invalid');

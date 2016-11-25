@@ -10,8 +10,8 @@
 
 namespace PharIo\Manifest;
 
-final class Email
-{
+final class Email {
+
     /**
      * @var string
      */
@@ -22,8 +22,7 @@ final class Email
      *
      * @throws InvalidEmailException
      */
-    public function __construct($email)
-    {
+    public function __construct($email) {
         $this->ensureEmailIsValid($email);
 
         $this->email = $email;
@@ -32,16 +31,14 @@ final class Email
     /**
      * @return string
      */
-    public function __toString()
-    {
+    public function __toString() {
         return $this->email;
     }
 
     /**
      * @param string $url
      */
-    private function ensureEmailIsValid($url)
-    {
+    private function ensureEmailIsValid($url) {
         if (filter_var($url, \FILTER_VALIDATE_EMAIL) === false) {
             throw new InvalidEmailException;
         }

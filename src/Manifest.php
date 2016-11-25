@@ -10,8 +10,8 @@
 
 namespace PharIo\Manifest;
 
-final class Manifest
-{
+final class Manifest {
+
     /**
      * @var string
      */
@@ -42,8 +42,7 @@ final class Manifest
      */
     private $bundledComponents;
 
-    public function __construct($name, Version $version, Type $type, CopyrightInformation $copyrightInformation, RequirementCollection $requirements, BundledComponentCollection $bundledComponents)
-    {
+    public function __construct($name, Version $version, Type $type, CopyrightInformation $copyrightInformation, RequirementCollection $requirements, BundledComponentCollection $bundledComponents) {
         $this->name                 = $name;
         $this->version              = $version;
         $this->type                 = $type;
@@ -55,72 +54,63 @@ final class Manifest
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
     /**
      * @return Version
      */
-    public function getVersion()
-    {
+    public function getVersion() {
         return $this->version;
     }
 
     /**
      * @return Type
      */
-    public function getType()
-    {
+    public function getType() {
         return $this->type;
     }
 
     /**
      * @return CopyrightInformation
      */
-    public function getCopyrightInformation()
-    {
+    public function getCopyrightInformation() {
         return $this->copyrightInformation;
     }
 
     /**
      * @return RequirementCollection
      */
-    public function getRequirements()
-    {
+    public function getRequirements() {
         return $this->requirements;
     }
 
     /**
      * @return BundledComponentCollection
      */
-    public function getBundledComponents()
-    {
+    public function getBundledComponents() {
         return $this->bundledComponents;
     }
 
     /**
      * @return bool
      */
-    public function isApplication()
-    {
+    public function isApplication() {
         return $this->type->isApplication();
     }
 
     /**
      * @return bool
      */
-    public function isLibrary()
-    {
+    public function isLibrary() {
         return $this->type->isLibrary();
     }
 
     /**
      * @return bool
      */
-    public function isExtension()
-    {
+    public function isExtension() {
         return $this->type->isExtension();
     }
 }

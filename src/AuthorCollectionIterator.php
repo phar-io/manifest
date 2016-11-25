@@ -10,8 +10,8 @@
 
 namespace PharIo\Manifest;
 
-final class AuthorCollectionIterator implements \Iterator
-{
+final class AuthorCollectionIterator implements \Iterator {
+
     /**
      * @var Author[]
      */
@@ -22,42 +22,36 @@ final class AuthorCollectionIterator implements \Iterator
      */
     private $position;
 
-    public function __construct(AuthorCollection $authors)
-    {
+    public function __construct(AuthorCollection $authors) {
         $this->authors = $authors->getAuthors();
     }
 
-    public function rewind()
-    {
+    public function rewind() {
         $this->position = 0;
     }
 
     /**
      * @return bool
      */
-    public function valid()
-    {
+    public function valid() {
         return $this->position < count($this->authors);
     }
 
     /**
      * @return int
      */
-    public function key()
-    {
+    public function key() {
         return $this->position;
     }
 
     /**
      * @return Author
      */
-    public function current()
-    {
+    public function current() {
         return $this->authors[$this->position];
     }
 
-    public function next()
-    {
+    public function next() {
         $this->position++;
     }
 }

@@ -10,8 +10,8 @@
 
 namespace PharIo\Manifest;
 
-final class VersionConstraint
-{
+final class VersionConstraint {
+
     /**
      * @var string
      */
@@ -22,8 +22,7 @@ final class VersionConstraint
      *
      * @throws InvalidVersionConstraintException
      */
-    public function __construct($versionConstraint)
-    {
+    public function __construct($versionConstraint) {
         $this->ensureVersionConstraintIsValid($versionConstraint);
 
         $this->versionConstraint = $versionConstraint;
@@ -32,15 +31,13 @@ final class VersionConstraint
     /**
      * @return string
      */
-    public function __toString()
-    {
+    public function __toString() {
         return $this->versionConstraint;
     }
 
     /**
      * @param string $versionConstraint
      */
-    private function ensureVersionConstraintIsValid($versionConstraint)
-    {
+    private function ensureVersionConstraintIsValid($versionConstraint) {
     }
 }

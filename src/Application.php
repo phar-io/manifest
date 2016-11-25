@@ -10,13 +10,12 @@
 
 namespace PharIo\Manifest;
 
-final class Application extends Type
-{
+final class Application extends Type {
+
     /**
      * @return bool
      */
-    public function isApplication()
-    {
+    public function isApplication() {
         return true;
     }
 }

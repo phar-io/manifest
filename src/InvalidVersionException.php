@@ -10,6 +10,6 @@
 
 namespace PharIo\Manifest;
 
-final class InvalidVersionException extends \InvalidArgumentException implements Exception
-{
+final class InvalidVersionException extends \InvalidArgumentException implements Exception {
+
 }

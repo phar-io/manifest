@@ -10,31 +10,28 @@
 
 namespace PharIo\Manifest;
 
-final class RequirementCollection implements \IteratorAggregate
-{
+final class RequirementCollection implements \IteratorAggregate {
+
     /**
      * @var Requirement[]
      */
     private $requirements = [];
 
-    public function add(Requirement $requirement)
-    {
+    public function add(Requirement $requirement) {
         $this->requirements[] = $requirement;
     }
 
     /**
      * @return Requirement[]
      */
-    public function getRequirements()
-    {
+    public function getRequirements() {
         return $this->requirements;
     }
 
     /**
      * @return RequirementCollectionIterator
      */
-    public function getIterator()
-    {
+    public function getIterator() {
         return new RequirementCollectionIterator($this);
     }
 }

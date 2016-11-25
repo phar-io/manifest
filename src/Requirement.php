@@ -10,6 +10,6 @@
 
 namespace PharIo\Manifest;
 
-interface Requirement
-{
+interface Requirement {
+
 }

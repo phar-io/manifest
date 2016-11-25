@@ -15,25 +15,22 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers PharIo\Manifest\PhpVersionRequirement
  */
-class PhpVersionRequirementTest extends TestCase
-{
+class PhpVersionRequirementTest extends TestCase {
+
     /**
      * @var PhpVersionRequirement
      */
     private $requirement;
 
-    protected function setUp()
-    {
+    protected function setUp() {
         $this->requirement = new PhpVersionRequirement(new VersionConstraint('7.1.0'));
     }
 
-    public function testCanBeCreated()
-    {
+    public function testCanBeCreated() {
         $this->assertInstanceOf(PhpVersionRequirement::class, $this->requirement);
     }
 
-    public function testVersionConstraintCanBeRetrieved()
-    {
+    public function testVersionConstraintCanBeRetrieved() {
         $this->assertEquals('7.1.0', $this->requirement->getVersionConstraint());
     }
 }

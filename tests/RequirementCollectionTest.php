@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\RequirementCollectionIterator
  * @uses   PharIo\Manifest\PhpVersionRequirement
  */
-class RequirementCollectionTest extends TestCase
-{
+class RequirementCollectionTest extends TestCase {
+
     /**
      * @var RequirementCollection
      */
@@ -29,19 +29,16 @@ class RequirementCollectionTest extends TestCase
      */
     private $item;
 
-    protected function setUp()
-    {
+    protected function setUp() {
         $this->collection = new RequirementCollection;
         $this->item       = new PhpVersionRequirement(new VersionConstraint('7.1.0'));
     }
 
-    public function testCanBeCreated()
-    {
+    public function testCanBeCreated() {
         $this->assertInstanceOf(RequirementCollection::class, $this->collection);
     }
 
-    public function testCanBeIterated()
-    {
+    public function testCanBeIterated() {
         $this->collection->add($this->item);
 
         $this->assertContains($this->item, $this->collection);

@@ -18,8 +18,8 @@ use PHPUnit\Framework\TestCase;
  * @uses   PharIo\Manifest\Author
  * @uses   PharIo\Manifest\Email
  */
-class AuthorCollectionTest extends TestCase
-{
+class AuthorCollectionTest extends TestCase {
+
     /**
      * @var AuthorCollection
      */
@@ -30,19 +30,16 @@ class AuthorCollectionTest extends TestCase
      */
     private $item;
 
-    protected function setUp()
-    {
+    protected function setUp() {
         $this->collection = new AuthorCollection;
         $this->item       = new Author('Joe Developer', new Email('user@example.com'));
     }
 
-    public function testCanBeCreated()
-    {
+    public function testCanBeCreated() {
         $this->assertInstanceOf(AuthorCollection::class, $this->collection);
     }
 
-    public function testCanBeIterated()
-    {
+    public function testCanBeIterated() {
         $this->collection->add($this->item);
 
         $this->assertContains($this->item, $this->collection);

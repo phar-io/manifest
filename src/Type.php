@@ -10,48 +10,41 @@
 
 namespace PharIo\Manifest;
 
-abstract class Type
-{
-    protected function __construct()
-    {
+abstract class Type {
+
+    protected function __construct() {
     }
 
-    public static function application()
-    {
+    public static function application() {
         return new Application;
     }
 
-    public static function library()
-    {
+    public static function library() {
         return new Library;
     }
 
-    public static function extension()
-    {
+    public static function extension() {
         return new Extension;
     }
 
     /**
      * @return bool
      */
-    public function isApplication()
-    {
+    public function isApplication() {
         return false;
     }
 
     /**
      * @return bool
      */
-    public function isLibrary()
-    {
+    public function isLibrary() {
         return false;
     }
 
     /**
      * @return bool
      */
-    public function isExtension()
-    {
+    public function isExtension() {
         return false;
     }
 }

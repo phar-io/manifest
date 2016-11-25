@@ -27,8 +27,8 @@ use PHPUnit\Framework\TestCase;
  * @uses   PharIo\Manifest\Application
  * @uses   PharIo\Manifest\Url
  */
-class ManifestTest extends TestCase
-{
+class ManifestTest extends TestCase {
+
     /**
      * @var string
      */
@@ -64,13 +64,12 @@ class ManifestTest extends TestCase
      */
     private $manifest;
 
-    protected function setUp()
-    {
+    protected function setUp() {
         $this->version = new Version('5.6.5');
 
         $this->type = Type::application();
 
-        $author = new Author('Joe Developer', new Email('user@example.com'));
+        $author  = new Author('Joe Developer', new Email('user@example.com'));
         $license = new License('BSD-3-Clause', new Url('https://github.com/sebastianbergmann/phpunit/blob/master/LICENSE'));
 
         $authors = new AuthorCollection;
@@ -94,45 +93,37 @@ class ManifestTest extends TestCase
         );
     }
 
-    public function testCanBeCreated()
-    {
+    public function testCanBeCreated() {
         $this->assertInstanceOf(Manifest::class, $this->manifest);
     }
 
-    public function testNameCanBeRetrieved()
-    {
+    public function testNameCanBeRetrieved() {
         $this->assertEquals($this->name, $this->manifest->getName());
     }
 
-    public function testVersionCanBeRetrieved()
-    {
+    public function testVersionCanBeRetrieved() {
         $this->assertEquals($this->version, $this->manifest->getVersion());
     }
 
-    public function testTypeCanBeRetrieved()
-    {
+    public function testTypeCanBeRetrieved() {
         $this->assertEquals($this->type, $this->manifest->getType());
     }
 
-    public function testTypeCanBeQueried()
-    {
+    public function testTypeCanBeQueried() {
         $this->assertTrue($this->manifest->isApplication());
         $this->assertFalse($this->manifest->isLibrary());
         $this->assertFalse($this->manifest->isExtension());
     }
 
-    public function testCopyrightInformationCanBeRetrieved()
-    {
+    public function testCopyrightInformationCanBeRetrieved() {
         $this->assertEquals($this->copyrightInformation, $this->manifest->getCopyrightInformation());
     }
 
-    public function testRequirementsCanBeRetrieved()
-    {
+    public function testRequirementsCanBeRetrieved() {
         $this->assertEquals($this->requirements, $this->manifest->getRequirements());
     }
 
-    public function testBundledComponentsCanBeRetrieved()
-    {
+    public function testBundledComponentsCanBeRetrieved() {
         $this->assertEquals($this->bundledComponents, $this->manifest->getBundledComponents());
     }
 }

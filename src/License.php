@@ -10,8 +10,8 @@
 
 namespace PharIo\Manifest;
 
-final class License
-{
+final class License {
+
     /**
      * @var string
      */
@@ -22,8 +22,7 @@ final class License
      */
     private $url;
 
-    public function __construct($name, Url $url)
-    {
+    public function __construct($name, Url $url) {
         $this->name = $name;
         $this->url  = $url;
     }
@@ -31,16 +30,14 @@ final class License
     /**
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
     /**
      * @return Url
      */
-    public function getUrl()
-    {
+    public function getUrl() {
         return $this->url;
     }
 }

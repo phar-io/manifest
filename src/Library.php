@@ -10,13 +10,12 @@
 
 namespace PharIo\Manifest;
 
-final class Library extends Type
-{
+final class Library extends Type {
+
     /**
      * @return bool
      */
-    public function isLibrary()
-    {
+    public function isLibrary() {
         return true;
     }
 }

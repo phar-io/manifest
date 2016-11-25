@@ -10,23 +10,21 @@
 
 namespace PharIo\Manifest;
 
-final class PhpExtensionRequirement implements Requirement
-{
+final class PhpExtensionRequirement implements Requirement {
+
     private $extension;
 
     /**
      * @param string $extension
      */
-    public function __construct($extension)
-    {
+    public function __construct($extension) {
         $this->extension = $extension;
     }
 
     /**
      * @return string
      */
-    public function __toString()
-    {
+    public function __toString() {
         return $this->extension;
     }
 }
