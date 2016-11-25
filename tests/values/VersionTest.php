@@ -25,8 +25,10 @@ class VersionTest extends TestCase {
 
     public function validVersionStrings() {
         return [
+            '1.0'          => ['1.0'],
             '1.0.0'        => ['1.0.0'],
             '15.0.23'      => ['15.0.23'],
+            '1.0-beta1'    => ['1.0-beta1'],
             '1.0.0-dev'    => ['1.0.0-dev'],
             '1.0.0-alpha1' => ['1.0.0-alpha1'],
             '1.0.0-beta2'  => ['1.0.0-beta2'],
@@ -52,12 +54,10 @@ class VersionTest extends TestCase {
         return [
             'a.b.c'         => ['a.b.c'],
             'not-a-version' => ['not-a-version'],
-            '1.0'           => ['1.0'],
             '1.2.3-foo'     => ['1.2.3-foo'],
             '1.2.3-foo2'    => ['1.2.3-foo2'],
             '1.2.3.4'       => ['1.2.3.4'],
             '1.2.3_foo'     => ['1.2.3_foo'],
-            '1.0-beta1'     => ['1.0-beta1'],
             '01.2.3'        => ['01.2.3'],
             '0.00.1'        => ['0.00.1'],
             '0-a1'          => ['0-a1']

@@ -139,8 +139,9 @@ final class Version {
             (?<Major>(0|(?:[1-9][0-9]*)))
             \\.
             (?<Minor>(0|(?:[1-9][0-9]*)))
-            \\.
-            (?<Patch>(0|(?:[1-9][0-9]*)))
+            (\\.
+                (?<Patch>(0|(?:[1-9][0-9]*)))
+            )?
             (?:
                 -
                 (?<ReleaseType>(?:(dev|beta|b|RC|alpha|a|patch|p)))
@@ -165,7 +166,7 @@ final class Version {
     private function initValues(array $matches) {
         $this->major = $matches['Major'];
         $this->minor = $matches['Minor'];
-        $this->patch = $matches['Patch'];
+        $this->patch = isset($matches['Patch']) ? $matches['Patch'] : 0;
 
         if (!isset($matches['ReleaseType'])) {
             return;
