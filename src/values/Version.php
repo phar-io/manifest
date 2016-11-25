@@ -135,7 +135,7 @@ final class Version {
      * @throws InvalidVersionException
      */
     private function ensureVersionIsValid($version) {
-        $regex = '/^
+        $regex = '/^v?
             (?<Major>(0|(?:[1-9][0-9]*)))
             \\.
             (?<Minor>(0|(?:[1-9][0-9]*)))
