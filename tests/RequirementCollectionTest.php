@@ -32,7 +32,7 @@ class RequirementCollectionTest extends TestCase
     protected function setUp()
     {
         $this->collection = new RequirementCollection;
-        $this->item       = new PhpVersionRequirement('7.1.0');
+        $this->item       = new PhpVersionRequirement(new VersionConstraint('7.1.0'));
     }
 
     public function testCanBeCreated()

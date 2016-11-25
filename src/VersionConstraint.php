@@ -10,23 +10,37 @@
 
 namespace PharIo\Manifest;
 
-final class PhpVersionRequirement implements Requirement
+final class VersionConstraint
 {
     /**
-     * @var VersionConstraint
+     * @var string
      */
     private $versionConstraint;
 
-    public function __construct(VersionConstraint $versionConstraint)
+    /**
+     * @param string $versionConstraint
+     *
+     * @throws InvalidVersionConstraintException
+     */
+    public function __construct($versionConstraint)
     {
+        $this->ensureVersionConstraintIsValid($versionConstraint);
+
         $this->versionConstraint = $versionConstraint;
     }
 
     /**
-     * @return VersionConstraint
+     * @return string
      */
-    public function getVersionConstraint()
+    public function __toString()
     {
         return $this->versionConstraint;
+    }
+
+    /**
+     * @param string $versionConstraint
+     */
+    private function ensureVersionConstraintIsValid($versionConstraint)
+    {
     }
 }

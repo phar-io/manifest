@@ -17,13 +17,23 @@ use PHPUnit\Framework\TestCase;
  */
 class PhpVersionRequirementTest extends TestCase
 {
-    public function testCanBeCreated()
+    /**
+     * @var PhpVersionRequirement
+     */
+    private $requirement;
+
+    protected function setUp()
     {
-        $this->assertInstanceOf(PhpVersionRequirement::class, new PhpVersionRequirement('7.1.0'));
+        $this->requirement = new PhpVersionRequirement(new VersionConstraint('7.1.0'));
     }
 
-    public function testCanBeUsedAsString()
+    public function testCanBeCreated()
     {
-        $this->assertEquals('7.1.0', new PhpVersionRequirement('7.1.0'));
+        $this->assertInstanceOf(PhpVersionRequirement::class, $this->requirement);
+    }
+
+    public function testVersionConstraintCanBeRetrieved()
+    {
+        $this->assertEquals('7.1.0', $this->requirement->getVersionConstraint());
     }
 }

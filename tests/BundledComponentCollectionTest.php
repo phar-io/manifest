@@ -32,7 +32,7 @@ class BundledComponentCollectionTest extends TestCase
     protected function setUp()
     {
         $this->collection = new BundledComponentCollection;
-        $this->item       = new BundledComponent('phpunit/php-code-coverage', '4.0.2');
+        $this->item       = new BundledComponent('phpunit/php-code-coverage', new Version('4.0.2'));
     }
 
     public function testCanBeCreated()

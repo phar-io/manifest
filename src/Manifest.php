@@ -18,7 +18,7 @@ final class Manifest
     private $name;
 
     /**
-     * @var string
+     * @var Version
      */
     private $version;
 
@@ -42,7 +42,7 @@ final class Manifest
      */
     private $bundledComponents;
 
-    public function __construct($name, $version, Type $type, CopyrightInformation $copyrightInformation, RequirementCollection $requirements, BundledComponentCollection $bundledComponents)
+    public function __construct($name, Version $version, Type $type, CopyrightInformation $copyrightInformation, RequirementCollection $requirements, BundledComponentCollection $bundledComponents)
     {
         $this->name                 = $name;
         $this->version              = $version;
@@ -61,7 +61,7 @@ final class Manifest
     }
 
     /**
-     * @return string
+     * @return Version
      */
     public function getVersion()
     {

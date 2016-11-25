@@ -10,41 +10,37 @@
 
 namespace PharIo\Manifest;
 
-class BundledComponent
+final class Version
 {
     /**
      * @var string
      */
-    private $name;
-
-    /**
-     * @var Version
-     */
     private $version;
 
     /**
-     * @param string  $name
-     * @param Version $version
+     * @param string $version
+     *
+     * @throws InvalidVersionException
      */
-    public function __construct($name, Version $version)
+    public function __construct($version)
     {
-        $this->name    = $name;
+        $this->ensureVersionIsValid($version);
+
         $this->version = $version;
     }
 
     /**
      * @return string
      */
-    public function getName()
+    public function __toString()
     {
-        return $this->name;
+        return $this->version;
     }
 
     /**
-     * @return Version
+     * @param string $version
      */
-    public function getVersion()
+    private function ensureVersionIsValid($version)
     {
-        return $this->version;
     }
 }

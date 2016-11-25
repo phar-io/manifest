@@ -35,9 +35,9 @@ class ManifestTest extends TestCase
     private $name = 'phpunit/phpunit';
 
     /**
-     * @var string
+     * @var Version
      */
-    private $version = '5.6.5';
+    private $version;
 
     /**
      * @var Type
@@ -66,6 +66,8 @@ class ManifestTest extends TestCase
 
     protected function setUp()
     {
+        $this->version = new Version('5.6.5');
+
         $this->type = Type::application();
 
         $author = new Author('Joe Developer', new Email('user@example.com'));
@@ -77,10 +79,10 @@ class ManifestTest extends TestCase
         $this->copyrightInformation = new CopyrightInformation($authors, $license);
 
         $this->requirements = new RequirementCollection;
-        $this->requirements->add(new PhpVersionRequirement('^5.6 || ^7.0'));
+        $this->requirements->add(new PhpVersionRequirement(new VersionConstraint('^5.6 || ^7.0')));
 
         $this->bundledComponents = new BundledComponentCollection;
-        $this->bundledComponents->add(new BundledComponent('phpunit/php-code-coverage', '4.0.2'));
+        $this->bundledComponents->add(new BundledComponent('phpunit/php-code-coverage', new Version('4.0.2')));
 
         $this->manifest = new Manifest(
             $this->name,
