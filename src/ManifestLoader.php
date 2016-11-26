@@ -17,8 +17,8 @@ class ManifestLoader {
      * @return Manifest
      */
     public static function fromFile($filename) {
-        return (new \PharIo\Manifest\ManifestDocumentMapper())->map(
-            \PharIo\Manifest\ManifestDocument::fromFile($filename)
+        return (new ManifestDocumentMapper())->map(
+            ManifestDocument::fromFile($filename)
         );
     }
 
@@ -37,8 +37,8 @@ class ManifestLoader {
      * @return Manifest
      */
     public static function fromString($manifest) {
-        return (new \PharIo\Manifest\ManifestDocumentMapper())->map(
-            \PharIo\Manifest\ManifestDocument::fromString($manifest)
+        return (new ManifestDocumentMapper())->map(
+            ManifestDocument::fromString($manifest)
         );
     }
 }
