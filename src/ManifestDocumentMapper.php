@@ -38,7 +38,7 @@ class ManifestDocumentMapper {
      *
      * @return Type
      *
-     * @throws ManifestDocucmentMapperException
+     * @throws ManifestDocumentMapperException
      */
     private function mapType(ContainsElement $contains) {
         switch ($contains->getType()) {
@@ -55,7 +55,7 @@ class ManifestDocumentMapper {
                     new VersionConstraint($extension->getCompatible())
                 );
         }
-        throw new ManifestDocucmentMapperException(
+        throw new ManifestDocumentMapperException(
             sprintf('Unsupported type %s', $contains->getType())
         );
     }
