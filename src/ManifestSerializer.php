@@ -82,15 +82,15 @@ class ManifestSerializer {
 
         foreach($copyrightInformation->getAuthors() as $author) {
             $this->xmlWriter->startElement('author');
-            $this->xmlWriter->writeAttribute('name', $author->getName() );
+            $this->xmlWriter->writeAttribute('name', $author->getName());
             $this->xmlWriter->writeAttribute('email', (string)$author->getEmail());
             $this->xmlWriter->endElement();
         }
 
         $license = $copyrightInformation->getLicense();
         $this->xmlWriter->startElement('license');
-        $this->xmlWriter->writeAttribute('type', $license->getName() );
-        $this->xmlWriter->writeAttribute('url', $license->getUrl() );
+        $this->xmlWriter->writeAttribute('type', $license->getName());
+        $this->xmlWriter->writeAttribute('url', $license->getUrl());
         $this->xmlWriter->endElement();
 
         $this->xmlWriter->endElement();
@@ -98,7 +98,7 @@ class ManifestSerializer {
 
     private function addRequirements(RequirementCollection $requirementCollection) {
         $phpRequirement = new VersionConstraint('*');
-        $extensions=[];
+        $extensions     = [];
         foreach($requirementCollection as $requirement) {
             if ($requirement instanceof PhpVersionRequirement) {
                 $phpRequirement = $requirement->getVersionConstraint();

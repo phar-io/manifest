@@ -118,8 +118,7 @@ final class Manifest {
      *
      * @return bool
      */
-    public function isExtensionFor($application)
-    {
+    public function isExtensionFor($application) {
         if (!$this->isExtension()) {
             return false;
         }

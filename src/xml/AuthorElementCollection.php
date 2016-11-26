@@ -2,7 +2,7 @@
 
 namespace PharIo\Manifest;
 
-class AuthorElementCollection  extends ElementCollection {
+class AuthorElementCollection extends ElementCollection {
 
     public function current() {
         return new AuthorElement(

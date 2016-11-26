@@ -17,10 +17,10 @@ class ManifestDocumentMapper {
      * @returns Manifest
      */
     public function map(ManifestDocument $document) {
-        $contains          = $document->getContainsElement();
-        $type              = $this->mapType($contains);
-        $copyright         = $this->mapCopyright($document->getCopyrightElement());
-        $requirements      = $this->mapRequirements($document->getRequiresElement());
+        $contains     = $document->getContainsElement();
+        $type         = $this->mapType($contains);
+        $copyright    = $this->mapCopyright($document->getCopyrightElement());
+        $requirements = $this->mapRequirements($document->getRequiresElement());
 
         if ($document->hasBundlesElement()) {
             $bundledComponents = $this->mapBundledComponents($document->getBundlesElement());
@@ -113,7 +113,7 @@ class ManifestDocumentMapper {
             return $collection;
         }
 
-        foreach ($phpElement->getExtElements() as $extElement) {
+        foreach($phpElement->getExtElements() as $extElement) {
             $collection->add(
                 new PhpExtensionRequirement($extElement->getName())
             );
@@ -129,7 +129,7 @@ class ManifestDocumentMapper {
      */
     private function mapBundledComponents(BundlesElement $bundles) {
         $collection = new BundledComponentCollection();
-        foreach ($bundles->getComponentElements() as $componentElement) {
+        foreach($bundles->getComponentElements() as $componentElement) {
             $collection->add(
                 new BundledComponent(
                     $componentElement->getName(),
