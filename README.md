@@ -16,8 +16,11 @@ If you only need this library during development, for instance to run your proje
 
 ```php
 use PharIo\Manifest\ManifestLoader;
+use PharIo\Manifest\ManifestSerializer;
 
 $manifest = ManifestLoader::fromFile('manifest.xml');
 
 var_dump($manifest);
+
+echo (new ManifestSerializer)->serializeToString($manifest);
 ```
