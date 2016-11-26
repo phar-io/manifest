@@ -73,6 +73,15 @@ class ManifestDocumentMapper {
     private function mapCopyright(CopyrightElement $copyright) {
         $authors = new AuthorCollection();
 
+        foreach($copyright->getAuthorElements() as $authorElement) {
+            $authors->add(
+                new Author(
+                    $authorElement->getName(),
+                    new Email($authorElement->getEmail())
+                )
+            );
+        }
+
         $licenseElement = $copyright->getLicenseElement();
         $license        = new License(
             $licenseElement->getType(),

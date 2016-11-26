@@ -93,6 +93,6 @@ class ManifestElement {
      * @return bool
      */
     protected function hasChild($elementName) {
-        return $this->element->getElementsByTagNameNS(self::XMLNS, $elementName)->length === 1;
+        return $this->element->getElementsByTagNameNS(self::XMLNS, $elementName)->length !== 0;
     }
 }
