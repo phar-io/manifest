@@ -10,9 +10,7 @@
 
 namespace PharIo\Manifest;
 
-
 class ComponentElement extends ManifestElement {
-
     public function getName() {
         return $this->getAttributeValue('name');
     }

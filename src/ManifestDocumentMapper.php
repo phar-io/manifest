@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 class ManifestDocumentMapper {
-
     /**
      * @param ManifestDocument $document
      *
@@ -50,6 +49,7 @@ class ManifestDocumentMapper {
             case 'extension':
                 /** @var ExtensionElement $extension */
                 $extension = current($contains->getExtensionElements());
+
                 return Type::extension(
                     $extension->getFor(),
                     new VersionConstraint($extension->getCompatible())
@@ -121,6 +121,7 @@ class ManifestDocumentMapper {
                 )
             );
         }
+
         return $collection;
     }
 }

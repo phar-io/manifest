@@ -10,12 +10,10 @@
 
 namespace PharIo\Manifest;
 
-
 use DOMElement;
 use DOMNodeList;
 
 class ManifestElement {
-
     const XMLNS = 'https://phar.io/xml/manifest/1.0';
 
     /**
@@ -36,6 +34,7 @@ class ManifestElement {
      * @param string $name
      *
      * @return string
+     *
      * @throws ManifestElementException
      */
     protected function getAttributeValue($name) {
@@ -48,6 +47,7 @@ class ManifestElement {
                 )
             );
         }
+
         return $this->element->getAttribute($name);
     }
 
@@ -55,15 +55,17 @@ class ManifestElement {
      * @param $elementName
      *
      * @return DOMElement
+     *
      * @throws ManifestElementException
      */
     protected function getChildByName($elementName) {
         $element = $this->element->getElementsByTagNameNS(self::XMLNS, $elementName)->item(0);
         if (!$element instanceof DOMElement) {
             throw new ManifestElementException(
-                sprintf("Element %s missing", $elementName)
+                sprintf('Element %s missing', $elementName)
             );
         }
+
         return $element;
     }
 
@@ -71,15 +73,17 @@ class ManifestElement {
      * @param $elementName
      *
      * @return DOMNodeList
+     *
      * @throws ManifestElementException
      */
     protected function getChildrenByName($elementName) {
         $elementList = $this->element->getElementsByTagNameNS(self::XMLNS, $elementName);
         if ($elementList->length === 0) {
             throw new ManifestElementException(
-                sprintf("Element(s) %s missing", $elementName)
+                sprintf('Element(s) %s missing', $elementName)
             );
         }
+
         return $elementList;
     }
 

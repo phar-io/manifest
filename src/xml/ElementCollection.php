@@ -10,12 +10,10 @@
 
 namespace PharIo\Manifest;
 
-
 use DOMElement;
 use DOMNodeList;
 
 abstract class ElementCollection implements \Iterator {
-
     /**
      * @var DOMNodeList
      */

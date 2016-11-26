@@ -10,9 +10,7 @@
 
 namespace PharIo\Manifest;
 
-
 class ExtensionElementCollection extends ElementCollection {
-
     public function current() {
         return new ExtensionElement(
             $this->getCurrentElement()
@@ -20,5 +18,3 @@ class ExtensionElementCollection extends ElementCollection {
     }
 
 }
-
-

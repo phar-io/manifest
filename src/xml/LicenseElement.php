@@ -10,9 +10,7 @@
 
 namespace PharIo\Manifest;
 
-
 class LicenseElement extends ManifestElement {
-
     public function getType() {
         return $this->getAttributeValue('type');
     }

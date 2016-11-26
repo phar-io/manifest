@@ -10,9 +10,7 @@
 
 namespace PharIo\Manifest;
 
-
 class ExtensionElement extends ManifestElement {
-
     public function getFor() {
         return $this->getAttributeValue('for');
     }

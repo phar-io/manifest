@@ -10,9 +10,7 @@
 
 namespace PharIo\Manifest;
 
-
 class PhpElement extends ManifestElement {
-
     public function getVersion() {
         return $this->getAttributeValue('version');
     }

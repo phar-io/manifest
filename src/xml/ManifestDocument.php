@@ -10,12 +10,10 @@
 
 namespace PharIo\Manifest;
 
-
 use DOMDocument;
 use DOMElement;
 
 class ManifestDocument {
-
     const XMLNS = 'https://phar.io/xml/manifest/1.0';
 
     /**
@@ -95,15 +93,17 @@ class ManifestDocument {
      * @param $elementName
      *
      * @return DOMElement
+     *
      * @throws ManifestDocucmentException
      */
     private function fetchElementByName($elementName) {
         $element = $this->dom->getElementsByTagNameNS(self::XMLNS, $elementName)->item(0);
         if (!$element instanceof DOMElement) {
             throw new ManifestDocucmentException(
-                sprintf("Element %s missing", $elementName)
+                sprintf('Element %s missing', $elementName)
             );
         }
+
         return $element;
     }
 

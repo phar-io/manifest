@@ -10,9 +10,7 @@
 
 namespace PharIo\Manifest;
 
-
 class CopyrightElement extends ManifestElement {
-
     public function getAuthorElement() {
         return new AuthorElement(
             $this->getChildByName('author')

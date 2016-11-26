@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 class ManifestLoader {
-
     /**
      * @param string $filename
      *
@@ -29,7 +28,7 @@ class ManifestLoader {
      * @return Manifest
      */
     public static function fromPhar($filename) {
-        return self::fromFile('phar:///'.$filename.'/manifest.xml');
+        return self::fromFile('phar:///' . $filename . '/manifest.xml');
     }
 
     /**
