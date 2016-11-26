@@ -48,7 +48,7 @@ class ManifestDocumentMapper {
                 return Type::library();
             case 'extension':
                 /** @var ExtensionElement $extension */
-                $extension = current($contains->getExtensionElements());
+                $extension = $contains->getExtensionElement();
 
                 return Type::extension(
                     $extension->getFor(),

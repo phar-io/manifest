@@ -23,9 +23,9 @@ class ContainsElement extends ManifestElement {
         return $this->getAttributeValue('type');
     }
 
-    public function getExtensionElements() {
-        return new ExtensionElementCollection(
-            $this->getChildrenByName('extension')
+    public function getExtensionElement() {
+        return new ExtensionElement(
+            $this->getChildByName('extension')
         );
     }
 
