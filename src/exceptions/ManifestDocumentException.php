@@ -2,5 +2,5 @@
 
 namespace PharIo\Manifest;
 
-class ManifestDocumentException extends \Exception implements Exception {
+class ManifestDocumentException extends \RuntimeException implements Exception {
 }
