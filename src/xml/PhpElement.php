@@ -15,6 +15,10 @@ class PhpElement extends ManifestElement {
         return $this->getAttributeValue('version');
     }
 
+    public function hasExtElements() {
+        return $this->hasChild('ext');
+    }
+
     public function getExtElements() {
         return new ExtElementCollection(
             $this->getChildrenByName('ext')

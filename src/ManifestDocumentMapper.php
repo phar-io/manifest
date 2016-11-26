@@ -21,7 +21,12 @@ class ManifestDocumentMapper {
         $type              = $this->mapType($contains);
         $copyright         = $this->mapCopyright($document->getCopyrightElement());
         $requirements      = $this->mapRequirements($document->getRequiresElement());
-        $bundledComponents = $this->mapBundledComponents($document->getBundlesElement());
+
+        if ($document->hasBundlesElement()) {
+            $bundledComponents = $this->mapBundledComponents($document->getBundlesElement());
+        } else {
+            $bundledComponents = new BundledComponentCollection();
+        }
 
         return new Manifest(
             $contains->getName(),
@@ -94,6 +99,10 @@ class ManifestDocumentMapper {
                 new VersionConstraint($phpElement->getVersion())
             )
         );
+
+        if (!$phpElement->hasExtElements()) {
+            return $collection;
+        }
 
         foreach ($phpElement->getExtElements() as $extElement) {
             $collection->add(
