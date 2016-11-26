@@ -12,13 +12,12 @@ If you only need this library during development, for instance to run your proje
 
     composer require --dev phar-io/manifest
 
-
 ## Usage
 
 ```php
-require __DIR__ . '/src/autoload.php';
+use PharIo\Manifest\ManifestLoader;
 
-$manifest = \PharIo\Manifest\ManifestLoader::fromFile(__DIR__ . '/tests/_fixture/phpunit-5.6.5.xml');
+$manifest = ManifestLoader::fromFile('manifest.xml');
 
 var_dump($manifest);
 ```
