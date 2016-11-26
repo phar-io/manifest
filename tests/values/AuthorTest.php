@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers PharIo\Manifest\Author
  *
- * @uses   PharIo\Manifest\Email
+ * @uses PharIo\Manifest\Email
  */
 class AuthorTest extends TestCase {
     /**

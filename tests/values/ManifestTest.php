@@ -15,20 +15,20 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers PharIo\Manifest\Manifest
  *
- * @uses   PharIo\Manifest\Author
- * @uses   PharIo\Manifest\AuthorCollection
- * @uses   PharIo\Manifest\BundledComponent
- * @uses   PharIo\Manifest\BundledComponentCollection
- * @uses   PharIo\Manifest\CopyrightInformation
- * @uses   PharIo\Manifest\Email
- * @uses   PharIo\Manifest\License
- * @uses   PharIo\Manifest\RequirementCollection
- * @uses   PharIo\Manifest\PhpVersionRequirement
- * @uses   PharIo\Manifest\Type
- * @uses   PharIo\Manifest\Application
- * @uses   PharIo\Manifest\Url
- * @uses   PharIo\Manifest\Version
- * @uses   PharIo\Manifest\VersionConstraint
+ * @uses PharIo\Manifest\Author
+ * @uses PharIo\Manifest\AuthorCollection
+ * @uses PharIo\Manifest\BundledComponent
+ * @uses PharIo\Manifest\BundledComponentCollection
+ * @uses PharIo\Manifest\CopyrightInformation
+ * @uses PharIo\Manifest\Email
+ * @uses PharIo\Manifest\License
+ * @uses PharIo\Manifest\RequirementCollection
+ * @uses PharIo\Manifest\PhpVersionRequirement
+ * @uses PharIo\Manifest\Type
+ * @uses PharIo\Manifest\Application
+ * @uses PharIo\Manifest\Url
+ * @uses PharIo\Manifest\Version
+ * @uses PharIo\Manifest\VersionConstraint
  */
 class ManifestTest extends TestCase {
     /**

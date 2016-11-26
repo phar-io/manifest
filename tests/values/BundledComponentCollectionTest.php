@@ -16,8 +16,8 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\BundledComponentCollection
  * @covers PharIo\Manifest\BundledComponentCollectionIterator
  *
- * @uses   PharIo\Manifest\BundledComponent
- * @uses   PharIo\Manifest\Version
+ * @uses PharIo\Manifest\BundledComponent
+ * @uses PharIo\Manifest\Version
  */
 class BundledComponentCollectionTest extends TestCase {
     /**
