@@ -112,4 +112,18 @@ final class Manifest {
     public function isExtension() {
         return $this->type->isExtension();
     }
+
+    /**
+     * @param string $application
+     *
+     * @return bool
+     */
+    public function isExtensionFor($application)
+    {
+        if (!$this->isExtension()) {
+            return false;
+        }
+
+        return $this->type->isExtensionFor($application);
+    }
 }

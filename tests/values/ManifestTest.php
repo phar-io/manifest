@@ -128,4 +128,18 @@ class ManifestTest extends TestCase {
     public function testBundledComponentsCanBeRetrieved() {
         $this->assertEquals($this->bundledComponents, $this->manifest->getBundledComponents());
     }
+
+    public function testExtendedApplicationCanBeQueriedForExtension()
+    {
+        $manifest = new Manifest(
+            'foo',
+            new Version('1.0.0'),
+            Type::extension('bar', new VersionConstraint('1.0.0')),
+            $this->copyrightInformation,
+            new RequirementCollection,
+            new BundledComponentCollection
+        );
+
+        $this->assertTrue($manifest->isExtensionFor('bar'));
+    }
 }
