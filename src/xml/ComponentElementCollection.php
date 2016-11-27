@@ -16,5 +16,4 @@ class ComponentElementCollection extends ElementCollection {
             $this->getCurrentElement()
         );
     }
-
 }

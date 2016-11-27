@@ -18,5 +18,4 @@ class ExtensionElement extends ManifestElement {
     public function getCompatible() {
         return $this->getAttributeValue('compatible');
     }
-
 }

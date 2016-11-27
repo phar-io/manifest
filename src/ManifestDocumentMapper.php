@@ -60,6 +60,7 @@ class ManifestDocumentMapper {
                     new VersionConstraint($extension->getCompatible())
                 );
         }
+
         throw new ManifestDocumentMapperException(
             sprintf('Unsupported type %s', $contains->getType())
         );
@@ -129,6 +130,7 @@ class ManifestDocumentMapper {
      */
     private function mapBundledComponents(BundlesElement $bundles) {
         $collection = new BundledComponentCollection();
+
         foreach($bundles->getComponentElements() as $componentElement) {
             $collection->add(
                 new BundledComponent(

@@ -55,5 +55,4 @@ abstract class ElementCollection implements \Iterator {
     public function rewind() {
         $this->position = 0;
     }
-
 }

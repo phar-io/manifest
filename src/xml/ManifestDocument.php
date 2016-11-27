@@ -28,6 +28,7 @@ class ManifestDocument {
      */
     private function __construct(DOMDocument $dom) {
         $this->ensureCorrectDocumentType($dom);
+
         $this->dom = $dom;
     }
 
@@ -84,6 +85,7 @@ class ManifestDocument {
 
     private function ensureCorrectDocumentType(DOMDocument $dom) {
         $root = $dom->documentElement;
+
         if ($root->localName !== 'phar' || $root->namespaceURI !== self::XMLNS) {
             throw new ManifestDocumentException('Not a phar.io manifest document');
         }
@@ -94,17 +96,17 @@ class ManifestDocument {
      *
      * @return DOMElement
      *
-     * @throws ManifestDocucmentException
+     * @throws ManifestDocumentException
      */
     private function fetchElementByName($elementName) {
         $element = $this->dom->getElementsByTagNameNS(self::XMLNS, $elementName)->item(0);
+
         if (!$element instanceof DOMElement) {
-            throw new ManifestDocucmentException(
+            throw new ManifestDocumentException(
                 sprintf('Element %s missing', $elementName)
             );
         }
 
         return $element;
     }
-
 }

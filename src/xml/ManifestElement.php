@@ -60,6 +60,7 @@ class ManifestElement {
      */
     protected function getChildByName($elementName) {
         $element = $this->element->getElementsByTagNameNS(self::XMLNS, $elementName)->item(0);
+
         if (!$element instanceof DOMElement) {
             throw new ManifestElementException(
                 sprintf('Element %s missing', $elementName)
@@ -78,6 +79,7 @@ class ManifestElement {
      */
     protected function getChildrenByName($elementName) {
         $elementList = $this->element->getElementsByTagNameNS(self::XMLNS, $elementName);
+
         if ($elementList->length === 0) {
             throw new ManifestElementException(
                 sprintf('Element(s) %s missing', $elementName)

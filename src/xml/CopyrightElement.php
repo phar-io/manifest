@@ -22,5 +22,4 @@ class CopyrightElement extends ManifestElement {
             $this->getChildByName('license')
         );
     }
-
 }

@@ -28,5 +28,4 @@ class ContainsElement extends ManifestElement {
             $this->getChildByName('extension')
         );
     }
-
 }
