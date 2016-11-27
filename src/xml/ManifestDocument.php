@@ -33,7 +33,11 @@ class ManifestDocument {
     }
 
     public static function fromFile($filename) {
-        // TODO: check file exists, readable
+        if (!file_exists($filename)) {
+            throw new ManifestDocumentException(
+                sprintf('File "%s" not found', $filename)
+            );
+        }
         return self::fromString(
             file_get_contents($filename)
         );
