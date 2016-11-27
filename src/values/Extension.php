@@ -17,7 +17,7 @@ final class Extension extends Type {
     private $application;
 
     /**
-     * @var string
+     * @var VersionConstraint
      */
     private $versionConstraint;
 
