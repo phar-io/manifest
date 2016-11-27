@@ -25,7 +25,7 @@ final class Extension extends Type {
      * @param string            $application
      * @param VersionConstraint $versionConstraint
      */
-    protected function __construct($application, VersionConstraint $versionConstraint) {
+    public function __construct($application, VersionConstraint $versionConstraint) {
         $this->application       = $application;
         $this->versionConstraint = $versionConstraint;
     }
@@ -57,6 +57,6 @@ final class Extension extends Type {
      * @return bool
      */
     public function isExtensionFor($application) {
-        return $this->application == $application;
+        return $this->application === $application;
     }
 }

@@ -11,9 +11,6 @@
 namespace PharIo\Manifest;
 
 abstract class Type {
-    protected function __construct() {
-    }
-
     /**
      * @return Application
      */
