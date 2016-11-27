@@ -36,6 +36,8 @@ final class Email {
 
     /**
      * @param string $url
+     *
+     * @throws InvalidEmailException
      */
     private function ensureEmailIsValid($url) {
         if (filter_var($url, \FILTER_VALIDATE_EMAIL) === false) {

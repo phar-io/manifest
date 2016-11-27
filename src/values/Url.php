@@ -36,6 +36,8 @@ final class Url {
 
     /**
      * @param string $url
+     *
+     * @throws InvalidUrlException
      */
     private function ensureUrlIsValid($url) {
         if (filter_var($url, \FILTER_VALIDATE_URL) === false) {
