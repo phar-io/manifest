@@ -15,6 +15,7 @@ class ManifestLoader {
      * @param string $filename
      *
      * @return Manifest
+     *
      * @throws ManifestLoaderException
      */
     public static function fromFile($filename) {
@@ -35,6 +36,7 @@ class ManifestLoader {
      * @param string $filename
      *
      * @return Manifest
+     *
      * @throws ManifestLoaderException
      */
     public static function fromPhar($filename) {
@@ -45,6 +47,7 @@ class ManifestLoader {
      * @param string $manifest
      *
      * @return Manifest
+     *
      * @throws ManifestLoaderException
      */
     public static function fromString($manifest) {

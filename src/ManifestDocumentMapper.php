@@ -15,6 +15,7 @@ class ManifestDocumentMapper {
      * @param ManifestDocument $document
      *
      * @returns Manifest
+     *
      * @throws InvalidUrlException
      * @throws InvalidVersionConstraintException
      * @throws InvalidEmailException
@@ -47,6 +48,7 @@ class ManifestDocumentMapper {
      * @param ContainsElement $contains
      *
      * @return Type
+     *
      * @throws InvalidVersionConstraintException
      * @throws ManifestDocumentMapperException
      */
@@ -75,6 +77,7 @@ class ManifestDocumentMapper {
      * @param CopyrightElement $copyright
      *
      * @return CopyrightInformation
+     *
      * @throws InvalidUrlException
      * @throws InvalidEmailException
      */
@@ -106,6 +109,7 @@ class ManifestDocumentMapper {
      * @param RequiresElement $requires
      *
      * @return RequirementCollection
+     *
      * @throws InvalidVersionConstraintException
      */
     private function mapRequirements(RequiresElement $requires) {
@@ -135,6 +139,7 @@ class ManifestDocumentMapper {
      * @param BundlesElement $bundles
      *
      * @return BundledComponentCollection
+     *
      * @throws InvalidVersionException
      */
     private function mapBundledComponents(BundlesElement $bundles) {
