@@ -15,17 +15,27 @@ class ManifestLoader {
      * @param string $filename
      *
      * @return Manifest
+     * @throws ManifestLoaderException
      */
     public static function fromFile($filename) {
-        return (new ManifestDocumentMapper())->map(
-            ManifestDocument::fromFile($filename)
-        );
+        try {
+            return (new ManifestDocumentMapper())->map(
+                ManifestDocument::fromFile($filename)
+            );
+        } catch (Exception $e) {
+            throw new ManifestLoaderException(
+                sprintf('Loading %s failed.', $filename),
+                $e->getCode(),
+                $e
+            );
+        }
     }
 
     /**
      * @param string $filename
      *
      * @return Manifest
+     * @throws ManifestLoaderException
      */
     public static function fromPhar($filename) {
         return self::fromFile('phar:///' . $filename . '/manifest.xml');
@@ -35,10 +45,19 @@ class ManifestLoader {
      * @param string $manifest
      *
      * @return Manifest
+     * @throws ManifestLoaderException
      */
     public static function fromString($manifest) {
-        return (new ManifestDocumentMapper())->map(
-            ManifestDocument::fromString($manifest)
-        );
+        try {
+            return (new ManifestDocumentMapper())->map(
+                ManifestDocument::fromString($manifest)
+            );
+        } catch (Exception $e) {
+            throw new ManifestLoaderException(
+                'Processing string failed',
+                $e->getCode(),
+                $e
+            );
+        }
     }
 }
