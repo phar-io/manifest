@@ -141,7 +141,7 @@ class ManifestSerializer {
         foreach($bundledComponentCollection as $bundledComponent) {
             $this->xmlWriter->startElement('component');
             $this->xmlWriter->writeAttribute('name', $bundledComponent->getName());
-            $this->xmlWriter->writeAttribute('name', (string) $bundledComponent->getVersion());
+            $this->xmlWriter->writeAttribute('version', (string) $bundledComponent->getVersion());
             $this->xmlWriter->endElement();
         }
 
