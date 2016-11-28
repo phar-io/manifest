@@ -39,6 +39,12 @@ class RequirementCollectionTest extends TestCase {
         $this->assertInstanceOf(RequirementCollection::class, $this->collection);
     }
 
+    public function testCanBeCounted() {
+        $this->collection->add($this->item);
+
+        $this->assertCount(1, $this->collection);
+    }
+
     public function testCanBeIterated() {
         $this->collection->add($this->item);
 
