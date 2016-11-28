@@ -16,32 +16,32 @@ class ManifestDocumentMapper {
      *
      * @returns Manifest
      *
-     * @throws InvalidUrlException
-     * @throws InvalidVersionConstraintException
-     * @throws InvalidEmailException
      * @throws ManifestDocumentMapperException
-     * @throws InvalidVersionException
      */
     public function map(ManifestDocument $document) {
-        $contains     = $document->getContainsElement();
-        $type         = $this->mapType($contains);
-        $copyright    = $this->mapCopyright($document->getCopyrightElement());
-        $requirements = $this->mapRequirements($document->getRequiresElement());
+        try {
+            $contains     = $document->getContainsElement();
+            $type         = $this->mapType($contains);
+            $copyright    = $this->mapCopyright($document->getCopyrightElement());
+            $requirements = $this->mapRequirements($document->getRequiresElement());
 
-        if ($document->hasBundlesElement()) {
-            $bundledComponents = $this->mapBundledComponents($document->getBundlesElement());
-        } else {
-            $bundledComponents = new BundledComponentCollection();
+            if ($document->hasBundlesElement()) {
+                $bundledComponents = $this->mapBundledComponents($document->getBundlesElement());
+            } else {
+                $bundledComponents = new BundledComponentCollection();
+            }
+
+            return new Manifest(
+                $contains->getName(),
+                new Version($contains->getVersion()),
+                $type,
+                $copyright,
+                $requirements,
+                $bundledComponents
+            );
+        } catch(Exception $e) {
+            throw new ManifestDocumentMapperException($e->getMessage(), $e->getCode(), $e);
         }
-
-        return new Manifest(
-            $contains->getName(),
-            new Version($contains->getVersion()),
-            $type,
-            $copyright,
-            $requirements,
-            $bundledComponents
-        );
     }
 
     /**
