@@ -129,6 +129,9 @@ class ManifestTest extends TestCase {
         $this->assertEquals($this->bundledComponents, $this->manifest->getBundledComponents());
     }
 
+    /**
+     * @uses PharIo\Manifest\Extension
+     */
     public function testExtendedApplicationCanBeQueriedForExtension()
     {
         $manifest = new Manifest(

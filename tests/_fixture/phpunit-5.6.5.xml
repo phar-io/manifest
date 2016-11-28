@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phar xmlns="https://phar.io/xml/manifest/1.0">
     <contains name="phpunit/phpunit" version="5.6.5" type="application"/>
-
     <copyright>
         <author name="Sebastian Bergmann" email="sebastian@phpunit.de"/>
         <license type="BSD-3-Clause" url="https://github.com/sebastianbergmann/phpunit/blob/master/LICENSE"/>
     </copyright>
-
     <requires>
         <php version="^5.6 || ^7.0">
             <ext name="dom"/>
@@ -16,7 +14,6 @@
             <ext name="libxml"/>
         </php>
     </requires>
-
     <bundles>
         <component name="doctrine/instantiator" version="1.0.5"/>
         <component name="myclabs/deep-copy" version="1.5.5"/>
