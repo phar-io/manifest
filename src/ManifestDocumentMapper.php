@@ -20,10 +20,10 @@ class ManifestDocumentMapper {
      */
     public function map(ManifestDocument $document) {
         try {
-            $contains     = $document->getContainsElement();
-            $type         = $this->mapType($contains);
-            $copyright    = $this->mapCopyright($document->getCopyrightElement());
-            $requirements = $this->mapRequirements($document->getRequiresElement());
+            $contains          = $document->getContainsElement();
+            $type              = $this->mapType($contains);
+            $copyright         = $this->mapCopyright($document->getCopyrightElement());
+            $requirements      = $this->mapRequirements($document->getRequiresElement());
             $bundledComponents = $this->mapBundledComponents($document);
 
             return new Manifest(
@@ -131,7 +131,7 @@ class ManifestDocumentMapper {
     }
 
     /**
-     * @param BundlesElement $bundles
+     * @param ManifestDocument $document
      *
      * @return BundledComponentCollection
      *
