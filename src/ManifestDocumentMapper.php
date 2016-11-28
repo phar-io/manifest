@@ -24,12 +24,7 @@ class ManifestDocumentMapper {
             $type         = $this->mapType($contains);
             $copyright    = $this->mapCopyright($document->getCopyrightElement());
             $requirements = $this->mapRequirements($document->getRequiresElement());
-
-            if ($document->hasBundlesElement()) {
-                $bundledComponents = $this->mapBundledComponents($document->getBundlesElement());
-            } else {
-                $bundledComponents = new BundledComponentCollection();
-            }
+            $bundledComponents = $this->mapBundledComponents($document);
 
             return new Manifest(
                 $contains->getName(),
@@ -142,10 +137,14 @@ class ManifestDocumentMapper {
      *
      * @throws InvalidVersionException
      */
-    private function mapBundledComponents(BundlesElement $bundles) {
+    private function mapBundledComponents(ManifestDocument $document) {
         $collection = new BundledComponentCollection();
 
-        foreach($bundles->getComponentElements() as $componentElement) {
+        if (!$document->hasBundlesElement()) {
+            return $collection;
+        }
+
+        foreach($document->getBundlesElement()->getComponentElements() as $componentElement) {
             $collection->add(
                 new BundledComponent(
                     $componentElement->getName(),
