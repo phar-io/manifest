@@ -40,7 +40,7 @@ class ManifestLoader {
      * @throws ManifestLoaderException
      */
     public static function fromPhar($filename) {
-        return self::fromFile('phar:///' . $filename . '/manifest.xml');
+        return self::fromFile('phar://' . $filename . '/manifest.xml');
     }
 
     /**

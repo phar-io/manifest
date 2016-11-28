@@ -38,6 +38,7 @@ class ManifestDocument {
                 sprintf('File "%s" not found', $filename)
             );
         }
+
         return self::fromString(
             file_get_contents($filename)
         );
@@ -50,10 +51,11 @@ class ManifestDocument {
         $dom = new DOMDocument();
         $dom->loadXML($xmlString);
 
+        $errors = libxml_get_errors();
         libxml_use_internal_errors($prev);
 
-        if (libxml_get_last_error() !== false) {
-            throw new ManifestDocumentLoadingException(libxml_get_errors());
+        if (count($errors) !== 0) {
+            throw new ManifestDocumentLoadingException($errors);
         }
 
         return new self($dom);

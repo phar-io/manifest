@@ -136,6 +136,9 @@ class ManifestSerializer {
     }
 
     private function addBundles(BundledComponentCollection $bundledComponentCollection) {
+        if (count($bundledComponentCollection) === 0) {
+            return;
+        }
         $this->xmlWriter->startElement('bundles');
 
         foreach($bundledComponentCollection as $bundledComponent) {
