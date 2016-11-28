@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class AuthorCollection implements \IteratorAggregate {
+final class AuthorCollection implements \Countable, \IteratorAggregate {
     /**
      * @var Author[]
      */
@@ -25,6 +25,13 @@ final class AuthorCollection implements \IteratorAggregate {
      */
     public function getAuthors() {
         return $this->authors;
+    }
+
+    /**
+     * @return int
+     */
+    public function count() {
+        return count($this->authors);
     }
 
     /**

@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class BundledComponentCollection implements \IteratorAggregate, \Countable {
+final class BundledComponentCollection implements \Countable, \IteratorAggregate {
     /**
      * @var BundledComponent[]
      */
@@ -28,14 +28,16 @@ final class BundledComponentCollection implements \IteratorAggregate, \Countable
     }
 
     /**
+     * @return int
+     */
+    public function count() {
+        return count($this->bundledComponents);
+    }
+
+    /**
      * @return BundledComponentCollectionIterator
      */
     public function getIterator() {
         return new BundledComponentCollectionIterator($this);
     }
-
-    public function count() {
-        return count($this->bundledComponents);
-    }
-
 }

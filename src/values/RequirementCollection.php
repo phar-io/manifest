@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class RequirementCollection implements \IteratorAggregate {
+final class RequirementCollection implements \Countable, \IteratorAggregate {
     /**
      * @var Requirement[]
      */
@@ -25,6 +25,13 @@ final class RequirementCollection implements \IteratorAggregate {
      */
     public function getRequirements() {
         return $this->requirements;
+    }
+
+    /**
+     * @return int
+     */
+    public function count() {
+        return count($this->requirements);
     }
 
     /**
