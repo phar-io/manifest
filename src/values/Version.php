@@ -164,9 +164,9 @@ final class Version {
      * @param string[] $matches
      */
     private function initValues(array $matches) {
-        $this->major = $matches['Major'];
-        $this->minor = $matches['Minor'];
-        $this->patch = isset($matches['Patch']) ? $matches['Patch'] : 0;
+        $this->major = (int) $matches['Major'];
+        $this->minor = (int) $matches['Minor'];
+        $this->patch = isset($matches['Patch']) ? (int) $matches['Patch'] : 0;
 
         if (!isset($matches['ReleaseType'])) {
             return;
@@ -189,6 +189,6 @@ final class Version {
             return;
         }
 
-        $this->releaseTypeCount = $matches['ReleaseTypeCount'];
+        $this->releaseTypeCount = (int) $matches['ReleaseTypeCount'];
     }
 }
