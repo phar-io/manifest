@@ -1,4 +1,0 @@
-build:
-    environment:
-        php:
-            version: 5.6
