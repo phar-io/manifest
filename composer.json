@@ -25,7 +25,8 @@
   "require": {
     "php": "^5.6 || ^7.0",
     "ext-dom": "*",
-    "ext-phar": "*"
+    "ext-phar": "*",
+    "phar-io/version": "dev-master"
   },
   "autoload": {
     "classmap": [
