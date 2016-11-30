@@ -10,6 +10,8 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\AnyVersionConstraint;
+
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -25,7 +27,7 @@ class ExtensionTest extends TestCase {
     private $type;
 
     protected function setUp() {
-        $this->type = Type::extension('phpunit/phpunit', new VersionConstraint('^5.7'));
+        $this->type = Type::extension('phpunit/phpunit', new AnyVersionConstraint);
     }
 
     public function testCanBeCreated() {

@@ -10,6 +10,8 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\ExactVersionConstraint;
+
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -24,7 +26,7 @@ class PhpVersionRequirementTest extends TestCase {
     private $requirement;
 
     protected function setUp() {
-        $this->requirement = new PhpVersionRequirement(new VersionConstraint('7.1.0'));
+        $this->requirement = new PhpVersionRequirement(new ExactVersionConstraint('7.1.0'));
     }
 
     public function testCanBeCreated() {
@@ -32,6 +34,6 @@ class PhpVersionRequirementTest extends TestCase {
     }
 
     public function testVersionConstraintCanBeRetrieved() {
-        $this->assertEquals('7.1.0', $this->requirement->getVersionConstraint());
+        $this->assertEquals('7.1.0', $this->requirement->getVersionConstraint()->asString());
     }
 }

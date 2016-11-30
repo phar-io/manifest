@@ -10,6 +10,8 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\ExactVersionConstraint;
+
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -32,7 +34,7 @@ class RequirementCollectionTest extends TestCase {
 
     protected function setUp() {
         $this->collection = new RequirementCollection;
-        $this->item       = new PhpVersionRequirement(new VersionConstraint('7.1.0'));
+        $this->item       = new PhpVersionRequirement(new ExactVersionConstraint('7.1.0'));
     }
 
     public function testCanBeCreated() {

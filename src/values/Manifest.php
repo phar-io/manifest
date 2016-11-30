@@ -10,6 +10,8 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\Version;
+
 final class Manifest {
     /**
      * @var string

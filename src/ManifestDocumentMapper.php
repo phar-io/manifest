@@ -10,6 +10,11 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\UnsupportedVersionConstraintException;
+use PharIo\Version\Version;
+use PharIo\Version\VersionConstraint;
+use PharIo\Version\VersionConstraintParser;
+
 class ManifestDocumentMapper {
     /**
      * @param ManifestDocument $document
@@ -44,7 +49,7 @@ class ManifestDocumentMapper {
      *
      * @return Type
      *
-     * @throws InvalidVersionConstraintException
+     * @throws UnsupportedVersionConstraintException
      * @throws ManifestDocumentMapperException
      */
     private function mapType(ContainsElement $contains) {
@@ -57,9 +62,11 @@ class ManifestDocumentMapper {
                 /** @var ExtensionElement $extension */
                 $extension = $contains->getExtensionElement();
 
+                $parser = new VersionConstraintParser;
+
                 return Type::extension(
                     $extension->getFor(),
-                    new VersionConstraint($extension->getCompatible())
+                    $parser->parse($extension->getCompatible())
                 );
         }
 
@@ -105,15 +112,16 @@ class ManifestDocumentMapper {
      *
      * @return RequirementCollection
      *
-     * @throws InvalidVersionConstraintException
+     * @throws UnsupportedVersionConstraintException
      */
     private function mapRequirements(RequiresElement $requires) {
         $collection = new RequirementCollection();
         $phpElement = $requires->getPHPElement();
+        $parser = new VersionConstraintParser;
 
         $collection->add(
             new PhpVersionRequirement(
-                new VersionConstraint($phpElement->getVersion())
+                $parser->parse($phpElement->getVersion())
             )
         );
 
@@ -134,8 +142,6 @@ class ManifestDocumentMapper {
      * @param ManifestDocument $document
      *
      * @return BundledComponentCollection
-     *
-     * @throws InvalidVersionException
      */
     private function mapBundledComponents(ManifestDocument $document) {
         $collection = new BundledComponentCollection();

@@ -8,6 +8,6 @@
         <license type="BSD-3-Clause" url="https://github.com/sebastianbergmann/phpunit-example-extension/blob/master/LICENSE"/>
     </copyright>
     <requires>
-        <php version="^5.6 || ^7.0"/>
+        <php version="^7.0"/>
     </requires>
 </phar>

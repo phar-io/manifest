@@ -6,7 +6,8 @@
         <license type="BSD-3-Clause" url="https://github.com/sebastianbergmann/phpunit/blob/master/LICENSE"/>
     </copyright>
     <requires>
-        <php version="^5.6 || ^7.0">
+        <!-- constraint on next line should be ^5.6 || ^7.0 -->
+        <php version="^7.0">
             <ext name="dom"/>
             <ext name="json"/>
             <ext name="mbstring"/>

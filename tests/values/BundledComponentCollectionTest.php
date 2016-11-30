@@ -10,6 +10,8 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\Version;
+
 use PHPUnit\Framework\TestCase;
 
 /**

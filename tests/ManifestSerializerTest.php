@@ -2,6 +2,8 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\Version;
+
 /**
  * @covers \PharIo\Manifest\ManifestSerializer
  *

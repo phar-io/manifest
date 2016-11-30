@@ -10,6 +10,9 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\Version;
+use PharIo\Version\AnyVersionConstraint;
+
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -80,7 +83,7 @@ class ManifestTest extends TestCase {
         $this->copyrightInformation = new CopyrightInformation($authors, $license);
 
         $this->requirements = new RequirementCollection;
-        $this->requirements->add(new PhpVersionRequirement(new VersionConstraint('^5.6 || ^7.0')));
+        $this->requirements->add(new PhpVersionRequirement(new AnyVersionConstraint));
 
         $this->bundledComponents = new BundledComponentCollection;
         $this->bundledComponents->add(new BundledComponent('phpunit/php-code-coverage', new Version('4.0.2')));
@@ -137,7 +140,7 @@ class ManifestTest extends TestCase {
         $manifest = new Manifest(
             'foo',
             new Version('1.0.0'),
-            Type::extension('bar', new VersionConstraint('1.0.0')),
+            Type::extension('bar', new AnyVersionConstraint),
             $this->copyrightInformation,
             new RequirementCollection,
             new BundledComponentCollection

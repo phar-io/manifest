@@ -10,6 +10,8 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\VersionConstraint;
+
 final class Extension extends Type {
     /**
      * @var string

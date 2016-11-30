@@ -10,6 +10,10 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\Version;
+use PharIo\Version\VersionConstraint;
+use PharIo\Version\AnyVersionConstraint;
+
 use XMLWriter;
 
 class ManifestSerializer {
@@ -58,7 +62,7 @@ class ManifestSerializer {
     private function addContains($name, Version $version, Type $type) {
         $this->xmlWriter->startElement('contains');
         $this->xmlWriter->writeAttribute('name', $name);
-        $this->xmlWriter->writeAttribute('version', (string) $version);
+        $this->xmlWriter->writeAttribute('version', $version->getVersionString());
 
         switch (true) {
             case $type->isApplication(): {
@@ -107,7 +111,7 @@ class ManifestSerializer {
     }
 
     private function addRequirements(RequirementCollection $requirementCollection) {
-        $phpRequirement = new VersionConstraint('*');
+        $phpRequirement = new AnyVersionConstraint('*');
         $extensions     = [];
 
         foreach($requirementCollection as $requirement) {
@@ -123,7 +127,7 @@ class ManifestSerializer {
 
         $this->xmlWriter->startElement('requires');
         $this->xmlWriter->startElement('php');
-        $this->xmlWriter->writeAttribute('version', (string) $phpRequirement);
+        $this->xmlWriter->writeAttribute('version', $phpRequirement->asString());
 
         foreach($extensions as $extension) {
             $this->xmlWriter->startElement('ext');
@@ -144,7 +148,7 @@ class ManifestSerializer {
         foreach($bundledComponentCollection as $bundledComponent) {
             $this->xmlWriter->startElement('component');
             $this->xmlWriter->writeAttribute('name', $bundledComponent->getName());
-            $this->xmlWriter->writeAttribute('version', (string) $bundledComponent->getVersion());
+            $this->xmlWriter->writeAttribute('version', $bundledComponent->getVersion()->getVersionString());
             $this->xmlWriter->endElement();
         }
 
@@ -154,7 +158,7 @@ class ManifestSerializer {
     private function addExtension($application, VersionConstraint $versionConstraint) {
         $this->xmlWriter->startElement('extension');
         $this->xmlWriter->writeAttribute('for', $application);
-        $this->xmlWriter->writeAttribute('compatible', (string) $versionConstraint);
+        $this->xmlWriter->writeAttribute('compatible', $versionConstraint->asString());
         $this->xmlWriter->endElement();
     }
 }

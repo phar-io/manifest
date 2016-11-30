@@ -10,6 +10,8 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\VersionConstraint;
+
 abstract class Type {
     /**
      * @return Application
