@@ -40,8 +40,8 @@ use PharIo\Version\Version;
  * @uses \PharIo\Manifest\RequiresElement
  * @uses \PharIo\Manifest\Type
  * @uses \PharIo\Manifest\Url
- * @uses \PharIo\Manifest\Version
- * @uses \PharIo\Manifest\VersionConstraint
+ * @uses \PharIo\Version\Version
+ * @uses \PharIo\Version\VersionConstraint
  */
 class ManifestSerializerTest extends \PHPUnit_Framework_TestCase {
     /**

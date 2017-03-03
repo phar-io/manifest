@@ -38,8 +38,8 @@ namespace PharIo\Manifest;
  * @uses \PharIo\Manifest\RequiresElement
  * @uses \PharIo\Manifest\Type
  * @uses \PharIo\Manifest\Url
- * @uses \PharIo\Manifest\Version
- * @uses \PharIo\Manifest\VersionConstraint
+ * @uses \PharIo\Version\Version
+ * @uses \PharIo\Version\VersionConstraint
  */
 class ManifestLoaderTest extends \PHPUnit_Framework_TestCase {
     public function testCanBeLoadedFromFile() {

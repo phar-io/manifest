@@ -30,8 +30,8 @@ use PHPUnit\Framework\TestCase;
  * @uses PharIo\Manifest\Type
  * @uses PharIo\Manifest\Application
  * @uses PharIo\Manifest\Url
- * @uses PharIo\Manifest\Version
- * @uses PharIo\Manifest\VersionConstraint
+ * @uses \PharIo\Version\Version
+ * @uses \PharIo\Version\VersionConstraint
  */
 class ManifestTest extends TestCase {
     /**

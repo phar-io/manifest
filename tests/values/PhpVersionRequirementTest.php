@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers PharIo\Manifest\PhpVersionRequirement
  *
- * @uses PharIo\Manifest\VersionConstraint
+ * @uses \PharIo\Version\VersionConstraint
  */
 class PhpVersionRequirementTest extends TestCase {
     /**
