@@ -12,7 +12,6 @@ namespace PharIo\Manifest;
 
 use PharIo\Version\UnsupportedVersionConstraintException;
 use PharIo\Version\Version;
-use PharIo\Version\VersionConstraint;
 use PharIo\Version\VersionConstraintParser;
 
 class ManifestDocumentMapper {
@@ -39,7 +38,7 @@ class ManifestDocumentMapper {
                 $requirements,
                 $bundledComponents
             );
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             throw new ManifestDocumentMapperException($e->getMessage(), $e->getCode(), $e);
         }
     }
@@ -117,7 +116,7 @@ class ManifestDocumentMapper {
     private function mapRequirements(RequiresElement $requires) {
         $collection = new RequirementCollection();
         $phpElement = $requires->getPHPElement();
-        $parser = new VersionConstraintParser;
+        $parser     = new VersionConstraintParser;
 
         $collection->add(
             new PhpVersionRequirement(

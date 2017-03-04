@@ -10,10 +10,9 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\AnyVersionConstraint;
 use PharIo\Version\Version;
 use PharIo\Version\VersionConstraint;
-use PharIo\Version\AnyVersionConstraint;
-
 use XMLWriter;
 
 class ManifestSerializer {
@@ -96,7 +95,7 @@ class ManifestSerializer {
         foreach($copyrightInformation->getAuthors() as $author) {
             $this->xmlWriter->startElement('author');
             $this->xmlWriter->writeAttribute('name', $author->getName());
-            $this->xmlWriter->writeAttribute('email', (string) $author->getEmail());
+            $this->xmlWriter->writeAttribute('email', (string)$author->getEmail());
             $this->xmlWriter->endElement();
         }
 
@@ -121,7 +120,7 @@ class ManifestSerializer {
             }
 
             if ($requirement instanceof PhpExtensionRequirement) {
-                $extensions[] = (string) $requirement;
+                $extensions[] = (string)$requirement;
             }
         }
 
