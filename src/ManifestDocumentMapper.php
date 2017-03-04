@@ -48,7 +48,6 @@ class ManifestDocumentMapper {
      *
      * @return Type
      *
-     * @throws UnsupportedVersionConstraintException
      * @throws ManifestDocumentMapperException
      */
     private function mapType(ContainsElement $contains) {
@@ -58,15 +57,7 @@ class ManifestDocumentMapper {
             case 'library':
                 return Type::library();
             case 'extension':
-                /** @var ExtensionElement $extension */
-                $extension = $contains->getExtensionElement();
-
-                $parser = new VersionConstraintParser;
-
-                return Type::extension(
-                    $extension->getFor(),
-                    $parser->parse($extension->getCompatible())
-                );
+                return $this->mapExtension($contains->getExtensionElement());
         }
 
         throw new ManifestDocumentMapperException(
@@ -111,16 +102,26 @@ class ManifestDocumentMapper {
      *
      * @return RequirementCollection
      *
-     * @throws UnsupportedVersionConstraintException
+     * @throws ManifestDocumentMapperException
      */
     private function mapRequirements(RequiresElement $requires) {
         $collection = new RequirementCollection();
         $phpElement = $requires->getPHPElement();
         $parser     = new VersionConstraintParser;
 
+        try {
+            $versionConstraint = $parser->parse($phpElement->getVersion());
+        } catch (UnsupportedVersionConstraintException $e) {
+            throw new ManifestDocumentMapperException(
+                sprintf('Unsupported version constraint - %s', $e->getMessage()),
+                $e->getCode(),
+                $e
+            );
+        }
+
         $collection->add(
             new PhpVersionRequirement(
-                $parser->parse($phpElement->getVersion())
+                $versionConstraint
             )
         );
 
@@ -161,5 +162,29 @@ class ManifestDocumentMapper {
         }
 
         return $collection;
+    }
+
+    /**
+     * @param ExtensionElement $extension
+     *
+     * @return Extension
+     *
+     * @throws ManifestDocumentMapperException
+     */
+    private function mapExtension(ExtensionElement $extension) {
+        try {
+            $parser = new VersionConstraintParser;
+            $versionConstraint = $parser->parse($extension->getCompatible());
+            return Type::extension(
+                $extension->getFor(),
+                $versionConstraint
+            );
+        } catch (UnsupportedVersionConstraintException $e) {
+            throw new ManifestDocumentMapperException(
+                sprintf('Unsupported version constraint - %s', $e->getMessage()),
+                $e->getCode(),
+                $e
+            );
+        }
     }
 }
