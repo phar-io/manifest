@@ -125,6 +125,8 @@ final class Manifest {
             return false;
         }
 
-        return $this->type->isExtensionFor($application);
+        /** @var Extension $type */
+        $type = $this->type;
+        return $type->isExtensionFor($application);
     }
 }
