@@ -111,7 +111,7 @@ class ManifestSerializer {
     }
 
     private function addRequirements(RequirementCollection $requirementCollection) {
-        $phpRequirement = new AnyVersionConstraint('*');
+        $phpRequirement = new AnyVersionConstraint();
         $extensions     = [];
 
         foreach($requirementCollection as $requirement) {
