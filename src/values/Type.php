@@ -28,12 +28,12 @@ abstract class Type {
     }
 
     /**
-     * @param string            $application
+     * @param ApplicationName   $application
      * @param VersionConstraint $versionConstraint
      *
      * @return Extension
      */
-    public static function extension($application, VersionConstraint $versionConstraint) {
+    public static function extension(ApplicationName $application, VersionConstraint $versionConstraint) {
         return new Extension($application, $versionConstraint);
     }
 
