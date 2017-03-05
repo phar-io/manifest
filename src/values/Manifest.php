@@ -14,7 +14,7 @@ use PharIo\Version\Version;
 
 final class Manifest {
     /**
-     * @var string
+     * @var ApplicationName
      */
     private $name;
 
