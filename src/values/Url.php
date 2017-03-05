@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class Url {
+class Url {
     /**
      * @var string
      */

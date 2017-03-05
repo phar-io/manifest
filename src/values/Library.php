@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class Library extends Type {
+class Library extends Type {
     /**
      * @return bool
      */

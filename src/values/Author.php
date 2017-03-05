@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class Author {
+class Author {
     /**
      * @var string
      */

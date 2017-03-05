@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class AuthorCollection implements \Countable, \IteratorAggregate {
+class AuthorCollection implements \Countable, \IteratorAggregate {
     /**
      * @var Author[]
      */

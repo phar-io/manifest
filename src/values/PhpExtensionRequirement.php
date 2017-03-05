@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class PhpExtensionRequirement implements Requirement {
+class PhpExtensionRequirement implements Requirement {
     /**
      * @var string
      */

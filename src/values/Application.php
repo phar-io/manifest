@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class Application extends Type {
+class Application extends Type {
     /**
      * @return bool
      */

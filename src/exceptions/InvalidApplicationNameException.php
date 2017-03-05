@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class InvalidApplicationNameException extends \InvalidArgumentException implements Exception {
+class InvalidApplicationNameException extends \InvalidArgumentException implements Exception {
     const NotAString    = 1;
     const InvalidFormat = 2;
 }

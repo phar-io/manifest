@@ -13,7 +13,7 @@ namespace PharIo\Manifest;
 use PharIo\Version\Version;
 use PharIo\Version\VersionConstraint;
 
-final class Extension extends Type {
+class Extension extends Type {
     /**
      * @var ApplicationName
      */

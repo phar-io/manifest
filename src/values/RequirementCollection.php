@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class RequirementCollection implements \Countable, \IteratorAggregate {
+class RequirementCollection implements \Countable, \IteratorAggregate {
     /**
      * @var Requirement[]
      */

@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class CopyrightInformation {
+class CopyrightInformation {
     /**
      * @var AuthorCollection
      */

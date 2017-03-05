@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class License {
+class License {
     /**
      * @var string
      */

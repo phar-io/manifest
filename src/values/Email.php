@@ -10,7 +10,7 @@
 
 namespace PharIo\Manifest;
 
-final class Email {
+class Email {
     /**
      * @var string
      */

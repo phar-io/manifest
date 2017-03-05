@@ -12,7 +12,7 @@ namespace PharIo\Manifest;
 
 use PharIo\Version\VersionConstraint;
 
-final class PhpVersionRequirement implements Requirement {
+class PhpVersionRequirement implements Requirement {
     /**
      * @var VersionConstraint
      */
