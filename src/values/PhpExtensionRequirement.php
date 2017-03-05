@@ -11,6 +11,9 @@
 namespace PharIo\Manifest;
 
 final class PhpExtensionRequirement implements Requirement {
+    /**
+     * @var string
+     */
     private $extension;
 
     /**

@@ -21,6 +21,10 @@ final class Author {
      */
     private $email;
 
+    /**
+     * @param string $name
+     * @param Email  $email
+     */
     public function __construct($name, Email $email) {
         $this->name  = $name;
         $this->email = $email;
