@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 use PharIo\Version\ExactVersionConstraint;
-
 use PHPUnit\Framework\TestCase;
 
 /**
