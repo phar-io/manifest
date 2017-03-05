@@ -117,16 +117,21 @@ final class Manifest {
 
     /**
      * @param ApplicationName $application
+     * @param Version|null    $version
      *
      * @return bool
      */
-    public function isExtensionFor(ApplicationName $application) {
+    public function isExtensionFor(ApplicationName $application, Version $version = null) {
         if (!$this->isExtension()) {
             return false;
         }
 
         /** @var Extension $type */
         $type = $this->type;
+
+        if ($version !== null) {
+            return $type->isCompatibleWith($application, $version);
+        }
 
         return $type->isExtensionFor($application);
     }
