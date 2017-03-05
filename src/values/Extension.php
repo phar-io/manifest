@@ -10,11 +10,12 @@
 
 namespace PharIo\Manifest;
 
+use PharIo\Version\Version;
 use PharIo\Version\VersionConstraint;
 
 final class Extension extends Type {
     /**
-     * @var string
+     * @var ApplicationName
      */
     private $application;
 
@@ -24,18 +25,18 @@ final class Extension extends Type {
     private $versionConstraint;
 
     /**
-     * @param string            $application
+     * @param ApplicationName   $application
      * @param VersionConstraint $versionConstraint
      */
-    public function __construct($application, VersionConstraint $versionConstraint) {
+    public function __construct(ApplicationName $application, VersionConstraint $versionConstraint) {
         $this->application       = $application;
         $this->versionConstraint = $versionConstraint;
     }
 
     /**
-     * @return string
+     * @return ApplicationName
      */
-    public function getApplication() {
+    public function getApplicationName() {
         return $this->application;
     }
 
@@ -54,11 +55,21 @@ final class Extension extends Type {
     }
 
     /**
-     * @param string $application
+     * @param ApplicationName $name
      *
      * @return bool
      */
-    public function isExtensionFor($application) {
-        return $this->application === $application;
+    public function isExtensionFor(ApplicationName $name) {
+        return $this->application->isEqual($name);
+    }
+
+    /**
+     * @param ApplicationName $name
+     * @param Version         $version
+     *
+     * @return bool
+     */
+    public function isCompatibleWith(ApplicationName $name, Version $version) {
+        return $this->isExtensionFor($name) && $this->versionConstraint->complies($version);
     }
 }

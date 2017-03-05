@@ -10,6 +10,7 @@ namespace PharIo\Manifest;
  * @uses \PharIo\Manifest\AuthorCollectionIterator
  * @uses \PharIo\Manifest\AuthorElement
  * @uses \PharIo\Manifest\AuthorElementCollection
+ * @uses \PharIo\Manifest\ApplicationName
  * @uses \PharIo\Manifest\BundledComponent
  * @uses \PharIo\Manifest\BundledComponentCollection
  * @uses \PharIo\Manifest\BundledComponentCollectionIterator

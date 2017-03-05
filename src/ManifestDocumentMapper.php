@@ -31,7 +31,7 @@ class ManifestDocumentMapper {
             $bundledComponents = $this->mapBundledComponents($document);
 
             return new Manifest(
-                $contains->getName(),
+                new ApplicationName($contains->getName()),
                 new Version($contains->getVersion()),
                 $type,
                 $copyright,
@@ -173,10 +173,11 @@ class ManifestDocumentMapper {
      */
     private function mapExtension(ExtensionElement $extension) {
         try {
-            $parser = new VersionConstraintParser;
+            $parser            = new VersionConstraintParser;
             $versionConstraint = $parser->parse($extension->getCompatible());
+
             return Type::extension(
-                $extension->getFor(),
+                new ApplicationName($extension->getFor()),
                 $versionConstraint
             );
         } catch (UnsupportedVersionConstraintException $e) {

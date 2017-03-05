@@ -43,7 +43,7 @@ final class Manifest {
      */
     private $bundledComponents;
 
-    public function __construct($name, Version $version, Type $type, CopyrightInformation $copyrightInformation, RequirementCollection $requirements, BundledComponentCollection $bundledComponents) {
+    public function __construct(ApplicationName $name, Version $version, Type $type, CopyrightInformation $copyrightInformation, RequirementCollection $requirements, BundledComponentCollection $bundledComponents) {
         $this->name                 = $name;
         $this->version              = $version;
         $this->type                 = $type;
@@ -53,7 +53,7 @@ final class Manifest {
     }
 
     /**
-     * @return string
+     * @return ApplicationName
      */
     public function getName() {
         return $this->name;
@@ -116,17 +116,18 @@ final class Manifest {
     }
 
     /**
-     * @param string $application
+     * @param ApplicationName $application
      *
      * @return bool
      */
-    public function isExtensionFor($application) {
+    public function isExtensionFor(ApplicationName $application) {
         if (!$this->isExtension()) {
             return false;
         }
 
         /** @var Extension $type */
         $type = $this->type;
+
         return $type->isExtensionFor($application);
     }
 }

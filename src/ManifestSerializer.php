@@ -77,7 +77,7 @@ class ManifestSerializer {
             case $type->isExtension(): {
                 /* @var $type Extension */
                 $this->xmlWriter->writeAttribute('type', 'extension');
-                $this->addExtension($type->getApplication(), $type->getVersionConstraint());
+                $this->addExtension($type->getApplicationName(), $type->getVersionConstraint());
                 break;
             }
 
@@ -95,7 +95,7 @@ class ManifestSerializer {
         foreach($copyrightInformation->getAuthors() as $author) {
             $this->xmlWriter->startElement('author');
             $this->xmlWriter->writeAttribute('name', $author->getName());
-            $this->xmlWriter->writeAttribute('email', (string)$author->getEmail());
+            $this->xmlWriter->writeAttribute('email', (string) $author->getEmail());
             $this->xmlWriter->endElement();
         }
 
@@ -120,7 +120,7 @@ class ManifestSerializer {
             }
 
             if ($requirement instanceof PhpExtensionRequirement) {
-                $extensions[] = (string)$requirement;
+                $extensions[] = (string) $requirement;
             }
         }
 
