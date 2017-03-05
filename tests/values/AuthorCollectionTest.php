@@ -13,11 +13,11 @@ namespace PharIo\Manifest;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers PharIo\Manifest\AuthorCollection
- * @covers PharIo\Manifest\AuthorCollectionIterator
+ * @covers \PharIo\Manifest\AuthorCollection
+ * @covers \PharIo\Manifest\AuthorCollectionIterator
  *
- * @uses PharIo\Manifest\Author
- * @uses PharIo\Manifest\Email
+ * @uses \PharIo\Manifest\Author
+ * @uses \PharIo\Manifest\Email
  */
 class AuthorCollectionTest extends TestCase {
     /**
@@ -46,8 +46,17 @@ class AuthorCollectionTest extends TestCase {
     }
 
     public function testCanBeIterated() {
+        $this->collection->add(
+            new Author('Dummy First', new Email('dummy@example.com'))
+        );
         $this->collection->add($this->item);
-
         $this->assertContains($this->item, $this->collection);
+    }
+
+    public function testKeyPositionCanBeRetreived() {
+        $this->collection->add($this->item);
+        foreach($this->collection as $key => $item) {
+            $this->assertEquals(0, $key);
+        }
     }
 }

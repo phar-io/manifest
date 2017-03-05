@@ -5,6 +5,7 @@ namespace PharIo\Manifest;
 /**
  * @covers \PharIo\Manifest\ManifestDocumentMapper
  *
+ * @uses \PharIo\Manifest\ApplicationName
  * @uses \PharIo\Manifest\Author
  * @uses \PharIo\Manifest\AuthorCollection
  * @uses \PharIo\Manifest\AuthorCollectionIterator
@@ -77,6 +78,33 @@ class ManifestDocumentMapperTest extends \PHPUnit_Framework_TestCase {
 
         $this->expectException(ManifestDocumentMapperException::class);
         $mapper->map($manifestDocument);
-
     }
+
+    public function testInvalidVersionInformationThrowsException() {
+        $manifestDocument = ManifestDocument::fromFile(__DIR__ . '/_fixture/invalidversion.xml');
+        $mapper           = new ManifestDocumentMapper();
+
+        $this->expectException(ManifestDocumentMapperException::class);
+        $mapper->map($manifestDocument);
+    }
+
+    public function testInvalidVersionConstraintThrowsException() {
+        $manifestDocument = ManifestDocument::fromFile(__DIR__ . '/_fixture/invalidversionconstraint.xml');
+        $mapper           = new ManifestDocumentMapper();
+
+        $this->expectException(ManifestDocumentMapperException::class);
+        $mapper->map($manifestDocument);
+    }
+
+    /**
+     * @uses \PharIo\Manifest\ExtensionElement
+     */
+    public function testInvalidCompatibleConstraintThrowsException() {
+        $manifestDocument = ManifestDocument::fromFile(__DIR__ . '/_fixture/extension-invalidcompatible.xml');
+        $mapper           = new ManifestDocumentMapper();
+
+        $this->expectException(ManifestDocumentMapperException::class);
+        $mapper->map($manifestDocument);
+    }
+
 }

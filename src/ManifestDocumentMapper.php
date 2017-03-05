@@ -10,8 +10,8 @@
 
 namespace PharIo\Manifest;
 
-use PharIo\Version\UnsupportedVersionConstraintException;
 use PharIo\Version\Version;
+use PharIo\Version\Exception as VersionException;
 use PharIo\Version\VersionConstraintParser;
 
 class ManifestDocumentMapper {
@@ -38,6 +38,8 @@ class ManifestDocumentMapper {
                 $requirements,
                 $bundledComponents
             );
+        } catch (VersionException $e) {
+            throw new ManifestDocumentMapperException($e->getMessage(), $e->getCode(), $e);
         } catch (Exception $e) {
             throw new ManifestDocumentMapperException($e->getMessage(), $e->getCode(), $e);
         }
@@ -111,7 +113,7 @@ class ManifestDocumentMapper {
 
         try {
             $versionConstraint = $parser->parse($phpElement->getVersion());
-        } catch (UnsupportedVersionConstraintException $e) {
+        } catch (VersionException $e) {
             throw new ManifestDocumentMapperException(
                 sprintf('Unsupported version constraint - %s', $e->getMessage()),
                 $e->getCode(),
@@ -180,7 +182,7 @@ class ManifestDocumentMapper {
                 new ApplicationName($extension->getFor()),
                 $versionConstraint
             );
-        } catch (UnsupportedVersionConstraintException $e) {
+        } catch (VersionException $e) {
             throw new ManifestDocumentMapperException(
                 sprintf('Unsupported version constraint - %s', $e->getMessage()),
                 $e->getCode(),

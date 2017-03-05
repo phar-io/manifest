@@ -11,13 +11,17 @@
 namespace PharIo\Manifest;
 
 use PharIo\Version\AnyVersionConstraint;
+use PharIo\Version\Version;
+use PharIo\Version\VersionConstraint;
+use PharIo\Version\VersionConstraintParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers PharIo\Manifest\Extension
- * @covers PharIo\Manifest\Type
+ * @covers \PharIo\Manifest\Extension
+ * @covers \PharIo\Manifest\Type
  *
  * @uses \PharIo\Version\VersionConstraint
+ * @uses \PharIo\Manifest\ApplicationName
  */
 class ExtensionTest extends TestCase {
     /**
@@ -56,6 +60,13 @@ class ExtensionTest extends TestCase {
         $this->assertInstanceOf(ApplicationName::class, $this->type->getApplicationName());
     }
 
+    public function testVersionConstraintCanBeRetrieved() {
+        $this->assertInstanceOf(
+            VersionConstraint::class,
+            $this->type->getVersionConstraint()
+        );
+    }
+
     public function testApplicationCanBeQueried()
     {
         $this->name->method('isEqual')->willReturn(true);
@@ -63,4 +74,36 @@ class ExtensionTest extends TestCase {
             $this->type->isExtensionFor($this->createMock(ApplicationName::class))
         );
     }
+
+    public function testCompatibleWithReturnsTrueForMatchingVersionConstraintAndApplicaiton() {
+        $app = new ApplicationName('foo/bar');
+        $extension = Type::extension($app, (new VersionConstraintParser)->parse('^1.0'));
+        $version = new Version('1.0.0');
+
+        $this->assertTrue(
+            $extension->isCompatibleWith($app, $version)
+        );
+    }
+
+    public function testCompatibleWithReturnsFalseForNotMatchingVersionConstraint() {
+        $app = new ApplicationName('foo/bar');
+        $extension = Type::extension($app, (new VersionConstraintParser)->parse('^1.0'));
+        $version = new Version('2.0.0');
+
+        $this->assertFalse(
+            $extension->isCompatibleWith($app, $version)
+        );
+    }
+
+    public function testCompatibleWithReturnsFalseForNotMatchingApplication() {
+        $app1 = new ApplicationName('foo/bar');
+        $app2 = new ApplicationName('foo/foo');
+        $extension = Type::extension($app1, (new VersionConstraintParser)->parse('^1.0'));
+        $version = new Version('1.0.0');
+
+        $this->assertFalse(
+            $extension->isCompatibleWith($app2, $version)
+        );
+    }
+
 }

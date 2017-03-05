@@ -14,10 +14,10 @@ use PharIo\Version\Version;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers PharIo\Manifest\BundledComponentCollection
- * @covers PharIo\Manifest\BundledComponentCollectionIterator
+ * @covers \PharIo\Manifest\BundledComponentCollection
+ * @covers \PharIo\Manifest\BundledComponentCollectionIterator
  *
- * @uses PharIo\Manifest\BundledComponent
+ * @uses \PharIo\Manifest\BundledComponent
  * @uses \PharIo\Version\Version
  */
 class BundledComponentCollectionTest extends TestCase {
@@ -47,8 +47,17 @@ class BundledComponentCollectionTest extends TestCase {
     }
 
     public function testCanBeIterated() {
+        $this->collection->add($this->createMock(BundledComponent::class));
         $this->collection->add($this->item);
 
         $this->assertContains($this->item, $this->collection);
     }
+
+    public function testKeyPositionCanBeRetreived() {
+        $this->collection->add($this->item);
+        foreach($this->collection as $key => $item) {
+            $this->assertEquals(0, $key);
+        }
+    }
+
 }

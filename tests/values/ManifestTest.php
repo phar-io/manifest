@@ -151,4 +151,37 @@ class ManifestTest extends TestCase {
 
         $this->assertTrue($manifest->isExtensionFor($appName));
     }
+
+    public function testNonExtensionReturnsFalseWhenQueriesForExtension() {
+        $appName = new ApplicationName('foo/bar');
+        $manifest = new Manifest(
+            new ApplicationName('foo/foo'),
+            new Version('1.0.0'),
+            Type::library(),
+            $this->copyrightInformation,
+            new RequirementCollection,
+            new BundledComponentCollection
+        );
+
+        $this->assertFalse($manifest->isExtensionFor($appName));
+    }
+
+    /**
+     * @uses \PharIo\Manifest\Extension
+     */
+    public function testExtendedApplicationCanBeQueriedForExtensionWithVersion()
+    {
+        $appName = new ApplicationName('foo/bar');
+        $manifest = new Manifest(
+            new ApplicationName('foo/foo'),
+            new Version('1.0.0'),
+            Type::extension($appName, new AnyVersionConstraint),
+            $this->copyrightInformation,
+            new RequirementCollection,
+            new BundledComponentCollection
+        );
+
+        $this->assertTrue($manifest->isExtensionFor($appName, new Version('1.2.3')));
+    }
+
 }
