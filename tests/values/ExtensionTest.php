@@ -11,7 +11,6 @@
 namespace PharIo\Manifest;
 
 use PharIo\Version\AnyVersionConstraint;
-
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -26,8 +25,14 @@ class ExtensionTest extends TestCase {
      */
     private $type;
 
+    /**
+     * @var ApplicationName|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $name;
+
     protected function setUp() {
-        $this->type = Type::extension('phpunit/phpunit', new AnyVersionConstraint);
+        $this->name = $this->createMock(ApplicationName::class);
+        $this->type = Type::extension($this->name, new AnyVersionConstraint);
     }
 
     public function testCanBeCreated() {
@@ -48,12 +53,14 @@ class ExtensionTest extends TestCase {
 
     public function testApplicationCanBeRetrieved()
     {
-        $this->assertEquals('phpunit/phpunit', $this->type->getApplication());
+        $this->assertInstanceOf(ApplicationName::class, $this->type->getApplicationName());
     }
 
     public function testApplicationCanBeQueried()
     {
-        $this->assertTrue($this->type->isExtensionFor('phpunit/phpunit'));
-        $this->assertFalse($this->type->isExtensionFor('foo/bar'));
+        $this->name->method('isEqual')->willReturn(true);
+        $this->assertTrue(
+            $this->type->isExtensionFor($this->createMock(ApplicationName::class))
+        );
     }
 }

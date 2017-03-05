@@ -7,6 +7,7 @@ use PharIo\Version\Version;
 /**
  * @covers \PharIo\Manifest\ManifestSerializer
  *
+ * @uses \PharIo\Manifest\ApplicationName
  * @uses \PharIo\Manifest\Author
  * @uses \PharIo\Manifest\AuthorCollection
  * @uses \PharIo\Manifest\AuthorCollectionIterator
@@ -50,7 +51,6 @@ class ManifestSerializerTest extends \PHPUnit_Framework_TestCase {
      * @param $expected
      *
      * @uses \PharIo\Manifest\Application
-     * @uses \PharIo\Manifest\ApplicationName
      * @uses \PharIo\Manifest\Library
      * @uses \PharIo\Manifest\Extension
      * @uses \PharIo\Manifest\ExtensionElement
@@ -76,6 +76,7 @@ class ManifestSerializerTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @uses \PharIo\Manifest\Library
+     * @uses \PharIo\Manifest\ApplicationName
      */
     public function testCanSerializeToFile() {
         $src        = __DIR__ . '/_fixture/library.xml';
@@ -87,10 +88,13 @@ class ManifestSerializerTest extends \PHPUnit_Framework_TestCase {
         unlink($dest);
     }
 
+    /**
+     * @uses \PharIo\Manifest\ApplicationName
+     */
     public function testCanHandleUnknownType() {
         $type     = $this->getMockForAbstractClass(Type::class);
         $manifest = new Manifest(
-            'testname',
+            new ApplicationName('testvendor/testname'),
             new Version('1.0.0'),
             $type,
             new CopyrightInformation(

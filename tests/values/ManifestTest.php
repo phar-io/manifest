@@ -12,32 +12,32 @@ namespace PharIo\Manifest;
 
 use PharIo\Version\Version;
 use PharIo\Version\AnyVersionConstraint;
-
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers PharIo\Manifest\Manifest
+ * @covers \PharIo\Manifest\Manifest
  *
- * @uses PharIo\Manifest\Author
- * @uses PharIo\Manifest\AuthorCollection
- * @uses PharIo\Manifest\BundledComponent
- * @uses PharIo\Manifest\BundledComponentCollection
- * @uses PharIo\Manifest\CopyrightInformation
- * @uses PharIo\Manifest\Email
- * @uses PharIo\Manifest\License
- * @uses PharIo\Manifest\RequirementCollection
- * @uses PharIo\Manifest\PhpVersionRequirement
- * @uses PharIo\Manifest\Type
- * @uses PharIo\Manifest\Application
- * @uses PharIo\Manifest\Url
+ * @uses \PharIo\Manifest\ApplicationName
+ * @uses \PharIo\Manifest\Author
+ * @uses \PharIo\Manifest\AuthorCollection
+ * @uses \PharIo\Manifest\BundledComponent
+ * @uses \PharIo\Manifest\BundledComponentCollection
+ * @uses \PharIo\Manifest\CopyrightInformation
+ * @uses \PharIo\Manifest\Email
+ * @uses \PharIo\Manifest\License
+ * @uses \PharIo\Manifest\RequirementCollection
+ * @uses \PharIo\Manifest\PhpVersionRequirement
+ * @uses \PharIo\Manifest\Type
+ * @uses \PharIo\Manifest\Application
+ * @uses \PharIo\Manifest\Url
  * @uses \PharIo\Version\Version
  * @uses \PharIo\Version\VersionConstraint
  */
 class ManifestTest extends TestCase {
     /**
-     * @var string
+     * @var ApplicationName
      */
-    private $name = 'phpunit/phpunit';
+    private $name;
 
     /**
      * @var Version
@@ -88,6 +88,8 @@ class ManifestTest extends TestCase {
         $this->bundledComponents = new BundledComponentCollection;
         $this->bundledComponents->add(new BundledComponent('phpunit/php-code-coverage', new Version('4.0.2')));
 
+        $this->name = new ApplicationName('phpunit/phpunit');
+
         $this->manifest = new Manifest(
             $this->name,
             $this->version,
@@ -133,19 +135,20 @@ class ManifestTest extends TestCase {
     }
 
     /**
-     * @uses PharIo\Manifest\Extension
+     * @uses \PharIo\Manifest\Extension
      */
     public function testExtendedApplicationCanBeQueriedForExtension()
     {
+        $appName = new ApplicationName('foo/bar');
         $manifest = new Manifest(
-            'foo',
+            new ApplicationName('foo/foo'),
             new Version('1.0.0'),
-            Type::extension('bar', new AnyVersionConstraint),
+            Type::extension($appName, new AnyVersionConstraint),
             $this->copyrightInformation,
             new RequirementCollection,
             new BundledComponentCollection
         );
 
-        $this->assertTrue($manifest->isExtensionFor('bar'));
+        $this->assertTrue($manifest->isExtensionFor($appName));
     }
 }
