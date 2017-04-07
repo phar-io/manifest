@@ -42,7 +42,7 @@ namespace PharIo\Manifest;
  * @uses \PharIo\Version\Version
  * @uses \PharIo\Version\VersionConstraint
  */
-class ManifestLoaderTest extends \PHPUnit_Framework_TestCase {
+class ManifestLoaderTest extends \PHPUnit\Framework\TestCase {
     public function testCanBeLoadedFromFile() {
         $this->assertInstanceOf(
             Manifest::class,

@@ -4,7 +4,7 @@ namespace PharIo\Manifest;
 
 use DOMDocument;
 
-class PhpElementTest extends \PHPUnit_Framework_TestCase {
+class PhpElementTest extends \PHPUnit\Framework\TestCase {
     /**
      * @var DOMDocument
      */
