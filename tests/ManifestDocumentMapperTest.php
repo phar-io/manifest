@@ -42,7 +42,7 @@ namespace PharIo\Manifest;
  * @uses \PharIo\Version\Version
  * @uses \PharIo\Version\VersionConstraint
  */
-class ManifestDocumentMapperTest extends \PHPUnit_Framework_TestCase {
+class ManifestDocumentMapperTest extends \PHPUnit\Framework\TestCase {
     /**
      * @dataProvider dataProvider
      *

@@ -2,7 +2,7 @@
 
 namespace PharIo\Manifest;
 
-class ManifestDocumentTest extends \PHPUnit_Framework_TestCase {
+class ManifestDocumentTest extends \PHPUnit\Framework\TestCase {
     public function testThrowsExceptionWhenFileDoesNotExist() {
         $this->expectException(ManifestDocumentException::class);
         ManifestDocument::fromFile('/does/not/exist');

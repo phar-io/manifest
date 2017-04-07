@@ -5,7 +5,7 @@ namespace PharIo\Manifest;
 use DOMDocument;
 use LibXMLError;
 
-class ManifestDocumentLoadingExceptionTest extends \PHPUnit_Framework_TestCase {
+class ManifestDocumentLoadingExceptionTest extends \PHPUnit\Framework\TestCase {
     public function testXMLErrorsCanBeRetrieved() {
         $dom  = new DOMDocument();
         $prev = libxml_use_internal_errors(true);

@@ -4,7 +4,7 @@ namespace PharIo\Manifest;
 
 use DOMDocument;
 
-class CopyrightElementTest extends \PHPUnit_Framework_TestCase {
+class CopyrightElementTest extends \PHPUnit\Framework\TestCase {
     /**
      * @var DOMDocument
      */
