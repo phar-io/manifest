@@ -14,7 +14,8 @@ before_install:
 install:
   - ant setup
 
-script: ./vendor/bin/phpunit
+script:
+  - ant test
 
 php:
   - 7.2
