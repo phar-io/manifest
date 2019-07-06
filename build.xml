@@ -14,16 +14,15 @@
         <property name="prepare.done" value="true"/>
     </target>
 
-    <target name="install-dependencies" unless="dependencies-installed" depends="-dependencies-installed" description="Install dependencies with Composer">
+    <target name="install-dependencies" description="Install dependencies with Composer">
         <exec executable="composer" taskname="composer">
             <env key="COMPOSER_DISABLE_XDEBUG_WARN" value="1"/>
-            <arg value="update"/>
+            <arg value="install"/>
             <arg value="--no-interaction"/>
             <arg value="--no-progress"/>
             <arg value="--no-ansi"/>
             <arg value="--no-suggest"/>
             <arg value="--optimize-autoloader"/>
-            <arg value="--prefer-stable"/>
         </exec>
     </target>
 
@@ -37,10 +36,6 @@
 
     <target name="test" depends="install-tools,install-dependencies" description="Run tests">
         <exec executable="${basedir}/vendor/bin/phpunit" taskname="phpunit"/>
-    </target>
-
-    <target name="-dependencies-installed">
-        <available file="${basedir}/composer.lock" property="dependencies-installed"/>
     </target>
 
     <target name="-tools-installed">
