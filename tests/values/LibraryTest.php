@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PharIo\Manifest;
 
 use PHPUnit\Framework\TestCase;
@@ -17,28 +16,26 @@ use PHPUnit\Framework\TestCase;
  * @covers PharIo\Manifest\Type
  */
 class LibraryTest extends TestCase {
-    /**
-     * @var Library
-     */
+    /** @var Library */
     private $type;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->type = Type::library();
     }
 
-    public function testCanBeCreated() {
+    public function testCanBeCreated(): void {
         $this->assertInstanceOf(Library::class, $this->type);
     }
 
-    public function testIsNotApplication() {
+    public function testIsNotApplication(): void {
         $this->assertFalse($this->type->isApplication());
     }
 
-    public function testIsLibrary() {
+    public function testIsLibrary(): void {
         $this->assertTrue($this->type->isLibrary());
     }
 
-    public function testIsNotExtension() {
+    public function testIsNotExtension(): void {
         $this->assertFalse($this->type->isExtension());
     }
 }

@@ -1,39 +1,36 @@
-<?php
-
+<?php declare(strict_types = 1);
 namespace PharIo\Manifest;
 
 use DOMDocument;
 
 class BundlesElementTest extends \PHPUnit\Framework\TestCase {
-    /**
-     * @var DOMDocument
-     */
+    /** @var DOMDocument */
     private $dom;
 
-    /**
-     * @var BundlesElement
-     */
+    /** @var BundlesElement */
     private $bundles;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->dom = new DOMDocument();
         $this->dom->loadXML('<?xml version="1.0" ?><bundles xmlns="https://phar.io/xml/manifest/1.0" />');
         $this->bundles = new BundlesElement($this->dom->documentElement);
     }
 
-    public function testThrowsExceptionWhenGetComponentElementsIsCalledButNodesAreMissing() {
+    public function testThrowsExceptionWhenGetComponentElementsIsCalledButNodesAreMissing(): void {
         $this->expectException(ManifestElementException::class);
         $this->bundles->getComponentElements();
     }
 
-    public function testGetComponentElementsReturnsComponentElementCollection() {
+    public function testGetComponentElementsReturnsComponentElementCollection(): void {
         $this->addComponent();
         $this->assertInstanceOf(
-            ComponentElementCollection::class, $this->bundles->getComponentElements()
+            ComponentElement::class,
+            $this->bundles->getComponentElements()->current()
+
         );
     }
 
-    private function addComponent() {
+    private function addComponent(): void {
         $this->dom->documentElement->appendChild(
             $this->dom->createElementNS('https://phar.io/xml/manifest/1.0', 'component')
         );

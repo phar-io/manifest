@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PharIo\Manifest;
 
 use PHPUnit\Framework\TestCase;
@@ -18,24 +17,25 @@ use PHPUnit\Framework\TestCase;
  * @uses PharIo\Manifest\Url
  */
 class LicenseTest extends TestCase {
-    /**
-     * @var License
-     */
+    /** @var License */
     private $license;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->license = new License('BSD-3-Clause', new Url('https://github.com/sebastianbergmann/phpunit/blob/master/LICENSE'));
     }
 
-    public function testCanBeCreated() {
+    public function testCanBeCreated(): void {
         $this->assertInstanceOf(License::class, $this->license);
     }
 
-    public function testNameCanBeRetrieved() {
+    public function testNameCanBeRetrieved(): void {
         $this->assertEquals('BSD-3-Clause', $this->license->getName());
     }
 
-    public function testUrlCanBeRetrieved() {
-        $this->assertEquals('https://github.com/sebastianbergmann/phpunit/blob/master/LICENSE', $this->license->getUrl());
+    public function testUrlCanBeRetrieved(): void {
+        $this->assertEquals(
+            'https://github.com/sebastianbergmann/phpunit/blob/master/LICENSE',
+            $this->license->getUrl()->asString()
+        );
     }
 }

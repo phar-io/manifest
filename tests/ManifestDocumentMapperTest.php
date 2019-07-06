@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 namespace PharIo\Manifest;
 
 /**
@@ -54,7 +53,7 @@ class ManifestDocumentMapperTest extends \PHPUnit\Framework\TestCase {
      * @uses         \PharIo\Manifest\Extension
      * @uses         \PharIo\Manifest\ExtensionElement
      */
-    public function testCanSerializeToString($expected) {
+    public function testCanSerializeToString($expected): void {
         $manifestDocument = ManifestDocument::fromFile($expected);
         $mapper           = new ManifestDocumentMapper();
 
@@ -72,7 +71,7 @@ class ManifestDocumentMapperTest extends \PHPUnit\Framework\TestCase {
         ];
     }
 
-    public function testThrowsExceptionOnUnsupportedType() {
+    public function testThrowsExceptionOnUnsupportedType(): void {
         $manifestDocument = ManifestDocument::fromFile(__DIR__ . '/_fixture/custom.xml');
         $mapper           = new ManifestDocumentMapper();
 
@@ -80,7 +79,7 @@ class ManifestDocumentMapperTest extends \PHPUnit\Framework\TestCase {
         $mapper->map($manifestDocument);
     }
 
-    public function testInvalidVersionInformationThrowsException() {
+    public function testInvalidVersionInformationThrowsException(): void {
         $manifestDocument = ManifestDocument::fromFile(__DIR__ . '/_fixture/invalidversion.xml');
         $mapper           = new ManifestDocumentMapper();
 
@@ -88,7 +87,7 @@ class ManifestDocumentMapperTest extends \PHPUnit\Framework\TestCase {
         $mapper->map($manifestDocument);
     }
 
-    public function testInvalidVersionConstraintThrowsException() {
+    public function testInvalidVersionConstraintThrowsException(): void {
         $manifestDocument = ManifestDocument::fromFile(__DIR__ . '/_fixture/invalidversionconstraint.xml');
         $mapper           = new ManifestDocumentMapper();
 
@@ -99,12 +98,11 @@ class ManifestDocumentMapperTest extends \PHPUnit\Framework\TestCase {
     /**
      * @uses \PharIo\Manifest\ExtensionElement
      */
-    public function testInvalidCompatibleConstraintThrowsException() {
+    public function testInvalidCompatibleConstraintThrowsException(): void {
         $manifestDocument = ManifestDocument::fromFile(__DIR__ . '/_fixture/extension-invalidcompatible.xml');
         $mapper           = new ManifestDocumentMapper();
 
         $this->expectException(ManifestDocumentMapperException::class);
         $mapper->map($manifestDocument);
     }
-
 }

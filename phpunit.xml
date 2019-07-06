@@ -8,7 +8,7 @@
          beStrictAboutTestsThatDoNotTestAnything="true"
          beStrictAboutTodoAnnotatedTests="true"
          verbose="true">
-    <testsuite>
+    <testsuite name="phar.io manifest">
         <directory suffix="Test.php">tests</directory>
     </testsuite>
 

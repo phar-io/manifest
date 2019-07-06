@@ -1,25 +1,21 @@
-<?php
-
+<?php declare(strict_types = 1);
 namespace PharIo\Manifest;
 
 class LicenseElementTest extends \PHPUnit\Framework\TestCase {
-    /**
-     * @var LicenseElement
-     */
+    /** @var LicenseElement */
     private $license;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $dom = new \DOMDocument();
         $dom->loadXML('<?xml version="1.0" ?><license xmlns="https://phar.io/xml/manifest/1.0" type="BSD-3" url="https://some.tld/LICENSE" />');
         $this->license = new LicenseElement($dom->documentElement);
     }
 
-    public function testTypeCanBeRetrieved() {
+    public function testTypeCanBeRetrieved(): void {
         $this->assertEquals('BSD-3', $this->license->getType());
     }
 
-    public function testUrlCanBeRetrieved() {
+    public function testUrlCanBeRetrieved(): void {
         $this->assertEquals('https://some.tld/LICENSE', $this->license->getUrl());
     }
-
 }

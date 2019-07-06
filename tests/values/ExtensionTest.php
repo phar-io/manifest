@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PharIo\Manifest;
 
 use PharIo\Version\AnyVersionConstraint;
@@ -24,86 +23,79 @@ use PHPUnit\Framework\TestCase;
  * @uses \PharIo\Manifest\ApplicationName
  */
 class ExtensionTest extends TestCase {
-    /**
-     * @var Extension
-     */
+    /** @var Extension */
     private $type;
 
-    /**
-     * @var ApplicationName|\PHPUnit_Framework_MockObject_MockObject
-     */
+    /** @var ApplicationName|\PHPUnit_Framework_MockObject_MockObject */
     private $name;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->name = $this->createMock(ApplicationName::class);
         $this->type = Type::extension($this->name, new AnyVersionConstraint);
     }
 
-    public function testCanBeCreated() {
+    public function testCanBeCreated(): void {
         $this->assertInstanceOf(Extension::class, $this->type);
     }
 
-    public function testIsNotApplication() {
+    public function testIsNotApplication(): void {
         $this->assertFalse($this->type->isApplication());
     }
 
-    public function testIsNotLibrary() {
+    public function testIsNotLibrary(): void {
         $this->assertFalse($this->type->isLibrary());
     }
 
-    public function testIsExtension() {
+    public function testIsExtension(): void {
         $this->assertTrue($this->type->isExtension());
     }
 
-    public function testApplicationCanBeRetrieved()
-    {
+    public function testApplicationCanBeRetrieved(): void {
         $this->assertInstanceOf(ApplicationName::class, $this->type->getApplicationName());
     }
 
-    public function testVersionConstraintCanBeRetrieved() {
+    public function testVersionConstraintCanBeRetrieved(): void {
         $this->assertInstanceOf(
             VersionConstraint::class,
             $this->type->getVersionConstraint()
         );
     }
 
-    public function testApplicationCanBeQueried()
-    {
+    public function testApplicationCanBeQueried(): void {
         $this->name->method('isEqual')->willReturn(true);
         $this->assertTrue(
             $this->type->isExtensionFor($this->createMock(ApplicationName::class))
         );
     }
 
-    public function testCompatibleWithReturnsTrueForMatchingVersionConstraintAndApplicaiton() {
-        $app = new ApplicationName('foo/bar');
+    public function testCompatibleWithReturnsTrueForMatchingVersionConstraintAndApplicaiton(): void {
+        $app       = new ApplicationName('foo/bar');
         $extension = Type::extension($app, (new VersionConstraintParser)->parse('^1.0'));
-        $version = new Version('1.0.0');
+        $version   = new Version('1.0.0');
 
         $this->assertTrue(
             $extension->isCompatibleWith($app, $version)
         );
     }
 
-    public function testCompatibleWithReturnsFalseForNotMatchingVersionConstraint() {
-        $app = new ApplicationName('foo/bar');
+    public function testCompatibleWithReturnsFalseForNotMatchingVersionConstraint(): void {
+        $app       = new ApplicationName('foo/bar');
         $extension = Type::extension($app, (new VersionConstraintParser)->parse('^1.0'));
-        $version = new Version('2.0.0');
+        $version   = new Version('2.0.0');
 
         $this->assertFalse(
             $extension->isCompatibleWith($app, $version)
         );
     }
 
-    public function testCompatibleWithReturnsFalseForNotMatchingApplication() {
-        $app1 = new ApplicationName('foo/bar');
-        $app2 = new ApplicationName('foo/foo');
+    public function testCompatibleWithReturnsFalseForNotMatchingApplication(): void {
+        $app1      = new ApplicationName('foo/bar');
+        $app2      = new ApplicationName('foo/foo');
         $extension = Type::extension($app1, (new VersionConstraintParser)->parse('^1.0'));
-        $version = new Version('1.0.0');
+        $version   = new Version('1.0.0');
 
         $this->assertFalse(
             $extension->isCompatibleWith($app2, $version)
         );
     }
-
 }

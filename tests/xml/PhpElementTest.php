@@ -1,48 +1,42 @@
-<?php
-
+<?php declare(strict_types = 1);
 namespace PharIo\Manifest;
 
 use DOMDocument;
 
 class PhpElementTest extends \PHPUnit\Framework\TestCase {
-    /**
-     * @var DOMDocument
-     */
+    /** @var DOMDocument */
     private $dom;
 
-    /**
-     * @var PhpElement
-     */
+    /** @var PhpElement */
     private $php;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->dom = new DOMDocument();
         $this->dom->loadXML('<?xml version="1.0" ?><php xmlns="https://phar.io/xml/manifest/1.0" version="^5.6 || ^7.0" />');
         $this->php = new PhpElement($this->dom->documentElement);
     }
 
-    public function testVersionConstraintCanBeRetrieved() {
+    public function testVersionConstraintCanBeRetrieved(): void {
         $this->assertEquals('^5.6 || ^7.0', $this->php->getVersion());
     }
 
-    public function testHasExtElementsReturnsFalseWhenNoExtensionsAreRequired() {
+    public function testHasExtElementsReturnsFalseWhenNoExtensionsAreRequired(): void {
         $this->assertFalse($this->php->hasExtElements());
     }
 
-    public function testHasExtElementsReturnsTrueWhenExtensionsAreRequired() {
+    public function testHasExtElementsReturnsTrueWhenExtensionsAreRequired(): void {
         $this->addExtElement();
         $this->assertTrue($this->php->hasExtElements());
     }
 
-    public function testGetExtElementsReturnsExtElementCollection() {
+    public function testGetExtElementsReturnsExtElementCollection(): void {
         $this->addExtElement();
         $this->assertInstanceOf(ExtElementCollection::class, $this->php->getExtElements());
     }
 
-    private function addExtElement() {
+    private function addExtElement(): void {
         $this->dom->documentElement->appendChild(
             $this->dom->createElementNS('https://phar.io/xml/manifest/1.0', 'ext')
         );
     }
-
 }

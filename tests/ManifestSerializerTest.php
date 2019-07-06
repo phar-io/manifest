@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 namespace PharIo\Manifest;
 
 use PharIo\Version\Version;
@@ -55,7 +54,7 @@ class ManifestSerializerTest extends \PHPUnit\Framework\TestCase {
      * @uses \PharIo\Manifest\Extension
      * @uses \PharIo\Manifest\ExtensionElement
      */
-    public function testCanSerializeToString($expected) {
+    public function testCanSerializeToString($expected): void {
         $manifest = ManifestLoader::fromString($expected);
 
         $serializer = new ManifestSerializer();
@@ -68,9 +67,9 @@ class ManifestSerializerTest extends \PHPUnit\Framework\TestCase {
 
     public function dataProvider() {
         return [
-            'application' => [file_get_contents(__DIR__ . '/_fixture/phpunit-5.6.5.xml')],
-            'library'     => [file_get_contents(__DIR__ . '/_fixture/library.xml')],
-            'extension'   => [file_get_contents(__DIR__ . '/_fixture/extension.xml')]
+            'application' => [\file_get_contents(__DIR__ . '/_fixture/phpunit-5.6.5.xml')],
+            'library'     => [\file_get_contents(__DIR__ . '/_fixture/library.xml')],
+            'extension'   => [\file_get_contents(__DIR__ . '/_fixture/extension.xml')]
         ];
     }
 
@@ -78,20 +77,20 @@ class ManifestSerializerTest extends \PHPUnit\Framework\TestCase {
      * @uses \PharIo\Manifest\Library
      * @uses \PharIo\Manifest\ApplicationName
      */
-    public function testCanSerializeToFile() {
+    public function testCanSerializeToFile(): void {
         $src        = __DIR__ . '/_fixture/library.xml';
-        $dest       = '/tmp/' . uniqid('serializer', true);
+        $dest       = '/tmp/' . \uniqid('serializer', true);
         $manifest   = ManifestLoader::fromFile($src);
         $serializer = new ManifestSerializer();
         $serializer->serializeToFile($manifest, $dest);
         $this->assertXmlFileEqualsXmlFile($src, $dest);
-        unlink($dest);
+        \unlink($dest);
     }
 
     /**
      * @uses \PharIo\Manifest\ApplicationName
      */
-    public function testCanHandleUnknownType() {
+    public function testCanHandleUnknownType(): void {
         $type     = $this->getMockForAbstractClass(Type::class);
         $manifest = new Manifest(
             new ApplicationName('testvendor/testname'),

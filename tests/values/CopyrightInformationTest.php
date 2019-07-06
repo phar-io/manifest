@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PharIo\Manifest;
 
 use PHPUnit\Framework\TestCase;
@@ -23,22 +22,16 @@ use PHPUnit\Framework\TestCase;
  * @uses PharIo\Manifest\Url
  */
 class CopyrightInformationTest extends TestCase {
-    /**
-     * @var CopyrightInformation
-     */
+    /** @var CopyrightInformation */
     private $copyrightInformation;
 
-    /**
-     * @var Author
-     */
+    /** @var Author */
     private $author;
 
-    /**
-     * @var License
-     */
+    /** @var License */
     private $license;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->author  = new Author('Joe Developer', new Email('user@example.com'));
         $this->license = new License('BSD-3-Clause', new Url('https://github.com/sebastianbergmann/phpunit/blob/master/LICENSE'));
 
@@ -48,15 +41,15 @@ class CopyrightInformationTest extends TestCase {
         $this->copyrightInformation = new CopyrightInformation($authors, $this->license);
     }
 
-    public function testCanBeCreated() {
+    public function testCanBeCreated(): void {
         $this->assertInstanceOf(CopyrightInformation::class, $this->copyrightInformation);
     }
 
-    public function testAuthorsCanBeRetrieved() {
+    public function testAuthorsCanBeRetrieved(): void {
         $this->assertContains($this->author, $this->copyrightInformation->getAuthors());
     }
 
-    public function testLicenseCanBeRetrieved() {
+    public function testLicenseCanBeRetrieved(): void {
         $this->assertEquals($this->license, $this->copyrightInformation->getLicense());
     }
 }

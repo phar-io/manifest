@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /*
  * This file is part of PharIo\Manifest.
  *
@@ -7,11 +7,10 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PharIo\Manifest;
 
-use PharIo\Version\Version;
 use PharIo\Version\AnyVersionConstraint;
+use PharIo\Version\Version;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,42 +33,28 @@ use PHPUnit\Framework\TestCase;
  * @uses \PharIo\Version\VersionConstraint
  */
 class ManifestTest extends TestCase {
-    /**
-     * @var ApplicationName
-     */
+    /** @var ApplicationName */
     private $name;
 
-    /**
-     * @var Version
-     */
+    /** @var Version */
     private $version;
 
-    /**
-     * @var Type
-     */
+    /** @var Type */
     private $type;
 
-    /**
-     * @var CopyrightInformation
-     */
+    /** @var CopyrightInformation */
     private $copyrightInformation;
 
-    /**
-     * @var RequirementCollection
-     */
+    /** @var RequirementCollection */
     private $requirements;
 
-    /**
-     * @var BundledComponentCollection
-     */
+    /** @var BundledComponentCollection */
     private $bundledComponents;
 
-    /**
-     * @var Manifest
-     */
+    /** @var Manifest */
     private $manifest;
 
-    protected function setUp() {
+    protected function setUp(): void {
         $this->version = new Version('5.6.5');
 
         $this->type = Type::application();
@@ -100,46 +85,45 @@ class ManifestTest extends TestCase {
         );
     }
 
-    public function testCanBeCreated() {
+    public function testCanBeCreated(): void {
         $this->assertInstanceOf(Manifest::class, $this->manifest);
     }
 
-    public function testNameCanBeRetrieved() {
+    public function testNameCanBeRetrieved(): void {
         $this->assertEquals($this->name, $this->manifest->getName());
     }
 
-    public function testVersionCanBeRetrieved() {
+    public function testVersionCanBeRetrieved(): void {
         $this->assertEquals($this->version, $this->manifest->getVersion());
     }
 
-    public function testTypeCanBeRetrieved() {
+    public function testTypeCanBeRetrieved(): void {
         $this->assertEquals($this->type, $this->manifest->getType());
     }
 
-    public function testTypeCanBeQueried() {
+    public function testTypeCanBeQueried(): void {
         $this->assertTrue($this->manifest->isApplication());
         $this->assertFalse($this->manifest->isLibrary());
         $this->assertFalse($this->manifest->isExtension());
     }
 
-    public function testCopyrightInformationCanBeRetrieved() {
+    public function testCopyrightInformationCanBeRetrieved(): void {
         $this->assertEquals($this->copyrightInformation, $this->manifest->getCopyrightInformation());
     }
 
-    public function testRequirementsCanBeRetrieved() {
+    public function testRequirementsCanBeRetrieved(): void {
         $this->assertEquals($this->requirements, $this->manifest->getRequirements());
     }
 
-    public function testBundledComponentsCanBeRetrieved() {
+    public function testBundledComponentsCanBeRetrieved(): void {
         $this->assertEquals($this->bundledComponents, $this->manifest->getBundledComponents());
     }
 
     /**
      * @uses \PharIo\Manifest\Extension
      */
-    public function testExtendedApplicationCanBeQueriedForExtension()
-    {
-        $appName = new ApplicationName('foo/bar');
+    public function testExtendedApplicationCanBeQueriedForExtension(): void {
+        $appName  = new ApplicationName('foo/bar');
         $manifest = new Manifest(
             new ApplicationName('foo/foo'),
             new Version('1.0.0'),
@@ -152,8 +136,8 @@ class ManifestTest extends TestCase {
         $this->assertTrue($manifest->isExtensionFor($appName));
     }
 
-    public function testNonExtensionReturnsFalseWhenQueriesForExtension() {
-        $appName = new ApplicationName('foo/bar');
+    public function testNonExtensionReturnsFalseWhenQueriesForExtension(): void {
+        $appName  = new ApplicationName('foo/bar');
         $manifest = new Manifest(
             new ApplicationName('foo/foo'),
             new Version('1.0.0'),
@@ -169,9 +153,8 @@ class ManifestTest extends TestCase {
     /**
      * @uses \PharIo\Manifest\Extension
      */
-    public function testExtendedApplicationCanBeQueriedForExtensionWithVersion()
-    {
-        $appName = new ApplicationName('foo/bar');
+    public function testExtendedApplicationCanBeQueriedForExtensionWithVersion(): void {
+        $appName  = new ApplicationName('foo/bar');
         $manifest = new Manifest(
             new ApplicationName('foo/foo'),
             new Version('1.0.0'),
@@ -183,5 +166,4 @@ class ManifestTest extends TestCase {
 
         $this->assertTrue($manifest->isExtensionFor($appName, new Version('1.2.3')));
     }
-
 }
