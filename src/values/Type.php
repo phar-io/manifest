@@ -24,14 +24,17 @@ abstract class Type {
         return new Extension($application, $versionConstraint);
     }
 
+    /** @psalm-assert-if-true Application $this */
     public function isApplication(): bool {
         return false;
     }
 
+    /** @psalm-assert-if-true Library $this */
     public function isLibrary(): bool {
         return false;
     }
 
+    /** @psalm-assert-if-true Extension $this */
     public function isExtension(): bool {
         return false;
     }
