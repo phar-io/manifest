@@ -47,10 +47,10 @@ abstract class ElementCollection implements \Iterator {
     }
 
     private function importNodes(DOMNodeList $nodeList): void {
-        foreach($nodeList as $node) {
+        foreach ($nodeList as $node) {
             if (!$node instanceof DOMElement) {
                 throw new ElementCollectionException(
-                    sprintf('\DOMElement expected, got \%s', \get_class($node))
+                    \sprintf('\DOMElement expected, got \%s', \get_class($node))
                 );
             }
 

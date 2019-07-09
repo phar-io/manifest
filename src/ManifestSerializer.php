@@ -76,7 +76,7 @@ class ManifestSerializer {
 
             case $type->isExtension(): {
                 $this->xmlWriter->writeAttribute('type', 'extension');
-                /** @var $type Extension */
+                /* @var $type Extension */
                 $this->addExtension(
                     $type->getApplicationName(),
                     $type->getVersionConstraint()

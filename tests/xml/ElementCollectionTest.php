@@ -5,9 +5,7 @@ use DOMDocument;
 use PHPUnit\Framework\TestCase;
 
 class ElementCollectionTest extends TestCase {
-
     public function testEnforcesDOMElementsOnly(): void {
-
         $dom = new DOMDocument();
         $dom->loadXML('<?xml version="1.0"?><root>text</root>');
 
@@ -17,5 +15,4 @@ class ElementCollectionTest extends TestCase {
             public function current() {}
         };
     }
-
 }

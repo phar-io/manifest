@@ -20,5 +20,4 @@ class PhpExtensionRequirement implements Requirement {
     public function asString(): string {
         return $this->extension;
     }
-
 }
