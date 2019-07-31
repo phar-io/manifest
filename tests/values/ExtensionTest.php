@@ -68,7 +68,7 @@ class ExtensionTest extends TestCase {
         );
     }
 
-    public function testCompatibleWithReturnsTrueForMatchingVersionConstraintAndApplicaiton(): void {
+    public function testCompatibleWithReturnsTrueForMatchingVersionConstraintAndApplication(): void {
         $app       = new ApplicationName('foo/bar');
         $extension = Type::extension($app, (new VersionConstraintParser)->parse('^1.0'));
         $version   = new Version('1.0.0');
