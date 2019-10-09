@@ -48,7 +48,7 @@ class BundledComponentCollectionTest extends TestCase {
         $this->assertContains($this->item, $this->collection);
     }
 
-    public function testKeyPositionCanBeRetreived(): void {
+    public function testKeyPositionCanBeRetrieved(): void {
         $this->collection->add($this->item);
 
         foreach ($this->collection as $key => $item) {
