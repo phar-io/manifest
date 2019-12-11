@@ -3,6 +3,11 @@ os:
 
 language: php
 
+addons:
+  apt:
+    packages:
+      - ant
+
 before_install:
   - wget https://phar.io/releases/phive.phar
   - wget https://phar.io/releases/phive.phar.asc
