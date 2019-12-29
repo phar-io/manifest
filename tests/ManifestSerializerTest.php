@@ -79,7 +79,7 @@ class ManifestSerializerTest extends \PHPUnit\Framework\TestCase {
      */
     public function testCanSerializeToFile(): void {
         $src        = __DIR__ . '/_fixture/library.xml';
-        $dest       = '/tmp/' . \uniqid('serializer', true);
+        $dest       = \sys_get_temp_dir() . '/' . \uniqid('serializer', true);
         $manifest   = ManifestLoader::fromFile($src);
         $serializer = new ManifestSerializer();
         $serializer->serializeToFile($manifest, $dest);
