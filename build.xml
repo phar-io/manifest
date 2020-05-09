@@ -35,7 +35,7 @@
     </target>
 
     <target name="test" depends="install-tools,install-dependencies" description="Run tests">
-        <exec executable="${basedir}/vendor/bin/phpunit" taskname="phpunit"/>
+        <exec executable="${basedir}/tools/phpunit" taskname="phpunit"/>
     </target>
 
     <target name="-tools-installed">
