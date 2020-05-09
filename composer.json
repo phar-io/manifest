@@ -27,7 +27,7 @@
     "ext-dom": "*",
     "ext-phar": "*",
     "ext-xmlwriter": "*",
-    "phar-io/version": "^2.0"
+    "phar-io/version": "^3.0.1"
   },
   "autoload": {
     "classmap": [
@@ -36,10 +36,7 @@
   },
   "extra": {
     "branch-alias": {
-        "dev-master": "1.0.x-dev"
+        "dev-master": "2.0.x-dev"
     }
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^8.2"
   }
 }
