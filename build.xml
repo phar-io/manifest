@@ -30,7 +30,8 @@
         <exec executable="phive" taskname="phive">
             <arg value="install"/>
             <arg value="--trust-gpg-keys" />
-            <arg value="4AA394086372C20A,2A8299CE842DD38C" />
+            <!--        phpab,           phpunit,         phpstan,         psaml,           php-cs-fixer     -->
+            <arg value="4AA394086372C20A,2A8299CE842DD38C,CF1A108D0E7AE720,8A03EA3B385DBAA1,E82B2FB314E9906E" />
         </exec>
     </target>
 
