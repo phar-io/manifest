@@ -2,6 +2,10 @@
 
 All notable changes to phar-io/manifest are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.0.1] - 27.06.2020
+
+This release now supports the use of PHP 7.2+ and ^8.0
+
 ## [2.0.0] - 10.05.2020
 
 This release now requires PHP 7.2+
