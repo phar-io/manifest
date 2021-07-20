@@ -2,9 +2,11 @@
 
 All notable changes to phar-io/manifest are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [2.0.2] - 20.07.2021
+## [2.0.3] - 20.07.2021
 
-This release now supports the use of PHP 7.2+ and ^8.1
+- Fixed PHP 7.2 / PHP 7.3 incompatibility introduced in previous release
+
+## [2.0.2] - 20.07.2021
 
 - Fixed PHP 8.1 deprecation notice
 
@@ -25,6 +27,7 @@ This release now requires PHP 7.2+
 ### Unreleased
 
 [Unreleased]: https://github.com/phar-io/manifest/compare/2.0.2...HEAD
+[2.0.3]: https://github.com/phar-io/manifest/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/phar-io/manifest/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/phar-io/manifest/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/phar-io/manifest/compare/1.0.1...2.0.0
