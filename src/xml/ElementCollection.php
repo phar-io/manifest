@@ -24,17 +24,17 @@ abstract class ElementCollection implements \Iterator {
         $this->importNodes($nodeList);
     }
 
-    abstract public function current(): ManifestElement;
+    abstract public function current();
 
     public function next(): void {
         $this->position++;
     }
 
-    public function key(): int {
+    public function key() {
         return $this->position;
     }
 
-    public function valid(): bool {
+    public function valid() {
         return $this->position < \count($this->nodes);
     }
 

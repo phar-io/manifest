@@ -12,7 +12,7 @@ class ElementCollectionTest extends TestCase {
         $this->expectException(ElementCollectionException::class);
 
         new class($dom->documentElement->childNodes) extends ElementCollection {
-            public function current(): ManifestElement {}
+            public function current() {}
         };
     }
 }
