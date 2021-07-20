@@ -2,7 +2,9 @@
 
 All notable changes to phar-io/manifest are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [2.0.2] - DD.MM.202Y
+## [2.0.2] - 20.07.2021
+
+This release now supports the use of PHP 7.2+ and ^8.1
 
 - Fixed PHP 8.1 deprecation notice
 
@@ -20,9 +22,12 @@ This release now requires PHP 7.2+
     - Version strings `v1.2.3` will now be converted to valid semantic version strings `1.2.3`
     - Abreviated strings like `1.0` will get expaneded to `1.0.0`  
 
-[2.0.2]: https://github.com/phar-io/version/compare/2.0.1...master
-[2.0.1]: https://github.com/phar-io/version/compare/2.0.0...2.0.1
-[2.0.0]: https://github.com/phar-io/version/compare/1.0.1...2.0.0
-[1.0.3]: https://github.com/phar-io/version/compare/1.0.2...1.0.3
-[1.0.2]: https://github.com/phar-io/version/compare/1.0.1...1.0.2
-[1.0.1]: https://github.com/phar-io/version/compare/1.0.0...1.0.1
+### Unreleased
+
+[Unreleased]: https://github.com/phar-io/manifest/compare/2.0.2...HEAD
+[2.0.2]: https://github.com/phar-io/manifest/compare/2.0.1...2.0.2
+[2.0.1]: https://github.com/phar-io/manifest/compare/2.0.0...2.0.1
+[2.0.0]: https://github.com/phar-io/manifest/compare/1.0.1...2.0.0
+[1.0.3]: https://github.com/phar-io/manifest/compare/1.0.2...1.0.3
+[1.0.2]: https://github.com/phar-io/manifest/compare/1.0.1...1.0.2
+[1.0.1]: https://github.com/phar-io/manifest/compare/1.0.0...1.0.1
