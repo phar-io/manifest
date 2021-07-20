@@ -26,7 +26,7 @@ This release now requires PHP 7.2+
 
 ### Unreleased
 
-[Unreleased]: https://github.com/phar-io/manifest/compare/2.0.2...HEAD
+[Unreleased]: https://github.com/phar-io/manifest/compare/2.0.3...HEAD
 [2.0.3]: https://github.com/phar-io/manifest/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/phar-io/manifest/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/phar-io/manifest/compare/2.0.0...2.0.1
