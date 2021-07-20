@@ -20,9 +20,7 @@ This release now requires PHP 7.2+
     - Version strings `v1.2.3` will now be converted to valid semantic version strings `1.2.3`
     - Abreviated strings like `1.0` will get expaneded to `1.0.0`  
 
-### Unreleased
-
-[Unreleased]: https://github.com/phar-io/version/compare/2.0.1...master
+[2.0.2]: https://github.com/phar-io/version/compare/2.0.1...master
 [2.0.1]: https://github.com/phar-io/version/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/phar-io/version/compare/1.0.1...2.0.0
 [1.0.3]: https://github.com/phar-io/version/compare/1.0.2...1.0.3
