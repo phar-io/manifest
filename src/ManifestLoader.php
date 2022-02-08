@@ -41,4 +41,19 @@ class ManifestLoader {
             );
         }
     }
+
+    public static function fromComposer(string $filename): Manifest
+    {
+        try {
+            return (new ManifestDocumentMapper())->map(
+                ManifestJsonDocument::fromFile($filename)
+            );
+        } catch (Exception $e) {
+            throw new ManifestLoaderException(
+                \sprintf('Loading %s failed.', $filename),
+                (int)$e->getCode(),
+                $e
+            );
+        }
+    }
 }
