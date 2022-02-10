@@ -2,10 +2,6 @@
 
 Component for reading [phar.io](https://phar.io/) manifest information from a [PHP Archive (PHAR)](http://php.net/phar).
 
-[![Build Status](https://travis-ci.org/phar-io/manifest.svg?branch=master)](https://travis-ci.org/phar-io/manifest)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/phar-io/manifest/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/phar-io/manifest/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d8cc6035-69ad-477d-bd1a-ccc605480fd7/mini.png)](https://insight.sensiolabs.com/projects/d8cc6035-69ad-477d-bd1a-ccc605480fd7)
-
 ## Installation
 
 You can add this library as a local, per-project dependency to your project using [Composer](https://getcomposer.org/):
