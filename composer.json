@@ -25,9 +25,11 @@
   "require": {
     "php": "^7.2 || ^8.0",
     "ext-dom": "*",
+    "ext-json": "*",
     "ext-phar": "*",
     "ext-xmlwriter": "*",
-    "phar-io/version": "^3.0.1"
+    "phar-io/version": "^3.0.1",
+    "symfony/serializer": "^5.0 || ^6.0"
   },
   "autoload": {
     "classmap": [
