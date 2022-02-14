@@ -1,0 +1,61 @@
+name: Testing
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+env:
+  extensions: mbstring, dom, curl, gnupg
+  key: cache-v1 # can be any string, change to clear the extension cache.
+
+jobs:
+  install-check:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+        php-versions:
+          - '7.2'
+          - '7.3'
+          - '7.4'
+          - '8.0'
+          - '8.1'
+    name: Test on [${{ matrix.php-versions }} | ${{ matrix.operating-system }}]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup cache environment
+        id: cache-env
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: ${{ env.extensions }}
+          key: ${{ env.key }}
+
+      - name: Cache extensions
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-env.outputs.dir }}
+          key: ${{ steps.cache-env.outputs.key }}
+          restore-keys: ${{ steps.cache-env.outputs.key }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: ${{ env.extensions }}
+          ini-values: memory_limit=2G, display_errors=On, error_reporting=-1
+
+      - name: Composer install
+        run: composer install --no-interaction --prefer-source
+
+      - name: Install PHPUnit
+        env:
+          GITHUB_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: php ./phive --no-progress install --trust-gpg-keys D8406D0D82947747293778314AA394086372C20A phpunit
+
+      - name: Run PHPUnit
+        run: ./tools/phpunit
+

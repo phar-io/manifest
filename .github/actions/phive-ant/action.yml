@@ -1,0 +1,5 @@
+name: 'Phive ant'
+description: 'Ant wrapper for phive in github actions'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
