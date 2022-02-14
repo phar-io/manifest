@@ -20,4 +20,5 @@ echo sprintf(
     $manifest->getName()->asString(),
     $manifest->getVersion()->getVersionString()
 );
+
 echo (new ManifestSerializer)->serializeToString($manifest);
