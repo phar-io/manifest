@@ -59,7 +59,7 @@ class ManifestDocumentMapper {
             $authors->add(
                 new Author(
                     $authorElement->getName(),
-                    new Email($authorElement->getEmail())
+                    $authorElement->hasEMail() ? new Email($authorElement->getEmail()) : null
                 )
             );
         }

@@ -36,6 +36,10 @@ class ManifestElement {
         return $this->element->getAttribute($name);
     }
 
+    protected function hasAttribute(string $name): bool {
+        return $this->element->hasAttribute($name);
+    }
+
     protected function getChildByName(string $elementName): DOMElement {
         $element = $this->element->getElementsByTagNameNS(self::XMLNS, $elementName)->item(0);
 

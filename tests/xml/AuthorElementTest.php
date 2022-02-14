@@ -18,4 +18,16 @@ class AuthorElementTest extends \PHPUnit\Framework\TestCase {
     public function testEmailCanBeRetrieved(): void {
         $this->assertEquals('reiner@zufall.de', $this->author->getEmail());
     }
+
+    public function testHasEmailReturnsTrueWhenEMailIsSet(): void {
+        $this->assertTrue($this->author->hasEmail());
+    }
+
+    public function testHasEMailReturnsFalseWhenNoEMailAddressIsSet() {
+        $dom = new \DOMDocument();
+        $dom->loadXML('<?xml version="1.0" ?><author xmlns="https://phar.io/xml/manifest/1.0" name="Reiner Zufall" />');
+
+        $this->assertFalse((new AuthorElement($dom->documentElement))->hasEMail());
+
+    }
 }

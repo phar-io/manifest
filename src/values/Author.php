@@ -13,10 +13,10 @@ class Author {
     /** @var string */
     private $name;
 
-    /** @var Email */
+    /** @var Email|null */
     private $email;
 
-    public function __construct(string $name, Email $email) {
+    public function __construct(string $name, ?Email $email = null) {
         $this->name  = $name;
         $this->email = $email;
     }
@@ -33,7 +33,15 @@ class Author {
         return $this->name;
     }
 
+    public function hasEmail(): bool {
+        return $this->email !== null;
+    }
+
     public function getEmail(): Email {
+        if (!$this->hasEmail()) {
+            throw new NoEmailAddressException();
+        }
+
         return $this->email;
     }
 }

@@ -40,4 +40,22 @@ class AuthorTest extends TestCase {
     public function testCanBeUsedAsString(): void {
         $this->assertEquals('Joe Developer <user@example.com>', $this->author->asString());
     }
+
+    public function testCanBeCreatedWithoutEmail(): void {
+        $this->assertInstanceOf(Author::class, new Author('Joe Developer'));
+    }
+
+    public function testHasEmailReturnsTrueWhenEMailIsSet(): void {
+        $this->assertTrue($this->author->hasEmail());
+    }
+
+    public function testHasEmailReturnsFalseOnMissingEMail(): void {
+        $this->assertFalse((new Author('Joe Developer'))->hasEmail());
+    }
+
+    public function testThrowsExceptionWhenMissingEmailAddressIsQueried(): void {
+        $author = new Author('Joe Developer');
+        $this->expectException(NoEmailAddressException::class);
+        $author->getEmail();
+    }
 }
