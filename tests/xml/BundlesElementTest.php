@@ -26,7 +26,6 @@ class BundlesElementTest extends \PHPUnit\Framework\TestCase {
         $this->assertInstanceOf(
             ComponentElement::class,
             $this->bundles->getComponentElements()->current()
-
         );
     }
 

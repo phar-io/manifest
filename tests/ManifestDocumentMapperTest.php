@@ -65,9 +65,9 @@ class ManifestDocumentMapperTest extends \PHPUnit\Framework\TestCase {
 
     public function dataProvider() {
         return [
-            'application' => [__DIR__ . '/_fixture/phpunit-5.6.5.xml'],
-            'library'     => [__DIR__ . '/_fixture/library.xml'],
-            'extension'   => [__DIR__ . '/_fixture/extension.xml'],
+            'application'   => [__DIR__ . '/_fixture/phpunit-5.6.5.xml'],
+            'library'       => [__DIR__ . '/_fixture/library.xml'],
+            'extension'     => [__DIR__ . '/_fixture/extension.xml'],
             'noemailauthor' => [__DIR__ . '/_fixture/noemailauthor.xml']
         ];
     }

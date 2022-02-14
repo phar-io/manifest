@@ -23,11 +23,10 @@ class AuthorElementTest extends \PHPUnit\Framework\TestCase {
         $this->assertTrue($this->author->hasEmail());
     }
 
-    public function testHasEMailReturnsFalseWhenNoEMailAddressIsSet() {
+    public function testHasEMailReturnsFalseWhenNoEMailAddressIsSet(): void {
         $dom = new \DOMDocument();
         $dom->loadXML('<?xml version="1.0" ?><author xmlns="https://phar.io/xml/manifest/1.0" name="Reiner Zufall" />');
 
         $this->assertFalse((new AuthorElement($dom->documentElement))->hasEMail());
-
     }
 }

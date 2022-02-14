@@ -13,7 +13,7 @@ class Author {
     /** @var string */
     private $name;
 
-    /** @var Email|null */
+    /** @var null|Email */
     private $email;
 
     public function __construct(string $name, ?Email $email = null) {
