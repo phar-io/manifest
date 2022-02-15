@@ -157,6 +157,7 @@ echo (new ManifestSerializer)->serializeToString($manifest);
 
 <details>
   <summary>Output</summary>
+    
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <phar xmlns="https://phar.io/xml/manifest/1.0">
@@ -172,5 +173,6 @@ echo (new ManifestSerializer)->serializeToString($manifest);
     </bundles>
 </phar>
 ```
+    
 </details>
 
