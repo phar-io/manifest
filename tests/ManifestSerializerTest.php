@@ -1,7 +1,20 @@
 <?php declare(strict_types = 1);
+/*
+ * This file is part of PharIo\Manifest.
+ *
+ * Copyright (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de> and contributors
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ */
 namespace PharIo\Manifest;
 
 use PharIo\Version\Version;
+use function file_get_contents;
+use function sys_get_temp_dir;
+use function uniqid;
+use function unlink;
 
 /**
  * @covers \PharIo\Manifest\ManifestSerializer
@@ -67,9 +80,9 @@ class ManifestSerializerTest extends \PHPUnit\Framework\TestCase {
 
     public function dataProvider() {
         return [
-            'application' => [\file_get_contents(__DIR__ . '/_fixture/phpunit-5.6.5.xml')],
-            'library'     => [\file_get_contents(__DIR__ . '/_fixture/library.xml')],
-            'extension'   => [\file_get_contents(__DIR__ . '/_fixture/extension.xml')]
+            'application' => [file_get_contents(__DIR__ . '/_fixture/phpunit-5.6.5.xml')],
+            'library'     => [file_get_contents(__DIR__ . '/_fixture/library.xml')],
+            'extension'   => [file_get_contents(__DIR__ . '/_fixture/extension.xml')]
         ];
     }
 
@@ -79,12 +92,12 @@ class ManifestSerializerTest extends \PHPUnit\Framework\TestCase {
      */
     public function testCanSerializeToFile(): void {
         $src        = __DIR__ . '/_fixture/library.xml';
-        $dest       = \sys_get_temp_dir() . '/' . \uniqid('serializer', true);
+        $dest       = sys_get_temp_dir() . '/' . uniqid('serializer', true);
         $manifest   = ManifestLoader::fromFile($src);
         $serializer = new ManifestSerializer();
         $serializer->serializeToFile($manifest, $dest);
         $this->assertXmlFileEqualsXmlFile($src, $dest);
-        \unlink($dest);
+        unlink($dest);
     }
 
     /**

@@ -2,16 +2,18 @@
 /*
  * This file is part of PharIo\Manifest.
  *
- * (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de>
+ * Copyright (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de> and contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
  */
 namespace PharIo\Manifest;
 
 use PharIo\Version\Exception as VersionException;
 use PharIo\Version\Version;
 use PharIo\Version\VersionConstraintParser;
+use function sprintf;
 
 class ManifestDocumentMapper {
     public function map(ManifestDocument $document): Manifest {
@@ -48,7 +50,7 @@ class ManifestDocumentMapper {
         }
 
         throw new ManifestDocumentMapperException(
-            \sprintf('Unsupported type %s', $contains->getType())
+            sprintf('Unsupported type %s', $contains->getType())
         );
     }
 
@@ -85,7 +87,7 @@ class ManifestDocumentMapper {
             $versionConstraint = $parser->parse($phpElement->getVersion());
         } catch (VersionException $e) {
             throw new ManifestDocumentMapperException(
-                \sprintf('Unsupported version constraint - %s', $e->getMessage()),
+                sprintf('Unsupported version constraint - %s', $e->getMessage()),
                 (int)$e->getCode(),
                 $e
             );
@@ -141,7 +143,7 @@ class ManifestDocumentMapper {
             );
         } catch (VersionException $e) {
             throw new ManifestDocumentMapperException(
-                \sprintf('Unsupported version constraint - %s', $e->getMessage()),
+                sprintf('Unsupported version constraint - %s', $e->getMessage()),
                 (int)$e->getCode(),
                 $e
             );

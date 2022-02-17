@@ -2,12 +2,15 @@
 /*
  * This file is part of PharIo\Manifest.
  *
- * (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de>
+ * Copyright (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de> and contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
  */
 namespace PharIo\Manifest;
+
+use function sprintf;
 
 class Author {
     /** @var string */
@@ -22,7 +25,7 @@ class Author {
     }
 
     public function asString(): string {
-        return \sprintf(
+        return sprintf(
             '%s <%s>',
             $this->name,
             $this->email->asString()

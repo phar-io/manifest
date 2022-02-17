@@ -1,5 +1,16 @@
 <?php declare(strict_types = 1);
+/*
+ * This file is part of PharIo\Manifest.
+ *
+ * Copyright (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de> and contributors
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ */
 namespace PharIo\Manifest;
+
+use function file_get_contents;
 
 /**
  * @covers \PharIo\Manifest\ManifestLoader
@@ -53,7 +64,7 @@ class ManifestLoaderTest extends \PHPUnit\Framework\TestCase {
         $this->assertInstanceOf(
             Manifest::class,
             ManifestLoader::fromString(
-                \file_get_contents(__DIR__ . '/_fixture/library.xml')
+                file_get_contents(__DIR__ . '/_fixture/library.xml')
             )
         );
     }

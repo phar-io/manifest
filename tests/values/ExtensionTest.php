@@ -2,10 +2,11 @@
 /*
  * This file is part of PharIo\Manifest.
  *
- * (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de>
+ * Copyright (c) Arne Blankerts <arne@blankerts.de>, Sebastian Heuer <sebastian@phpeople.de>, Sebastian Bergmann <sebastian@phpunit.de> and contributors
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
+ *
  */
 namespace PharIo\Manifest;
 
@@ -14,6 +15,7 @@ use PharIo\Version\Version;
 use PharIo\Version\VersionConstraint;
 use PharIo\Version\VersionConstraintParser;
 use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_MockObject_MockObject;
 
 /**
  * @covers \PharIo\Manifest\Extension
@@ -26,7 +28,7 @@ class ExtensionTest extends TestCase {
     /** @var Extension */
     private $type;
 
-    /** @var ApplicationName|\PHPUnit_Framework_MockObject_MockObject */
+    /** @var ApplicationName|PHPUnit_Framework_MockObject_MockObject */
     private $name;
 
     protected function setUp(): void {
