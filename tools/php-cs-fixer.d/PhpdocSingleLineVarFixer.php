@@ -1,7 +1,7 @@
 <?php
 namespace PharIo\CSFixer;
 
-use PhpCsFixer\Fixer\DefinedFixerInterface;
+use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\Tokenizer\Tokens;
 use PhpCsFixer\Tokenizer\Token;
@@ -16,7 +16,7 @@ use PhpCsFixer\Tokenizer\Token;
  * https://github.com/kubawerlos/php-cs-fixer-custom-fixers/blob/master/src/Fixer/PhpdocSingleLineVarFixer.php
  *
  */
-class PhpdocSingleLineVarFixer implements DefinedFixerInterface {
+class PhpdocSingleLineVarFixer implements FixerInterface {
 
     public function getDefinition(): FixerDefinition {
         return new FixerDefinition(
@@ -61,11 +61,11 @@ class PhpdocSingleLineVarFixer implements DefinedFixerInterface {
         return 0;
     }
 
-    public function getName() {
+    public function getName(): string {
         return 'PharIo/phpdoc_single_line_var_fixer';
     }
 
-    public function supports(\SplFileInfo $file) {
+    public function supports(\SplFileInfo $file): bool {
         return true;
     }
 

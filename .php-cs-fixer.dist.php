@@ -2,7 +2,7 @@
 
 require __DIR__ . '/tools/php-cs-fixer.d/PhpdocSingleLineVarFixer.php';
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->registerCustomFixers([
         new \PharIo\CSFixer\PhpdocSingleLineVarFixer()
     ])
@@ -76,11 +76,11 @@ return PhpCsFixer\Config::create()
             'list_syntax'                                   => ['syntax' => 'short'],
             'logical_operators'                             => true,
             'lowercase_cast'                                => true,
-            'lowercase_constants'                           => true,
+            'constant_case'                                 => ['case' => 'lower'],
             'lowercase_keywords'                            => true,
             'lowercase_static_reference'                    => true,
             'magic_constant_casing'                         => true,
-            'method_argument_space'                         => ['ensure_fully_multiline' => true],
+            'method_argument_space'                         => ['on_multiline' => 'ensure_fully_multiline'],
             'modernize_types_casting'                       => true,
             'multiline_comment_opening_closing'             => true,
             'multiline_whitespace_before_semicolons'        => true,
@@ -106,7 +106,7 @@ return PhpCsFixer\Config::create()
             'no_null_property_initialization'               => true,
             'no_php4_constructor'                           => true,
             'no_short_bool_cast'                            => true,
-            'no_short_echo_tag'                             => true,
+            'echo_tag_syntax'                               => ['format' => 'long'],
             'no_singleline_whitespace_before_semicolons'    => true,
             'no_spaces_after_function_name'                 => true,
             'no_spaces_inside_parenthesis'                  => true,
@@ -188,7 +188,7 @@ return PhpCsFixer\Config::create()
             'single_quote'                                  => true,
             'standardize_not_equals'                        => true,
             'ternary_to_null_coalescing'                    => true,
-            'trailing_comma_in_multiline_array'             => false,
+            'trailing_comma_in_multiline'                   => false,
             'trim_array_spaces'                             => true,
             'unary_operator_spaces'                         => true,
             'visibility_required'                           => [
