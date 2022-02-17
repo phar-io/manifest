@@ -25,6 +25,10 @@ class Author {
     }
 
     public function asString(): string {
+        if (!$this->hasEmail()) {
+            return $this->name;
+        }
+
         return sprintf(
             '%s <%s>',
             $this->name,
@@ -36,6 +40,9 @@ class Author {
         return $this->name;
     }
 
+    /**
+     * @psalm-assert-if-true Email $this->email
+     */
     public function hasEmail(): bool {
         return $this->email !== null;
     }

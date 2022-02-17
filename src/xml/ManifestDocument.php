@@ -12,6 +12,7 @@ namespace PharIo\Manifest;
 
 use DOMDocument;
 use DOMElement;
+use Throwable;
 use function count;
 use function file_exists;
 use function file_get_contents;
@@ -27,7 +28,7 @@ class ManifestDocument {
     private $dom;
 
     public static function fromFile(string $filename): ManifestDocument {
-        if (!file_exists($filename)) {
+        if (!is_file($filename)) {
             throw new ManifestDocumentException(
                 sprintf('File "%s" not found', $filename)
             );
@@ -42,11 +43,14 @@ class ManifestDocument {
         $prev = libxml_use_internal_errors(true);
         libxml_clear_errors();
 
-        $dom = new DOMDocument();
-        $dom->loadXML($xmlString);
-
-        $errors = libxml_get_errors();
-        libxml_use_internal_errors($prev);
+        try {
+            $dom = new DOMDocument();
+            $dom->loadXML($xmlString);
+            $errors = libxml_get_errors();
+            libxml_use_internal_errors($prev);
+        } catch (Throwable $t) {
+            throw new ManifestDocumentException($t->getMessage(), 0, $t);
+        }
 
         if (count($errors) !== 0) {
             throw new ManifestDocumentLoadingException($errors);

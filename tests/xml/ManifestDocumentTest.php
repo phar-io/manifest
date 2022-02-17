@@ -25,7 +25,12 @@ class ManifestDocumentTest extends \PHPUnit\Framework\TestCase {
         );
     }
 
-    public function testCaneBeConstructedFromString(): void {
+    public function testFromStringThrowsExceptionOnEmptyString(): void {
+        $this->expectException(ManifestDocumentException::class);
+        ManifestDocument::fromString('');
+    }
+
+    public function testCanBeConstructedFromString(): void {
         $content = file_get_contents(__DIR__ . '/../_fixture/phpunit-5.6.5.xml');
         $this->assertInstanceOf(
             ManifestDocument::class,
