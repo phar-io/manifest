@@ -36,7 +36,7 @@
             <arg value="https://phar.io/releases/phive.phar.asc"/>
         </exec>
         <exec executable="gpg" taskname="gpg-get-key">
-            <arg line="--keyserver hkps.pool.sks-keyservers.net --recv-keys 0x9D8A98B29B2D5D79" />
+            <arg line="--keyserver hkps://keys.openpgp.org --recv-keys 0x9D8A98B29B2D5D79" />
         </exec>
         <exec executable="gpg" taskname="gpg-verify">
             <arg line="--verify phive.phar.asc phive.phar" />
