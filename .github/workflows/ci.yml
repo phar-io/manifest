@@ -73,7 +73,7 @@ jobs:
         run: "composer install --no-interaction --optimize-autoloader --prefer-dist"
 
       - name: "Run PHPUnit"
-        run: "./tools/phpunit"
+        run: "phpunit"
 
       - name: "Send code coverage report to Codecov.io"
         run: "bash <(curl -s https://codecov.io/bash)"
