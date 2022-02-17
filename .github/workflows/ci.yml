@@ -16,26 +16,14 @@ jobs:
         with:
           coverage: "none"
           php-version: "8.0"
+          tools: "phive"
 
       - name: "Install dependencies with composer"
         run: "composer install --no-interaction --prefer-dist --optimize-autoloader"
 
-      - name: phive
-        uses: './.github/actions/phive-ant'
-        with:
-          args: 'getphive'
-
       - name: phive install
-        uses: './.github/actions/phive-ant'
-        env:
-          phive.bin: "/phive.phar"
-        with:
-          args: -Dphive.bin=./phive.phar install-tools
+        run: "ant install-tools"
 
       - name: php-cs-fixer
-        uses: './.github/actions/phive-ant'
-        env:
-          phive.bin: "/phive.phar"
-        with:
-          args: -Dphive.bin=./phive.phar php-cs-fixer
+        run: "ant php-cs-fixer"
 
