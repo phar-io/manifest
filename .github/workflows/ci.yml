@@ -1,19 +1,24 @@
 name: Code quality checks
 # This workflow is triggered on pushes to the repository.
-on: [push]
+on:
+  - "push"
 
 jobs:
   qa:
-    # This job runs on Linux
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
+
     steps:
-      - uses: actions/checkout@master
-      - name: composer
-        uses: docker://composer
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: "Checkout"
+        uses: "actions/checkout@v2.4.0"
+
+      - name: "Set up PHP"
+        uses: "shivammathur/setup-php@2.17.0"
         with:
-          args: install --no-interaction --prefer-dist --optimize-autoloader
+          coverage: "none"
+          php-version: "8.0"
+
+      - name: "Install dependencies with composer"
+        run: "composer install --no-interaction --prefer-dist --optimize-autoloader"
 
       - name: phive
         uses: './.github/actions/phive-ant'
