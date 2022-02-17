@@ -52,6 +52,13 @@
         </exec>
     </target>
 
+    <target name="php-cs-fixer" depends="install-tools" description="Dry run php csfixer">
+        <exec executable="./tools/php-cs-fixer" failonerror="true">
+            <arg value="fix" />
+            <arg value="--dry-run" />
+        </exec>
+    </target>
+
     <target name="test" depends="install-tools,install-dependencies" description="Run tests">
         <exec executable="${basedir}/tools/phpunit" taskname="phpunit"/>
     </target>
