@@ -2,6 +2,8 @@
 
 require __DIR__ . '/tools/php-cs-fixer.d/PhpdocSingleLineVarFixer.php';
 
+$header = file_get_contents(__DIR__ . '/tools/php-cs-fixer.d/header.txt');
+
 return (new PhpCsFixer\Config())
     ->registerCustomFixers([
         new \PharIo\CSFixer\PhpdocSingleLineVarFixer()
@@ -69,7 +71,12 @@ return (new PhpCsFixer\Config())
             'function_declaration'                          => [
                 'closure_function_spacing' => 'one'
             ],
-            'header_comment'                                => false,
+            'global_namespace_import'                       => [
+                'import_classes'   => true,
+                'import_constants' => true,
+                'import_functions' => true,
+            ],
+            'header_comment'                                => ['header' => $header, 'separate' => 'none'],
             'indentation_type'                              => true,
             'is_null'                                       => true,
             'line_ending'                                   => true,
@@ -84,9 +91,6 @@ return (new PhpCsFixer\Config())
             'modernize_types_casting'                       => true,
             'multiline_comment_opening_closing'             => true,
             'multiline_whitespace_before_semicolons'        => true,
-            'native_constant_invocation'                    => true,
-            'native_function_casing'                        => true,
-            'native_function_invocation'                    => true,
             'new_with_braces'                               => false,
             'no_alias_functions'                            => true,
             'no_alternative_syntax'                         => true,
@@ -153,7 +157,13 @@ return (new PhpCsFixer\Config())
                     'method_private_static',
                 ],
             ],
-            'ordered_imports'                               => true,
+            'ordered_imports' => [
+                'imports_order' => [
+                    PhpCsFixer\Fixer\Import\OrderedImportsFixer::IMPORT_TYPE_CLASS,
+                    PhpCsFixer\Fixer\Import\OrderedImportsFixer::IMPORT_TYPE_CONST,
+                    PhpCsFixer\Fixer\Import\OrderedImportsFixer::IMPORT_TYPE_FUNCTION,
+                ]
+            ],
             'phpdoc_add_missing_param_annotation'           => true,
             'phpdoc_align'                                  => true,
             'phpdoc_annotation_without_dot'                 => true,
