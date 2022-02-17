@@ -27,6 +27,8 @@ jobs:
         run: "composer install --no-interaction --optimize-autoloader --prefer-dist"
 
       - name: "Install dependencies with phive"
+        env:
+          GITHUB_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: "ant install-tools"
 
       - name: "Run php-cs-fixer"
@@ -71,6 +73,8 @@ jobs:
         run: "composer install --no-interaction --optimize-autoloader --prefer-dist"
 
       - name: "Install dependencies with phive"
+        env:
+          GITHUB_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: "ant install-tools"
 
       - name: "Run PHPUnit"
