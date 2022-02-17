@@ -62,6 +62,32 @@
         </exec>
     </target>
 
+    <target name="psalm" depends="install-tools,install-dependencies" description="Run psalm">
+        <exec executable="${basedir}/tools/psalm" taskname="psalm-cache-clear">
+            <arg value="--config=psalm.xml" />
+            <arg value="--clear-cache" />
+        </exec>
+
+        <exec executable="${basedir}/tools/psalm" taskname="psalm" failonerror="true">
+            <arg value="--config=psalm.xml" />
+            <arg value="--show-info=true" />
+            <arg value="--stats" />
+        </exec>
+    </target>
+
+    <target name="psalm-baseline" depends="install-tools,install-dependencies" description="Run psalm">
+        <exec executable="${basedir}/tools/psalm" taskname="psalm-cache-clear">
+            <arg value="--config=psalm.xml" />
+            <arg value="--clear-cache" />
+        </exec>
+
+        <exec executable="${basedir}/tools/psalm" taskname="psalm-baseline">
+            <arg value="--config=psalm.xml" />
+            <arg value="--set-baseline=build/psalm-baseline.xml" />
+            <arg value="--show-info=false" />
+        </exec>
+    </target>
+
     <target name="test" depends="install-tools,install-dependencies" description="Run tests">
         <exec executable="${basedir}/tools/phpunit" taskname="phpunit"/>
     </target>
