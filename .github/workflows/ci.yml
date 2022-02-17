@@ -38,7 +38,7 @@ jobs:
   tests:
     name: "Tests"
 
-    runs-on: ${{ matrix.operating-system }}
+    runs-on: "${{ matrix.operating-system }}"
 
     strategy:
       matrix:
@@ -61,9 +61,11 @@ jobs:
       - name: "Set up PHP"
         uses: "shivammathur/setup-php@2.17.0"
         with:
+          coverage: "pcov"
+          extensions: "${{ env.extensions }}"
           ini-values: "display_errors=On, error_reporting=-1, memory_limit=2G"
           php-version: "${{ matrix.php-versions }}"
-          extensions: "${{ env.extensions }}"
+          tools: "phive"
 
       - name: "Install dependencies with composer"
         run: "composer install --no-interaction --optimize-autoloader --prefer-dist"
@@ -73,3 +75,6 @@ jobs:
 
       - name: "Run PHPUnit"
         run: "./tools/phpunit"
+
+      - name: "Send code coverage report to Codecov.io"
+        run: "bash <(curl -s https://codecov.io/bash)"
