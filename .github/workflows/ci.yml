@@ -1,10 +1,15 @@
-name: Code quality checks
-# This workflow is triggered on pushes to the repository.
+name: "CI"
+
 on:
-  - "push"
+  push:
+    branches:
+      - "master"
+  pull_request: null
 
 jobs:
   qa:
+    name: "QA"
+
     runs-on: "ubuntu-latest"
 
     steps:
@@ -19,11 +24,52 @@ jobs:
           tools: "phive"
 
       - name: "Install dependencies with composer"
-        run: "composer install --no-interaction --prefer-dist --optimize-autoloader"
+        run: "composer install --no-interaction --optimize-autoloader --prefer-dist"
 
-      - name: phive install
+      - name: "Install dependencies with phive"
         run: "ant install-tools"
 
-      - name: php-cs-fixer
+      - name: "Run php-cs-fixer"
         run: "ant php-cs-fixer"
 
+      - name: "Run psalm"
+        run: "ant psalm"
+
+  tests:
+    name: "Tests"
+
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        operating-system:
+          - "macos-latest"
+          - "ubuntu-latest"
+          - "windows-latest"
+
+        php-versions:
+          - "7.2"
+          - "7.3"
+          - "7.4"
+          - "8.0"
+          - "8.1"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2.4.0"
+
+      - name: "Set up PHP"
+        uses: "shivammathur/setup-php@2.17.0"
+        with:
+          ini-values: "display_errors=On, error_reporting=-1, memory_limit=2G"
+          php-version: "${{ matrix.php-versions }}"
+          extensions: "${{ env.extensions }}"
+
+      - name: "Install dependencies with composer"
+        run: "composer install --no-interaction --optimize-autoloader --prefer-dist"
+
+      - name: "Install dependencies with phive"
+        run: "ant install-tools"
+
+      - name: "Run PHPUnit"
+        run: "./tools/phpunit"
