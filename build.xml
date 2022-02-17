@@ -51,7 +51,7 @@
             <arg value="--copy" />
             <arg value="--trust-gpg-keys" />
             <!--        phpab,           phpunit,         phpstan,         psaml,           php-cs-fixer     -->
-            <arg value="4AA394086372C20A,2A8299CE842DD38C,CF1A108D0E7AE720,8A03EA3B385DBAA1,BBAB5DF0A0D6672989CF1869E82B2FB314E9906E" />
+            <arg value="4AA394086372C20A,2A8299CE842DD38C,CF1A108D0E7AE720,12CE0F1D262429A5,BBAB5DF0A0D6672989CF1869E82B2FB314E9906E" />
         </exec>
     </target>
 
