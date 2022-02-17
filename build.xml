@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="manifest" default="setup">
+    <property name="phive.bin" value="phive" />
+
     <target name="setup" depends="clean,install-tools,install-dependencies"/>
 
     <target name="clean" unless="clean.done" description="Cleanup build artifacts">
@@ -44,8 +46,9 @@
     </target>
 
     <target name="install-tools" unless="tools-installed" depends="-tools-installed" description="Install tools with Phive">
-        <exec executable="phive" taskname="phive">
+        <exec executable="${phive.bin}" taskname="phive" failonerror="true">
             <arg value="install"/>
+            <arg value="--copy" />
             <arg value="--trust-gpg-keys" />
             <!--        phpab,           phpunit,         phpstan,         psaml,           php-cs-fixer     -->
             <arg value="4AA394086372C20A,2A8299CE842DD38C,CF1A108D0E7AE720,8A03EA3B385DBAA1,E82B2FB314E9906E" />
@@ -64,7 +67,7 @@
     </target>
 
     <target name="-tools-installed">
-        <available file="${basedir}/tools" property="tools-installed" type="dir"/>
+        <available file="${basedir}/tools/phpunit" property="tools-installed" type="file"/>
     </target>
 </project>
 
