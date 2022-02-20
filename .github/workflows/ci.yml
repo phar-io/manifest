@@ -78,7 +78,7 @@ jobs:
         run: "ant install-tools"
 
       - name: "Run PHPUnit"
-        run: "tools/phpunit --coverage-clover build/logs/clover.xml"
+        run: "ant phpunit-ci"
 
       - name: "Send code coverage report to codecov.io"
         uses: "codecov/codecov-action@v2"

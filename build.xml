@@ -92,6 +92,15 @@
         <exec executable="${basedir}/tools/phpunit" taskname="phpunit"/>
     </target>
 
+    <target name="phpunit-ci">
+        <condition property="phpunit" value="phpunit.bat" else="phpunit">
+            <os family="windows" />
+        </condition>
+        <exec executable="${basedir}/tools/${phpunit}" taskname="phpunit">
+            <arg value="--coverage-clover build/logs/clover.xml" />
+        </exec>
+    </target>
+
     <target name="-tools-installed">
         <available file="${basedir}/tools/phpunit" property="tools-installed" type="file"/>
     </target>
