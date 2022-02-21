@@ -62,23 +62,20 @@ jobs:
 
       - name: "Set up PHP"
         uses: "shivammathur/setup-php@2.17.0"
+        env:
+          COMPOSER_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         with:
           coverage: "pcov"
           extensions: "${{ env.extensions }}"
           ini-values: "display_errors=On, error_reporting=-1, memory_limit=2G"
           php-version: "${{ matrix.php-versions }}"
-          tools: "phive"
+          tools: "phpunit:8.5"
 
       - name: "Install dependencies with composer"
         run: "composer install --no-interaction --optimize-autoloader --prefer-dist"
 
-      - name: "Install dependencies with phive"
-        env:
-          GITHUB_AUTH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        run: "ant install-tools"
-
       - name: "Run PHPUnit"
-        run: "ant phpunit-ci"
+        run: "phpunit --coverage-clover build/logs/clover.xml"
 
       - name: "Send code coverage report to codecov.io"
         uses: "codecov/codecov-action@v2"
