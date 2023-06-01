@@ -17,13 +17,12 @@
     </target>
 
     <target name="install-dependencies" description="Install dependencies with Composer">
-        <exec executable="composer" taskname="composer">
+        <exec executable="${basedir}/tools/composer" taskname="composer">
             <env key="COMPOSER_DISABLE_XDEBUG_WARN" value="1"/>
             <arg value="install"/>
             <arg value="--no-interaction"/>
             <arg value="--no-progress"/>
             <arg value="--no-ansi"/>
-            <arg value="--no-suggest"/>
             <arg value="--optimize-autoloader"/>
         </exec>
     </target>
