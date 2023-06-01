@@ -60,8 +60,6 @@ class ManifestSerializerTest extends \PHPUnit\Framework\TestCase {
     /**
      * @dataProvider dataProvider
      *
-     * @param $expected
-     *
      * @uses \PharIo\Manifest\Application
      * @uses \PharIo\Manifest\Library
      * @uses \PharIo\Manifest\Extension

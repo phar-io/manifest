@@ -54,8 +54,6 @@ class ManifestDocumentMapperTest extends \PHPUnit\Framework\TestCase {
     /**
      * @dataProvider dataProvider
      *
-     * @param $expected
-     *
      * @uses         \PharIo\Manifest\Application
      * @uses         \PharIo\Manifest\ApplicationName
      * @uses         \PharIo\Manifest\Library
