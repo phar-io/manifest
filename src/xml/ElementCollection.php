@@ -18,6 +18,7 @@ use function count;
 use function get_class;
 use function sprintf;
 
+/** @template-implements Iterator<int,DOMElement> */
 abstract class ElementCollection implements Iterator {
     /** @var DOMElement[] */
     private $nodes = [];

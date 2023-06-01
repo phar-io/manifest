@@ -14,6 +14,7 @@ use Countable;
 use IteratorAggregate;
 use function count;
 
+/** @template-implements IteratorAggregate<int,Author> */
 class AuthorCollection implements Countable, IteratorAggregate {
     /** @var Author[] */
     private $authors = [];

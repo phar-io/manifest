@@ -14,6 +14,7 @@ use Countable;
 use IteratorAggregate;
 use function count;
 
+/** @template-implements IteratorAggregate<int,BundledComponent> */
 class BundledComponentCollection implements Countable, IteratorAggregate {
     /** @var BundledComponent[] */
     private $bundledComponents = [];

@@ -14,6 +14,7 @@ use Countable;
 use IteratorAggregate;
 use function count;
 
+/** @template-implements IteratorAggregate<int,Requirement> */
 class RequirementCollection implements Countable, IteratorAggregate {
     /** @var Requirement[] */
     private $requirements = [];

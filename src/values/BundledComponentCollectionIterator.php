@@ -13,6 +13,7 @@ namespace PharIo\Manifest;
 use Iterator;
 use function count;
 
+/** @template-implements Iterator<int,BundledComponent> */
 class BundledComponentCollectionIterator implements Iterator {
     /** @var BundledComponent[] */
     private $bundledComponents;

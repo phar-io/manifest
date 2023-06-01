@@ -1,8 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.x-dev@">
-  <file src="src/xml/ManifestDocument.php">
-    <ArgumentTypeCoercion occurrences="1">
-      <code>$xmlString</code>
-    </ArgumentTypeCoercion>
+<files psalm-version="5.12.0@f90118cdeacd0088e7215e64c0c99ceca819e176">
+  <file src="src/ManifestDocumentMapper.php">
+    <RedundantCast>
+      <code><![CDATA[(int)$e->getCode()]]></code>
+      <code><![CDATA[(int)$e->getCode()]]></code>
+      <code><![CDATA[(int)$e->getCode()]]></code>
+      <code><![CDATA[(int)$e->getCode()]]></code>
+    </RedundantCast>
+  </file>
+  <file src="src/ManifestLoader.php">
+    <RedundantCast>
+      <code><![CDATA[(int)$e->getCode()]]></code>
+      <code><![CDATA[(int)$e->getCode()]]></code>
+    </RedundantCast>
+    <UnusedClass>
+      <code>ManifestLoader</code>
+    </UnusedClass>
+  </file>
+  <file src="src/ManifestSerializer.php">
+    <UnusedClass>
+      <code>ManifestSerializer</code>
+    </UnusedClass>
+  </file>
+  <file src="src/exceptions/ManifestDocumentLoadingException.php">
+    <PossiblyUnusedMethod>
+      <code>getLibxmlErrors</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/values/Author.php">
+    <PossiblyUnusedMethod>
+      <code>asString</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/values/AuthorCollection.php">
+    <PossiblyUnusedMethod>
+      <code>count</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/values/BundledComponentCollection.php">
+    <PossiblyUnusedMethod>
+      <code>count</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/values/Manifest.php">
+    <PossiblyUnusedMethod>
+      <code>isApplication</code>
+      <code>isExtensionFor</code>
+      <code>isLibrary</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/values/RequirementCollection.php">
+    <PossiblyUnusedMethod>
+      <code>count</code>
+    </PossiblyUnusedMethod>
   </file>
 </files>
