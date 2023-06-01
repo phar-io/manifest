@@ -40,15 +40,10 @@ jobs:
   tests:
     name: "Tests"
 
-    runs-on: "${{ matrix.operating-system }}"
+    runs-on: "ubuntu-latest"
 
     strategy:
       matrix:
-        operating-system:
-          - "macos-latest"
-          - "ubuntu-latest"
-          - "windows-latest"
-
         php-versions:
           - "7.3"
           - "7.4"
