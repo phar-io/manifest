@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://phar.io/xml/manifest/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="https://phar.io/xml/manifest/1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="https://phar.io/xml/manifest/1.0">
 
   <xs:element name="phar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="ns:contains" maxOccurs="1" xmlns:ns="https://phar.io/xml/manifest/1.0"/>
-        <xs:element ref="ns:copyright" maxOccurs="1" xmlns:ns="https://phar.io/xml/manifest/1.0"/>
-        <xs:element ref="ns:requires" maxOccurs="1" xmlns:ns="https://phar.io/xml/manifest/1.0"/>
-        <xs:element ref="ns:bundles" minOccurs="0" maxOccurs="1" xmlns:ns="https://phar.io/xml/manifest/1.0"/>
+        <xs:element ref="ns:contains" maxOccurs="1" />
+        <xs:element ref="ns:copyright" maxOccurs="1" />
+        <xs:element ref="ns:requires" maxOccurs="1" />
+        <xs:element ref="ns:bundles" minOccurs="0" maxOccurs="1" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -24,6 +25,7 @@
                 <xs:enumeration value="application"/>
                 <xs:enumeration value="extension"/>
                 <xs:enumeration value="library"/>
+                <xs:enumeration value="stub"/>
               </xs:restriction>
             </xs:simpleType>
           </xs:attribute>
@@ -36,9 +38,9 @@
     <xs:complexType>
       <xs:sequence>
         <xs:choice maxOccurs="unbounded">
-          <xs:element ref="ns:author" minOccurs="1" maxOccurs="unbounded" xmlns:ns="https://phar.io/xml/manifest/1.0"/>
+          <xs:element ref="ns:author" minOccurs="1" maxOccurs="unbounded" />
         </xs:choice>
-        <xs:element ref="ns:license" minOccurs="1" maxOccurs="1" xmlns:ns="https://phar.io/xml/manifest/1.0"/>
+        <xs:element ref="ns:license" minOccurs="1" maxOccurs="1" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -68,7 +70,7 @@
   <xs:element name="requires">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="ns:php" xmlns:ns="https://phar.io/xml/manifest/1.0" />
+        <xs:element ref="ns:php" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -76,7 +78,7 @@
   <xs:element name="php">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="ns:ext" maxOccurs="unbounded" minOccurs="0"  xmlns:ns="https://phar.io/xml/manifest/1.0"/>
+        <xs:element ref="ns:ext" maxOccurs="unbounded" minOccurs="0"  />
       </xs:sequence>
       <xs:attribute type="xs:string" use="required" name="version"/>
     </xs:complexType>
@@ -95,7 +97,7 @@
   <xs:element name="bundles">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="ns:component" maxOccurs="unbounded" minOccurs="0" xmlns:ns="https://phar.io/xml/manifest/1.0"/>
+        <xs:element ref="ns:component" maxOccurs="unbounded" minOccurs="0" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
