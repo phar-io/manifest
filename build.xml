@@ -29,11 +29,12 @@
 
     <target name="install-tools" unless="tools-installed" depends="-tools-installed" description="Install tools with Phive">
         <exec executable="${phive.bin}" taskname="phive" failonerror="true">
+            <arg value="--no-progress" />
             <arg value="install"/>
             <arg value="--copy" />
             <arg value="--trust-gpg-keys" />
-            <!--        phpab,           phpunit,         phpstan,         psaml,           php-cs-fixer     -->
-            <arg value="4AA394086372C20A,2A8299CE842DD38C,CF1A108D0E7AE720,12CE0F1D262429A5,E82B2FB314E9906E" />
+            <!--        phpab,           phpunit,         phpstan,         psaml,           php-cs-fixer,    composer     -->
+            <arg value="4AA394086372C20A,2A8299CE842DD38C,CF1A108D0E7AE720,12CE0F1D262429A5,E82B2FB314E9906E,CBB3D576F2A0946F" />
         </exec>
     </target>
 
