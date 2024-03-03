@@ -4,8 +4,6 @@
     <RedundantCast>
       <code><![CDATA[(int)$e->getCode()]]></code>
       <code><![CDATA[(int)$e->getCode()]]></code>
-      <code><![CDATA[(int)$e->getCode()]]></code>
-      <code><![CDATA[(int)$e->getCode()]]></code>
     </RedundantCast>
   </file>
   <file src="src/ManifestLoader.php">
