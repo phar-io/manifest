@@ -13,7 +13,6 @@ namespace PharIo\Manifest;
 use DOMElement;
 use DOMNodeList;
 use Iterator;
-use ReturnTypeWillChange;
 use function count;
 use function get_class;
 use function sprintf;
@@ -31,7 +30,7 @@ abstract class ElementCollection implements Iterator {
         $this->importNodes($nodeList);
     }
 
-    #[ReturnTypeWillChange]
+    #[\ReturnTypeWillChange]
     abstract public function current();
 
     public function next(): void {
