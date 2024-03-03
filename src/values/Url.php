@@ -28,8 +28,6 @@ class Url {
     }
 
     /**
-     * @param string $url
-     *
      * @throws InvalidUrlException
      */
     private function ensureUrlIsValid(string $url): void {
