@@ -13,6 +13,7 @@ namespace PharIo\Manifest;
 use PharIo\Version\Exception as VersionException;
 use PharIo\Version\Version;
 use PharIo\Version\VersionConstraintParser;
+use Throwable;
 use function sprintf;
 
 class ManifestDocumentMapper {
@@ -32,9 +33,7 @@ class ManifestDocumentMapper {
                 $requirements,
                 $bundledComponents
             );
-        } catch (VersionException $e) {
-            throw new ManifestDocumentMapperException($e->getMessage(), (int)$e->getCode(), $e);
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             throw new ManifestDocumentMapperException($e->getMessage(), (int)$e->getCode(), $e);
         }
     }
