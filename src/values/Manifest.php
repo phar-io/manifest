@@ -76,7 +76,7 @@ class Manifest {
         return $this->type->isExtension();
     }
 
-    public function isExtensionFor(ApplicationName $application, Version $version = null): bool {
+    public function isExtensionFor(ApplicationName $application, ?Version $version = null): bool {
         if (!$this->isExtension()) {
             return false;
         }
