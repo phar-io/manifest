@@ -2,9 +2,13 @@
 
 All notable changes to phar-io/manifest are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [2.1.0] - 15.02.2022
+## [2.0.4] - 03-03-2024
+
+### Changed
 
 - Make `EMail` an optional attribute for author
+- Stick with PHP 7.2 compatibilty 
+- Do not use implict nullable type (thanks @sebastianbergmann), this should make things work on PHP 8.4
 
 ## [2.0.3] - 20.07.2021
 
