@@ -32,8 +32,6 @@ class ManifestDocumentMapper {
                 $requirements,
                 $bundledComponents
             );
-        } catch (VersionException $e) {
-            throw new ManifestDocumentMapperException($e->getMessage(), (int)$e->getCode(), $e);
         } catch (Exception $e) {
             throw new ManifestDocumentMapperException($e->getMessage(), (int)$e->getCode(), $e);
         }
